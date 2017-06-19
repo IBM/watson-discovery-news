@@ -1,0 +1,54 @@
+{
+  "name": "watson-discovery-news-trending-topics",
+  "version": "1.0.0",
+  "private": true,
+  "main": "index.js",
+  "license": "Apache-2.0",
+  "repository": {
+    "type" : "git",
+    "url" : "https://github.com/IBM/watson-discovery-news-trending-topics.git"
+  },
+  "scripts": {
+    "start": "node index.js",
+    "start:watch": "nodemon index.js",
+    "bootstrap": "cp .env.sample .env",
+    "test": "jest",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix"
+  },
+  "author": "Ankur Patel <ankur@encoredevlabs.com> (https://www.encoredevlabs.com/)",
+  "dependencies": {
+    "babelify": "^7.3.0",
+    "bluebird": "^3.5.0",
+    "dotenv": "^4.0.0",
+    "express": "^4.15.3",
+    "express-browserify": "^1.0.2",
+    "express-react-views": "^0.10.2",
+    "moment": "^2.18.1",
+    "prop-types": "^15.5.10",
+    "query-string": "^4.3.4",
+    "react": "^15.5.4",
+    "react-dom": "^15.5.4",
+    "recharts": "^1.0.0-alpha.0",
+    "rss": "^1.2.2",
+    "uglifyify": "^3.0.4",
+    "watson-developer-cloud": "^2.32.1",
+    "watson-react-components": "^0.6.9"
+  },
+  "babel": {
+    "presets": [
+      "es2015",
+      "react"
+    ],
+    "ignore": "node_modules"
+  },
+  "devDependencies": {
+    "enzyme": "^2.8.2",
+    "eslint": "^3.19.0",
+    "eslint-plugin-import": "^2.3.0",
+    "eslint-plugin-react": "^7.0.1",
+    "jest": "^20.0.4",
+    "nodemon": "^1.11.0",
+    "react-addons-test-utils": "^15.5.1"
+  }
+}

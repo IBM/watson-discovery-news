@@ -1,0 +1,15 @@
+---
+declared-services:
+  my-discovery-service:
+    label: discovery
+    plan: free
+applications:
+- path: .
+  name: watson-trending-topics
+  buildpack: sdk-for-nodejs
+  memory: 512M
+  instances: 1
+  disk_quota: 256M
+  random-route: true
+  services:
+  - my-discovery-service
