@@ -66,7 +66,7 @@ function createServer() {
     .then(json => {
       const { topics } = parseData(json);
       const feed = new RSS({
-        title: 'Watson News Trending Topics',
+        title: `Trending Topics in News${category ? ' for ' + category.toUpperCase() : ''}`,
         description: 'RSS feed for Trending Topics found using Watson Discovery Service'
       });
 

@@ -12,6 +12,9 @@ describe('Query builder returns params for discovery service', () => {
       environment_id: 'environment',
       collection_id: 'collection',
       return: 'enrichedTitle.entities.text',
+      aggregation: [
+        'term(enrichedTitle.entities.text,count:20).top_hits(1)'
+      ],
       aggregations: [
         'term(enrichedTitle.entities.text,count:20).top_hits(1)'
       ],
@@ -26,6 +29,9 @@ describe('Query builder returns params for discovery service', () => {
       environment_id: 'environment',
       collection_id: 'collection',
       return: 'enrichedTitle.entities.text',
+      aggregation: [
+        'term(enrichedTitle.entities.text,count:20).top_hits(1)'
+      ],
       aggregations: [
         'term(enrichedTitle.entities.text,count:20).top_hits(1)'
       ],
