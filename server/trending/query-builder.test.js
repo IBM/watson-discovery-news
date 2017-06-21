@@ -12,6 +12,12 @@ describe('Query builder returns params for discovery service', () => {
       environment_id: 'environment',
       collection_id: 'collection',
       return: 'enrichedTitle.entities.text',
+      aggregation: [
+        'term(enrichedTitle.entities.text,count:20).top_hits(1)'
+      ],
+      aggregations: [
+        'term(enrichedTitle.entities.text,count:20).top_hits(1)'
+      ],
       filter: `blekko.chrondate>${moment().subtract(24,'h').unix()},blekko.hostrank>300`
     });
   });
@@ -23,6 +29,12 @@ describe('Query builder returns params for discovery service', () => {
       environment_id: 'environment',
       collection_id: 'collection',
       return: 'enrichedTitle.entities.text',
+      aggregation: [
+        'term(enrichedTitle.entities.text,count:20).top_hits(1)'
+      ],
+      aggregations: [
+        'term(enrichedTitle.entities.text,count:20).top_hits(1)'
+      ],
       filter: `taxonomy.label:"test",blekko.chrondate>${moment().subtract(24,'h').unix()},blekko.hostrank>300`
     });
   });
