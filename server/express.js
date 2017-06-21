@@ -37,10 +37,3 @@ app.get('/js/trending/bundle.js', trendingBrowserifyier);
 app.get('/js/search/bundle.js', searchBrowserifyier);
 
 module.exports = app;
-
-// module.exports = {
-//   getTrendingApp: function() {
-//     app.get('/js/trending/bundle.js', browserifyier);
-//     return app;    
-//   }
-// };
