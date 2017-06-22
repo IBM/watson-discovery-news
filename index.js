@@ -1,7 +1,8 @@
 require('dotenv').config({ silent: true });
+require('cf-deployment-tracker-client').track();
 
 const server = require('./server');
-const port = process.env.PORT || 4321;
+const port = process.env.PORT || 3000;
 
 server.then(app => {
   app.listen(port, () => {
