@@ -128,7 +128,7 @@ function createServer() {
       });
   });
 
-  server.get(':searchQuery', function(req, res){
+  server.get('/search/:searchQuery', function(req, res){
     const searchQuery = req.params.searchQuery.replace(/\+/g, ' ');
 
     const qs = queryString.stringify({ query: searchQuery });

@@ -14,7 +14,7 @@ class DefaultLayout extends React.Component {
           <meta name="og:title" content="Watson Discovery Trending Topics in News" />
           <meta name="og:description" content={this.props.description || 'Get RSS Feed for Trending Topics in News'} />
           <link rel="stylesheet" type="text/css" href="/css/watson-react-components.min.css" />
-          <link rel="stylesheet" type="text/css" href="/css/trending/application.css"/>
+          <link rel="stylesheet" type="text/css" href="/css/application.css"/>
           <link rel="alternate" type="application/rss+xml" href="/feed" />
         </head>
         <body>

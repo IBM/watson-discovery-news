@@ -144,9 +144,9 @@ $ yarn start
 
 Go to the URL that is printed at the end after deployment is done and you can view the app in the browser and copy the RSS link to your favorite RSS Reader. If your RSS Feed Reader supports push notifications you can get alerted when trending topics change along with a news article for that topic.
 
-![RSS feed notification](https://raw.githubusercontent.com/IBM/watson-discovery-news-trending-topics/master/docs/rss-2.png)
+![RSS feed notification](https://raw.githubusercontent.com/IBM/watson-discovery-news/master/docs/rss-2.png)
 
-![RSS feed notifications](https://raw.githubusercontent.com/IBM/watson-discovery-news-trending-topics/master/docs/rss-1.png)
+![RSS feed notifications](https://raw.githubusercontent.com/IBM/watson-discovery-news/master/docs/rss-1.png)
 
 ## RSS Feed Usage
 
