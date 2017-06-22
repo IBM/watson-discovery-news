@@ -13,3 +13,5 @@ applications:
   random-route: true
   services:
   - discovery-news-service
+env:
+  SLACK_BOT_TOKEN: placeholder
