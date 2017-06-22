@@ -111,7 +111,7 @@ class Main extends React.Component {
               <ul>
                 {categories.map(category => 
                   <li key={category}>
-                    <a href={`/trending/${category}`} target="_blank" rel="noopener noreferrer">{category.toUpperCase().substring(1)}</a>
+                    <a href={`/trending${category}`} target="_blank" rel="noopener noreferrer">{category.toUpperCase().substring(1)}</a>
                   </li>)}
               </ul>
             </div>

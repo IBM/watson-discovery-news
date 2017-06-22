@@ -2,7 +2,7 @@
 
 # Watson Discovery News Trending Topics Web App 
 
-[![Deploy to Bluemix](https://bluemix.net/deploy/button.png)](https://bluemix.net/deploy?repository=https://github.com/IBM/watson-discovery-news-trending-topics)
+[![Deploy to Bluemix](https://bluemix.net/deploy/button.png)](https://bluemix.net/deploy?repository=https://github.com/IBM/watson-discovery-news)
 
 In this developer journey we will build a RSS News Feed generator for Trending Topics for the past 24 hours for the entire news in general or a specific industry/category such as (technology and computing or automobile and vehicles, etc.) and subscribe to the feed to get push notifications. This journey explores the use of Discovery Service to get the most trending topics in news or a specific category of news.
 
@@ -48,8 +48,8 @@ Make sure before you start you have the following tasks done:
 Clone the repo by running the following command in the terminal and go into that directory.
 
 ```sh
-$ git clone https://github.com/IBM/watson-discovery-news-trending-topics/
-$ cd watson-discovery-news-trending-topics
+$ git clone https://github.com/IBM/watson-discovery-news/
+$ cd watson-discovery-news
 ```
 
 ### 2. Install the dependencies and bootstrap
@@ -77,12 +77,12 @@ Create the following services:
 
 Fill in name you want to give to your service along with a name where credentials will be saved and click *Create*.
 
-![Create Discovery Service Service](https://raw.githubusercontent.com/IBM/watson-discovery-news-trending-topics/master/docs/discovery-1.png)
+![Create Discovery Service Service](https://raw.githubusercontent.com/IBM/watson-discovery-news/master/docs/discovery-1.png)
 
 
 After the service is created, click on *Service credentials* and then click on *View Credentials* and copy the *username* and *password* values into the `.env` after the `=` sign for `DISCOVERY_SERVICE_USERNAME` and `DISCOVERY_SERVICE_PASSWORD` environment variables.
 
-![Discovery Service Credentials](https://raw.githubusercontent.com/IBM/watson-discovery-news-trending-topics/master/docs/discovery-2.png)
+![Discovery Service Credentials](https://raw.githubusercontent.com/IBM/watson-discovery-news/master/docs/discovery-2.png)
 
 ### 5. Start Everything
 
@@ -111,9 +111,9 @@ $ cf push
 
 Go to the URL that is printed at the end after deployment is done and you can view the app in the browser and copy the RSS link to your favorite RSS Reader. If your RSS Feed Reader supports push notifications you can get alerted when trending topics change along with a news article for that topic.
 
-![RSS feed notification](https://raw.githubusercontent.com/IBM/watson-discovery-news-trending-topics/master/docs/rss-2.png)
+![RSS feed notification](https://raw.githubusercontent.com/IBM/watson-discovery-news/master/docs/rss-2.png)
 
-![RSS feed notifications](https://raw.githubusercontent.com/IBM/watson-discovery-news-trending-topics/master/docs/rss-1.png)
+![RSS feed notifications](https://raw.githubusercontent.com/IBM/watson-discovery-news/master/docs/rss-1.png)
 
 ## RSS Feed Usage
 

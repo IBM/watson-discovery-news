@@ -33,7 +33,7 @@ class DefaultLayout extends React.Component {
           <meta name="og:title" content="Watson Discovery News Search" />
           <meta name="og:description" content={this.props.description || 'Search News using Watson Discovery Service'} />
           <link rel="stylesheet" type="text/css" href="/css/watson-react-components.min.css" />
-          <link rel="stylesheet" type="text/css" href="/css/search/application.css"/>
+          <link rel="stylesheet" type="text/css" href="/css/application.css"/>
         </head>
         <body>
           {!hideHeader && <div>

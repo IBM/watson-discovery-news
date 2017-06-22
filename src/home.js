@@ -1,4 +1,4 @@
-import { Header, Jumbotron } from 'watson-react-components';
+import { Header, Jumbotron, Footer } from 'watson-react-components';
 const React = require('react');
 
 class Application extends React.Component {
@@ -38,7 +38,7 @@ class Application extends React.Component {
           <meta name="viewport" content="width=device-width, initial-scale=1" />
           <meta name="og:title" content="Watson Discovery" />
           <link rel="stylesheet" type="text/css" href="/css/watson-react-components.min.css" />
-          <link rel="stylesheet" type="text/css" href="/css/search/application.css"/>
+          <link rel="stylesheet" type="text/css" href="/css/application.css"/>
         </head>
         <body>
           <Header
@@ -56,6 +56,7 @@ class Application extends React.Component {
             version="GA"
             description={this.getDescription()}
           />
+          <Footer />
         </body>
       </html>
     );
