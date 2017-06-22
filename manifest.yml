@@ -1,6 +1,6 @@
 ---
 declared-services:
-  my-discovery-service:
+  discovery-news-service:
     label: discovery
     plan: free
 applications:
@@ -12,4 +12,4 @@ applications:
   disk_quota: 256M
   random-route: true
   services:
-  - my-discovery-service
+  - discovery-news-service

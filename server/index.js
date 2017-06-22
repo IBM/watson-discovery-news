@@ -6,6 +6,7 @@ const discovery = require('./watson-discovery-service');
 const RSS = require('rss');
 const utils = require('../src/trending/utils');
 const { parseData, topicStory } = utils;
+const port = process.env.PORT || 3000;
 
 const WatsonNewsServer = new Promise((resolve, reject) => {
   discovery.getEnvironments({})
@@ -56,7 +57,7 @@ function createServer() {
   server.get('/trending/feed/*', (req, res, next) => {
     const category = req.params[0];
 
-    fetch(`http://localhost:${process.env.PORT}/trending/api/trending/${category ? category : ''}`)
+    fetch(`http://localhost:${port}/trending/api/trending/${category ? category : ''}`)
     .then(response => {
       if (response.ok) {
         return response.json();
@@ -131,7 +132,7 @@ function createServer() {
     const searchQuery = req.params.searchQuery.replace(/\+/g, ' ');
 
     const qs = queryString.stringify({ query: searchQuery });
-    fetch(`http://localhost:${process.env.PORT}/search/api/search?${qs}`)
+    fetch(`http://localhost:${port}/search/api/search?${qs}`)
       .then(response => {
         if (response.ok) {
           return response.json();

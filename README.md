@@ -1,113 +1,146 @@
 [![Build Status](https://travis-ci.org/IBM/watson-discovery-news.svg?branch=master)](https://travis-ci.org/IBM/watson-discovery-news)
+![Bluemix Deployments](https://deployment-tracker.mybluemix.net/stats/3999122db8b59f04eecad8d229814d83/badge.svg)
 
-# Watson Discovery News Trending Topics Web App 
+# Query Watson Discovery News using the Watson Discovery Service
+In this developer journey, we will build a Node.js web application that will use the Watson Discovery Service to access Watson Discovery News. 
 
-[![Deploy to Bluemix](https://bluemix.net/deploy/button.png)](https://bluemix.net/deploy?repository=https://github.com/IBM/watson-discovery-news)
+Watson Discovery News is a defaullt data collection that is associated with the Watson Discovery Service. It is a dataset of primarily English language news sources that is updated continuously, with approximately 300,000 new articles and blogs added daily.
 
-In this developer journey we will build a RSS News Feed generator for Trending Topics for the past 24 hours for the entire news in general or a specific industry/category such as (technology and computing or automobile and vehicles, etc.) and subscribe to the feed to get push notifications. This journey explores the use of Discovery Service to get the most trending topics in news or a specific category of news.
+This journey will demonstrate two use cases for accessing Watson Discovery News:
 
-Once you are done with this journey you will know how to:
+* **Trending Topics in the News** - Identify popular topics over the past 24 hours. Topics can be general, or for a specific industry or category.
 
-1. Built and run server that serves RSS feed with a HTML frontend written in React
-2. Configure Discovery Service with the App
-3. Deploy the app to IBM Bluemix using cloudfoundry CLI tool
-4. Add the RSS feed to your RSS reader and get push notification when new trending topics changes along with news article for it.
+* **Search** - Query for the most relevant new articles about a specific topic or subject. Resullts will include enrichment data, such as article summary text and sentiment analysis.
 
-# Repo Contents
+Optionally included in this journey are examples of how to:
 
-This repo contains code for
-1. Responsive Frontend web application built using React
-2. Backend Web and RSS Feed Server built using express
+* Build a **RSS News Feed** generator to push Trending Topic news to your favorite RSS reader.
+
+* Build a **SlackBot** to access the Search feature from Slack. 
+
+ARCHITURE PICTURE HERE
+
+* Flow
+
+ADD FLOW STEPS BASED ON ARCHITURE PICTURE
+
+## With Watson
+
+Want to take your Watson app to the next level? Looking to leverage Watson Brand assets? Join the [With Watson](https://www.ibm.com/watson/with-watson) program which provides exclusive brand, marketing, and tech resources to amplify and accelerate your Watson embedded commercial solution.
 
 # Included components
 
-* [Watson Discovery](https://www.ibm.com/watson/developercloud/discovery.html) - Rapidly build a cognitive search and content analytics engine
+* [Watson Discovery](https://www.ibm.com/watson/developercloud/discovery.html): A cognitive search and content analytics engine for applications to identify patterns, trens, and actionable insights.
 
 # Featured technologies
 
 * [Node.js](https://nodejs.org/en/) - An asynchronous event driven JavaScript runtime, designed to build scalable applications
-* [RSS](https://en.wikipedia.org/wiki/RSS) - RSS (Rich Site Summary) is a format for delivering regularly changing web content in our case it will be trending topics
 * [React](https://facebook.github.io/react/) - Javascript library for building User Interfaces
-* [express](https://expressjs.com) - Most popular and minimalistic web framework for creating API and Web server
-* [yarn](https://yarnpkg.com) - Fast, reliable and secure dependency manager for node.js
+* [Express](https://expressjs.com) - A popular and minimalistic web framework for creating API and Web server
+* [Yarn](https://yarnpkg.com) - Fast, reliable and secure dependency manager for node.js
+* [RSS](https://en.wikipedia.org/wiki/RSS) - RSS (Rich Site Summary) is a format for delivering regularly changing web content in our case it will be trending topics
+* [Slack](https://slack.com) - Slack is a cloud-based set of team collaboration tools and services with chat bot integration
+* [Botkit](https://www.botkit.ai) - Framework for creating and managing chat bots
 
-# Getting Started
+# Watch the Video
 
-## Prerequisites
+* coming soon
 
-Make sure before you start you have the following tasks done:
+# Steps
 
-1. Install [nodejs](https://nodejs.org/en/) and [yarn](https://yarnpkg.com)
-2. Install the [Cloud-foundry CLI](https://github.com/cloudfoundry/cli) tool
-3. Have a [Bluemix account](https://console.ng.bluemix.net/registration/)
+Use the ``Deploy to Bluemix`` button **OR** create the services and run locally.
 
-## Steps
+## Deploy to Bluemix
+[![Deploy to Bluemix](https://deployment-tracker.mybluemix.net/stats/3999122db8b59f04eecad8d229814d83/button.svg)](https://bluemix.net/deploy?repository=https://github.com/IBM/watson-discovery-news.git)
 
-### 1. Clone the repo
+1. Press the above ``Deploy to Bluemix`` button and then click on ``Deploy``.
 
-Clone the repo by running the following command in the terminal and go into that directory.
+2. In Toolchains, click on Delivery Pipeline to watch while the app is deployed. Once deployed, the app can be viewed by clicking 'View app'.
+![](doc/source/images/toolchain-pipeline.png)
 
-```sh
-$ git clone https://github.com/IBM/watson-discovery-news/
-$ cd watson-discovery-news
+3. To see the app and services created and configured for this journey, use the Bluemix dashboard. The app is named `watson-discovery-news` with a unique suffix. The following services are created:
+    * discovery-news-service
+
+## Run locally
+> NOTE: These steps are only needed when running locally instead of using the ``Deploy to Bluemix`` button.
+
+1. [Clone the repo](#1-clone-the-repo)
+2. [Create Bluemix services](#2-create-bluemix-services)
+3. [Configure Watson Discovery](#3-configure-watson-discovery)
+4. [Configure Slack](#4-configure-slack)
+5. [Run the application](#5-run-the-application)
+
+## 1. Clone the repo
+
+Clone the `watson-discovery-news` locally. In a terminal, run:
+```
+$ git clone https://github.com/ibm/watson-discovery-news
 ```
 
-### 2. Install the dependencies and bootstrap
+## 2. Create Watson Services with IBM Bluemix
 
-Install all of the dependencies by running `yarn` command. This will install of the node modules specified in the package.json
+Create the following service:
 
-```sh
+  * [**Watson Discovery**](https://console.ng.bluemix.net/catalog/services/discovery)
+
+## 3. Configure Watson Discovery
+
+Fill in name you want to give to your service and click *Create*.
+
+![Create Discovery Service Service](https://raw.githubusercontent.com/IBM/watson-discovery-news-trending-topics/master/docs/discovery-1.png)
+
+After the service is created, click on *Service credentials* and then click on *View Credentials*. Save these credentials as they will be needed when configuring the app.
+
+![Discovery Service Credentials](https://raw.githubusercontent.com/IBM/watson-discovery-news-trending-topics/master/docs/discovery-2.png)
+
+## 4. Configure Slack
+
+To integrate a new Slack Bot into your existing Slack team, navigate to https://my.slack.com/services/new/bot. Enter a username for the bot and click **Add bot integration**.
+
+![Create Slackbot](https://raw.githubusercontent.com/IBM/watson-discovery-news-search/master/docs/slack-1.png)
+
+Once created, save the **API Token** that is generated.
+
+![Slackbot Token](https://raw.githubusercontent.com/IBM/watson-discovery-news-search/master/docs/slack-2.png)
+
+## 5. Run the application
+
+### If you used the Deploy to Bluemix button...
+
+If you used ``Deploy to Bluemix``, most of the setup is automatic, but not
+quite all of it. We have to update a few environment variables.
+
+In the Bluemix dashboard find the App that was created. Click on ``Runtime`` on the menu and navigate to the ``Environment variables`` tab.
+
+![](doc/source/images/env_vars.png)
+
+Update the following environment variable:
+
+  * Set ``SLACK_BOT_TOKEN`` to the token you saved in Step 4
+
+Save the new value and restart the application, watch the logs for errors.
+
+### If you decided to run the app locally...
+
+1. Install [Node.js](https://nodejs.org/en/) and [Yarn](https://yarnpkg.com)
+2. Install all of the dependencies by running `yarn`. This will install of the node modules specified in [`package.json`](package.json)
+```
 $ yarn
 ```
-
-Then run `yarn bootstrap` to copy the `.env.sample` to `.env` and fill in the credentials in the `.env` file by following the next steps.
-
-```sh
+3. Run `yarn bootstrap` to copy the `.env.sample` to `.env`
+```
 $ yarn bootstrap
 ```
-
-### 3. Create Bluemix Services
-
-Create the following services:
-
-* [Watson Discovery](https://console.ng.bluemix.net/catalog/services/discovery?env_id=ibm:yp:us-south)
-
-
-### 4. Configure Watson Discovery
-
-Fill in name you want to give to your service along with a name where credentials will be saved and click *Create*.
-
-![Create Discovery Service Service](https://raw.githubusercontent.com/IBM/watson-discovery-news/master/docs/discovery-1.png)
-
-
-After the service is created, click on *Service credentials* and then click on *View Credentials* and copy the *username* and *password* values into the `.env` after the `=` sign for `DISCOVERY_SERVICE_USERNAME` and `DISCOVERY_SERVICE_PASSWORD` environment variables.
-
-![Discovery Service Credentials](https://raw.githubusercontent.com/IBM/watson-discovery-news/master/docs/discovery-2.png)
-
-### 5. Start Everything
-
-Start the app by running `yarn start`. If you are developing and making changes to the app and would like the server to restart every time then run `yarn start:watch`
-
-```sh
+4. Edit the `.env` file and enter the Watson Discovery credentials saved in Step 3, and the Slack Bot Token saved in Step 4.
+5. Start the app by running `yarn start`. If you are developing and making changes to the app and would like the server to restart every time then run `yarn start:watch`
+```
 $ yarn start
 ```
+6. Open a browser and go to `http://localhost:{PORT}`, where PORT is the value specified in `.env` (default is 3000)
 
-Open the browser and go to `http://localhost:3333`
 
-### 8. Deploy to Bluemix
+# Sample output
 
-To deploy to Bluemix make sure you have cloud foundry CLI tool installed. Then run the following commands to connect it with Bluemix and login with your Bluemix credentials.
-
-```sh
-$ cf api https://api.ng.bluemix.net
-$ cf login
-```
-
-Then to deploy just run the following command and it will push the code, deploy it to a server and run it.
-
-```sh
-$ cf push
-```
 
 Go to the URL that is printed at the end after deployment is done and you can view the app in the browser and copy the RSS link to your favorite RSS Reader. If your RSS Feed Reader supports push notifications you can get alerted when trending topics change along with a news article for that topic.
 
@@ -118,3 +151,63 @@ Go to the URL that is printed at the end after deployment is done and you can vi
 ## RSS Feed Usage
 
 Since RSS feed is a standard way to consume constantly changing data such as news, we can use the RSS feeds we generated to also post news articles to your organizations [slack channel](https://get.slack.help/hc/en-us/articles/218688467-Add-RSS-feeds-to-Slack) to track trends in your industry, or consume the feed to generate a dialy digest of news and email in the morning. Other uses may include automaticaly posting tweets to a twitter account on news articles on trending topics using a service called [IFTTT](https://ifttt.com/connect/feed/twitter).
+
+# Troubleshooting
+
+* Help! I'm seeing errors in my log
+
+This is expected during the first run. The app tries to start before the Discovery
+service is fully created. Allow a minute or two to pass, the following message
+should appear:
+
+``Watson XXXXXXXXXXX is connected and running!``
+
+* Setting environment variables for a local run
+
+> NOTE: This only needs to be set if the application is running locally.
+
+The credentials for Bluemix services (Discovery), can
+be found in the ``Services`` menu in Bluemix, and selecting the ``Service Credentials``
+option.
+
+```
+# Watson Discovery
+DISCOVERY_USERNAME=<add_discovery_username>
+DISCOVERY_PASSWORD=<add_discovery_password>
+
+# Slack
+SLACK_BOT_TOKEN=<add_slack_bot_token>
+```
+
+# License
+
+[Apache 2.0](LICENSE)
+
+# Privacy Notice
+
+If using the Deploy to Bluemix button some metrics are tracked, the following
+information is sent to a [Deployment Tracker](https://github.com/IBM-Bluemix/cf-deployment-tracker-service) service
+on each deployment:
+
+* Node.js package version
+* Node.js repository URL
+* Application Name (application_name)
+* Application GUID (application_id)
+* Application instance index number (instance_index)
+* Space ID (space_id)
+* Application Version (application_version)
+* Application URIs (application_uris)
+* Labels of bound services
+* Number of instances for each bound service and associated plan information
+
+This data is collected from the setup.py file in the sample application and the ``VCAP_APPLICATION``
+and ``VCAP_SERVICES`` environment variables in IBM Bluemix and other Cloud Foundry platforms. This
+data is used by IBM to track metrics around deployments of sample applications to IBM Bluemix to
+measure the usefulness of our examples, so that we can continuously improve the content we offer
+to you. Only deployments of sample applications that include code to ping the Deployment Tracker
+service will be tracked.
+
+## Disabling Deployment Tracking
+
+To disable tracking, simply remove ``cf_deployment_tracker.track()`` from the
+``index.js`` file in the top level directory.

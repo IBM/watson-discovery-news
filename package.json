@@ -11,12 +11,11 @@
   "scripts": {
     "start": "node index.js",
     "start:watch": "nodemon index.js",
-    "bootstrap": "cp .env.sample .env",
+    "bootstrap": "cp env.sample .env",
     "test": "jest",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix"
   },
-  "author": "Ankur Patel <ankur@encoredevlabs.com> (https://www.encoredevlabs.com/)",
   "dependencies": {
     "babelify": "^7.3.0",
     "bluebird": "^3.5.0",
@@ -32,6 +31,9 @@
     "recharts": "^1.0.0-alpha.0",
     "rss": "^1.2.2",
     "uglifyify": "^3.0.4",
+    "cf-deployment-tracker-client": "*",
+    "cfenv": "^1.0.3",
+    "vcap_services": "^0.2.0",
     "watson-developer-cloud": "^2.32.1",
     "watson-react-components": "^0.6.9"
   },
