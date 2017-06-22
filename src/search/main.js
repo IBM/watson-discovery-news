@@ -38,7 +38,7 @@ class Main extends React.Component {
     });
 
     scrollToMain();
-    history.pushState({}, {}, `/${searchQuery.replace(/ /g, '+')}`);
+    history.pushState({}, {}, `/search/${searchQuery.replace(/ /g, '+')}`);
 
     const qs = queryString.stringify({ query: searchQuery });
     fetch(`/search/api/search?${qs}`)
