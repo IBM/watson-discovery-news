@@ -112,7 +112,6 @@ controller.hears(['whats in the news', 'news please'], 'direct_message,direct_me
             bot.reply(message, 'OK searching...');
 
             const qs = queryString.stringify({ query: convo.extractResponse('search-query') });
-            var hostname = req
             fetch(`https://watson-discovery-news.mybluemix.net/search/api/search?${qs}`)
             .then(apiResponse => {
               if (apiResponse.ok) {
