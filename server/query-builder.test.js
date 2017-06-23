@@ -8,7 +8,7 @@ beforeEach(() => {
 
 describe('Query builder returns params for discovery service', () => {
   test('when opts are NOT passed', () => {
-    expect(queryBuilder.build()).toEqual({
+    expect(queryBuilder.trending()).toEqual({
       environment_id: 'environment',
       collection_id: 'collection',
       return: 'enrichedTitle.entities.text',
@@ -20,7 +20,7 @@ describe('Query builder returns params for discovery service', () => {
   });
 
   test('when opts are passed', () => {
-    expect(queryBuilder.build({
+    expect(queryBuilder.trending({
       filter: 'taxonomy.label:"test"'
     })).toEqual({
       environment_id: 'environment',

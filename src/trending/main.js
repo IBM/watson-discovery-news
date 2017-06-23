@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { Icon } from 'watson-react-components';
 import Cloud from './Cloud';
 import Query from '../shared/Query';
-import queryBuilder from '../../server/trending/query-builder';
+import queryBuilder from '../../server/query-builder';
 import { parseData } from '../shared/utils';
 import categories from './taxonomy';
 
@@ -96,7 +96,7 @@ class Main extends React.Component {
                   <Cloud data={data.topics} />
                   <Query
                     title="Query to the Discovery Service"
-                    query={queryBuilder.build({ filter })}
+                    query={queryBuilder.trending({ filter })}
                   />
                 </div>
               )}

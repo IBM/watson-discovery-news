@@ -1,7 +1,6 @@
 require('isomorphic-fetch');
 const queryString = require('query-string');
-const trendingQueryBuilder = require('./trending/query-builder');
-const searchQueryBuilder = require('./search/query-builder');
+const queryBuilder = require('./query-builder');
 const discovery = require('./watson-discovery-service');
 const RSS = require('rss');
 const utils = require('../src/shared/utils');
@@ -14,14 +13,12 @@ const WatsonNewsServer = new Promise((resolve, reject) => {
       const environmentId = response.environments
                                     .find(environment => environment.read_only == true)
                                     .environment_id;
-      trendingQueryBuilder.setEnvironmentId(environmentId);
-      searchQueryBuilder.setEnvironmentId(environmentId);
+      queryBuilder.setEnvironmentId(environmentId);
       return discovery.getCollections({ environment_id: environmentId });
     })
     .then(response => {
       const collectionId = response.collections[0].collection_id;
-      trendingQueryBuilder.setCollectionId(collectionId);
-      searchQueryBuilder.setCollectionId(collectionId);
+      queryBuilder.setCollectionId(collectionId);
       resolve(createServer());
     })
     .catch(error => {
@@ -37,7 +34,7 @@ function createServer() {
   server.get('/trending/api/trending/*', (req, res, next) => {
     const category = req.params[0];
 
-    discovery.query(trendingQueryBuilder.build({
+    discovery.query(queryBuilder.trending({
       filter: category ? `taxonomy.label:"${category}"` : ''
     }))
     .then(response => res.json(response))
@@ -117,7 +114,7 @@ function createServer() {
   server.get('/search/api/search', (req, res) => {
     const { query } = req.query;
 
-    discovery.query(searchQueryBuilder.build({ natural_language_query: query }))
+    discovery.query(queryBuilder.search({ natural_language_query: query }))
       .then(response => res.json(response))
       .catch(error => {
         if (error.message === 'Number of free queries per month exceeded') {
