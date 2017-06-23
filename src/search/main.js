@@ -8,7 +8,7 @@ import Briefing from './Briefing';
 import Sentiment from './Sentiment';
 import Search from './Search';
 import Query from '../shared/Query';
-import queryBuilder from '../../server/search/query-builder';
+import queryBuilder from '../../server/query-builder';
 
 class Main extends React.Component {
 
@@ -77,7 +77,7 @@ class Main extends React.Component {
     case 'sentiment': return <Sentiment data={data.sentiment} />;
     case 'query':     return <Query
                               title="Query to and Response from the Discovery Service"
-                              query={queryBuilder.build({
+                              query={queryBuilder.search({
                                 natural_language_query: this.state.searchQuery
                               })}
                               response={data.rawResponse}
