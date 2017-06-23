@@ -53,7 +53,7 @@ export default class Search extends React.Component {
             <div className="query--text-input-container">
               <div className="query--search-container">
                 <TextInput
-                  placeholder="What topic are you interested in? Try some of the queries from above 👆"
+                  placeholder={'Try "Acquisition in Insurance Industry" or "Tech IPOs"'}
                   onKeyPress={this.handleKeyPress.bind(this)}
                   onInput={this.handleInputChange.bind(this)}
                   defaultValue={this.state.searchQuery}

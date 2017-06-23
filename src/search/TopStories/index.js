@@ -15,13 +15,14 @@ const Story = props => (
       title={props.title}
       rel="noopener noreferrer"
     >
-      {props.title} {props.sentiment}
+      {props.title}
     </a>
     <div className="story--source-and-score">
       <span className="base--p story--source">
         {props.host ? props.host : 'Placeholder Source'}
       </span>
       <div className="story--score base--p">Confidence Score: <Bar rangeStart={0} rangeEnd={2}  score={props.score} /></div>
+      <div className="story--sentiment base--p">Sentiment: {props.sentiment}</div>
     </div>
   </div>
 );

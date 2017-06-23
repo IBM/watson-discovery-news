@@ -7,7 +7,7 @@ import TopStories from './TopStories';
 import Briefing from './Briefing';
 import Sentiment from './Sentiment';
 import Search from './Search';
-import Query from './Query';
+import Query from '../shared/Query';
 import queryBuilder from '../../server/search/query-builder';
 
 class Main extends React.Component {

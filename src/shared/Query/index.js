@@ -18,15 +18,18 @@ const Query = props => (
           JSON.stringify(props.query, null, 2) : props.query}
         </Code>
       </Pane>
-      <Pane label="Response">
-        <div className="code-results--fake-bg">
-          <div className="code-results--fake-border" />
-        </div>
-        <Code language="json">
-          {typeof props.response === 'object' ?
-          JSON.stringify(props.response, null, 2) : props.response}
-        </Code>
-      </Pane>
+      {props.response ?
+        <Pane label="Response">
+          <div className="code-results--fake-bg">
+            <div className="code-results--fake-border" />
+          </div>
+          <Code language="json">
+            {typeof props.response === 'object' ?
+            JSON.stringify(props.response, null, 2) : props.response}
+          </Code>
+        </Pane> :
+        <Pane label="" />
+      }
     </Tabs>
   </div>
 );
@@ -39,9 +42,8 @@ Query.propTypes = {
   response: PropTypes.oneOfType([
     PropTypes.object,
     PropTypes.string, // json string
-  ]).isRequired,
+  ]),
   title: PropTypes.string.isRequired,
 };
-
 
 export default Query;

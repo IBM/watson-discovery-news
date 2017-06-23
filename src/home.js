@@ -42,17 +42,15 @@ class Application extends React.Component {
         </head>
         <body>
           <Header
-            mainBreadcrumbs="Discover"
-            mainBreadcrumbsUrl="http://www.ibm.com/watson/developercloud/discovery.html"
-            subBreadcrumbs="Index Page"
-            subBreadcrumbsUrl=""
+            mainBreadcrumbs="Home"
+            mainBreadcrumbsUrl="/"
           />
           <Jumbotron
             serviceName="IBM Watson Discovery Service"
-            repository=""
+            repository="https://github.com/IBM/watson-discovery-news"
             documentation="http://www.ibm.com/watson/developercloud/doc/discovery/index.html"
             apiReference="http://www.ibm.com/watson/developercloud/discovery/api"
-            startInBluemix=""
+            startInBluemix="https://console.ng.bluemix.net/registration/?target=/catalog/services/discovery/"
             version="GA"
             description={this.getDescription()}
           />
