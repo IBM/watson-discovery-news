@@ -87,21 +87,29 @@ Create the following service:
 
 Fill in name you want to give to your service and click *Create*.
 
-![Create Discovery Service Service](https://raw.githubusercontent.com/IBM/watson-discovery-news-trending-topics/master/docs/discovery-1.png)
+<p align="center">
+  <img width="600" src="doc/source/images/discovery-1.png">
+</p>
 
 After the service is created, click on *Service credentials* and then click on *View Credentials*. Save these credentials as they will be needed when configuring the app.
 
-![Discovery Service Credentials](https://raw.githubusercontent.com/IBM/watson-discovery-news-trending-topics/master/docs/discovery-2.png)
+<p align="center">
+  <img width="600" src="doc/source/images/discovery-2.png">
+</p>
 
 ## 4. Configure Slack
 
 To integrate a new Slack Bot into your existing Slack team, navigate to https://my.slack.com/services/new/bot. Enter a username for the bot and click **Add bot integration**.
 
-![Create Slackbot](https://raw.githubusercontent.com/IBM/watson-discovery-news-search/master/docs/slack-1.png)
+<p align="center">
+  <img width="600" src="doc/source/images/slack-1.png">
+</p>
 
 Once created, save the **API Token** that is generated.
 
-![Slackbot Token](https://raw.githubusercontent.com/IBM/watson-discovery-news-search/master/docs/slack-2.png)
+<p align="center">
+  <img width="600" src="doc/source/images/slack-2.png">
+</p>
 
 ## 5. Run the application
 
@@ -141,16 +149,27 @@ $ yarn start
 
 # Sample output
 
+### Trending Topics RSS Feed
 
 Go to the URL that is printed at the end after deployment is done and you can view the app in the browser and copy the RSS link to your favorite RSS Reader. If your RSS Feed Reader supports push notifications you can get alerted when trending topics change along with a news article for that topic.
 
-![RSS feed notification](https://raw.githubusercontent.com/IBM/watson-discovery-news/master/docs/rss-2.png)
+<p align="center">
+  <img width="400" src="doc/source/images/rss-2.png">
+</p>
 
-![RSS feed notifications](https://raw.githubusercontent.com/IBM/watson-discovery-news/master/docs/rss-1.png)
+<p align="center">
+  <img width="400" src="doc/source/images/rss-1.png">
+</p>
 
-## RSS Feed Usage
+>Since RSS feed is a standard way to consume constantly changing data such as news, we can use the RSS feeds we generated to also post news articles to your organizations [slack channel](https://get.slack.help/hc/en-us/articles/218688467-Add-RSS-feeds-to-Slack) to track trends in your industry, or consume the feed to generate a dialy digest of news and email in the morning. Other uses may include automaticaly posting tweets to a twitter account on news articles on trending topics using a service called [IFTTT](https://ifttt.com/connect/feed/twitter).
 
-Since RSS feed is a standard way to consume constantly changing data such as news, we can use the RSS feeds we generated to also post news articles to your organizations [slack channel](https://get.slack.help/hc/en-us/articles/218688467-Add-RSS-feeds-to-Slack) to track trends in your industry, or consume the feed to generate a dialy digest of news and email in the morning. Other uses may include automaticaly posting tweets to a twitter account on news articles on trending topics using a service called [IFTTT](https://ifttt.com/connect/feed/twitter).
+&nbsp;
+
+### Search from Slack
+
+<p align="center">
+  <img width="600" src="doc/source/images/slack-3.png">
+</p>
 
 # Troubleshooting
 
