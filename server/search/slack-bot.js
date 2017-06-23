@@ -41,8 +41,10 @@ This bot demonstrates many of the core features of Botkit:
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
 require('isomorphic-fetch');
 const queryString = require('query-string');
+const slackBotToken = process.env.SLACK_BOT_TOKEN || 
+                      process.env.VCAP_APP_SLACK_BOT_TOKEN;
 
-if (!process.env.SLACK_BOT_TOKEN) {
+if (!slackBotToken) {
   // eslint-disable-next-line no-console
   console.log('Error: Specify token in environment');
   process.exit(1);
@@ -54,7 +56,7 @@ const controller = Botkit.slackbot();
 
 // eslint-disable-next-line no-unused-vars
 const bot = controller.spawn({
-  token: process.env.SLACK_BOT_TOKEN
+  token: slackBotToken
 }).startRTM();
 
 controller.hears(['hello', 'hi'], 'direct_message,direct_mention,mention', function(bot, message) {

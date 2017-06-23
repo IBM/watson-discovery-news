@@ -6,7 +6,7 @@ const discovery = require('./watson-discovery-service');
 const RSS = require('rss');
 const utils = require('../src/shared/utils');
 const { parseData, topicStory } = utils;
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || process.env.VCAP_APP_PORT || 3000;
 
 const WatsonNewsServer = new Promise((resolve, reject) => {
   discovery.getEnvironments({})
