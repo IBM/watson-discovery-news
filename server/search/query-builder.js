@@ -17,8 +17,8 @@ module.exports = {
       count: 10,
       sort: '-_score',
       filter: 'blekko.hostrank>500',
+      aggregation: aggregations,
       return: 'enrichedTitle.text,text,title,url,host,blekko.chrondate,blekko.hostrank,score,id,entities.text,docSentiment.type',
-      aggregations
     }, queryOpts);
 
     return params;

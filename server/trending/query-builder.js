@@ -19,7 +19,6 @@ module.exports = {
       environment_id: this.environment_id,
       collection_id: this.collection_id,
       return: 'enrichedTitle.entities.text',
-      aggregations
     }, queryOpts, {
       filter: filter ? `${filter},${timeAndSourceFilter}` : timeAndSourceFilter,
       aggregation: aggregations,
