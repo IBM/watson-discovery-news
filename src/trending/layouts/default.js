@@ -19,17 +19,17 @@ class DefaultLayout extends React.Component {
         </head>
         <body>
           <Header
-            mainBreadcrumbs="Discover"
-            mainBreadcrumbsUrl="http://www.ibm.com/watson/developercloud/discovery.html"
+            mainBreadcrumbs="Home"
+            mainBreadcrumbsUrl="/"
             subBreadcrumbs="Trending News Topics"
-            subBreadcrumbsUrl=""
+            subBreadcrumbsUrl="/trending"
           />
           <Jumbotron
             serviceName="Trending Topics"
-            repository=""
+            repository="https://github.com/IBM/watson-discovery-news"
             documentation="http://www.ibm.com/watson/developercloud/doc/discovery/index.html"
             apiReference="http://www.ibm.com/watson/developercloud/discovery/api"
-            startInBluemix=""
+            startInBluemix="https://console.ng.bluemix.net/registration/?target=/catalog/services/discovery/"
             version="GA"
             description={`This is a web app to help you find Trending Topics in the News
               using Watson Discovery Service. You can subscribe to these trending

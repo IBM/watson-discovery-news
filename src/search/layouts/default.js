@@ -38,17 +38,17 @@ class DefaultLayout extends React.Component {
         <body>
           {!hideHeader && <div>
             <Header
-              mainBreadcrumbs="Discover"
-              mainBreadcrumbsUrl="http://www.ibm.com/watson/developercloud/discovery.html"
+              mainBreadcrumbs="Home"
+              mainBreadcrumbsUrl="/"
               subBreadcrumbs="News Search"
-              subBreadcrumbsUrl=""
+              subBreadcrumbsUrl="/search"
             />
             <Jumbotron
               serviceName="News using Watson Discovery Service"
-              repository=""
+              repository="https://github.com/IBM/watson-discovery-news"
               documentation="http://www.ibm.com/watson/developercloud/doc/discovery/index.html"
               apiReference="http://www.ibm.com/watson/developercloud/discovery/api"
-              startInBluemix=""
+              startInBluemix="https://console.ng.bluemix.net/registration/?target=/catalog/services/discovery/"
               version="GA"
               description={this.getDescription()}
             />
@@ -57,9 +57,9 @@ class DefaultLayout extends React.Component {
           <script
             type="text/javascript"
             id="bootstrap-data"
-            dangerouslySetInnerHTML={{__html: `window.__INITIAL_STATE__ = ${this.props.initialData}`}}
+            dangerouslySetInnerHTML={{__html: `window.__INITIAL_STATE__ = ${this.props.initialData};`}}
           ></script>
-          <script type="text/javascript" src="js/search/bundle.js" />
+          <script type="text/javascript" src="/js/search/bundle.js" />
         </body>
       </html>
     );

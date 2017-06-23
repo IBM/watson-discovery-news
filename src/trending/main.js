@@ -3,9 +3,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Icon } from 'watson-react-components';
 import Cloud from './Cloud';
-import Query from './Query';
+import Query from '../shared/Query';
 import queryBuilder from '../../server/trending/query-builder';
-import { parseData } from './utils';
+import { parseData } from '../shared/utils';
 import categories from './taxonomy';
 
 class Main extends React.Component {
@@ -73,7 +73,7 @@ class Main extends React.Component {
 
     return (
       <div className="results">
-        <div className="_container">
+        <div className="_container _container_large">
           <div className="row">
             <div className="top-stories widget">
               <div className="widget--header">
@@ -103,7 +103,7 @@ class Main extends React.Component {
             </div>
           </div>
         </div>
-        <div className="_container">
+        <div className="_container _container_large">
           <div className="row">
             <div className="top-stories widget">
               <h2>Trending Topics in Other Categories</h2>

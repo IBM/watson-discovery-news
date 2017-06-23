@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Colors } from 'watson-react-components';
-import { topicStory } from '../utils';
+import { topicStory } from '../../shared/utils';
 
 const MAX_SIZE = 50;
 const MIN_SIZE = 16;

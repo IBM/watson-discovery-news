@@ -4,7 +4,7 @@ const trendingQueryBuilder = require('./trending/query-builder');
 const searchQueryBuilder = require('./search/query-builder');
 const discovery = require('./watson-discovery-service');
 const RSS = require('rss');
-const utils = require('../src/trending/utils');
+const utils = require('../src/shared/utils');
 const { parseData, topicStory } = utils;
 const port = process.env.PORT || 3000;
 
@@ -141,7 +141,7 @@ function createServer() {
         }
       })
       .then(json => {
-        res.render('index', { data: json, searchQuery, error: null });
+        res.render('search/index', { data: json, searchQuery, error: null });
       })
       .catch(response => {
         res.status(response.status).render('search/index', {
