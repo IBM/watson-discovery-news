@@ -41,7 +41,7 @@ This bot demonstrates many of the core features of Botkit:
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
 require('isomorphic-fetch');
 const queryString = require('query-string');
-const slackBotToken = port = process.env.SLACK_BOT_TOKEN || 
+const slackBotToken = process.env.SLACK_BOT_TOKEN || 
                       process.env.VCAP_APP_SLACK_BOT_TOKEN;
 
 if (!slackBotToken) {
