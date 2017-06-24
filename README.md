@@ -22,7 +22,7 @@ ARCHITURE PICTURE HERE
 
 * Flow
 
-ADD FLOW STEPS BASED ON ARCHITURE PICTURE
+![](doc/source/images/architecture.png)
 
 ## With Watson
 
