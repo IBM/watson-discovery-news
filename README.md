@@ -56,7 +56,10 @@ Use the ``Deploy to Bluemix`` button **OR** create the services and run locally.
 1. Press the above ``Deploy to Bluemix`` button and then click on ``Deploy``.
 
 2. In Toolchains, click on Delivery Pipeline to watch while the app is deployed. Once deployed, the app can be viewed by clicking 'View app'.
-![](doc/source/images/toolchain-pipeline.png)
+
+<p align="center">
+  <img width="600" src="doc/source/images/toolchain-pipeline.png">
+</p>
 
 3. To see the app and services created and configured for this journey, use the Bluemix dashboard. The app is named `watson-discovery-news` with a unique suffix. The following services are created:
     * discovery-news-service
@@ -139,13 +142,12 @@ $ yarn
 ```
 $ yarn bootstrap
 ```
-4. Edit the `.env` file and enter the Watson Discovery credentials saved in Step 3, and the Slack Bot Token saved in Step 4.
+4. Edit the `.env` file and enter the Watson Discovery credentials and Slack Bot Token saved in previous steps
 5. Start the app by running `yarn start`. If you are developing and making changes to the app and would like the server to restart every time then run `yarn start:watch`
 ```
 $ yarn start
 ```
 6. Open a browser and go to `http://localhost:{PORT}`, where PORT is the value specified in `.env` (default is 3000)
-
 
 # Sample output
 
