@@ -131,10 +131,9 @@ In the Bluemix dashboard find the App that was created. Click on ``Runtime`` on 
 
 Update the following environment variable:
 
-  * Set ``SLACK_BOT_TOKEN`` to the token you saved in Step 4
-  * Set ``SLACK_BOT_HOST_ROUTE`` to the route listed at the top of the page. This value will start with **"watson-discovery-news-"**
+  * Set ``SLACK_BOT_TOKEN`` to the token you saved previously
 
-Save the new values and restart the application, watch the logs for errors.
+Save the new value and restart the application, watch the logs for errors.
 
 ### If you decided to run the app locally...
 
@@ -156,9 +155,9 @@ $ yarn start
 
 # Sample output
 
-### Trending Topics RSS Feed
+### Trending Topics RSS Feed  ![](doc/source/images/rss_feed.png)
 
-Go to the URL that is printed at the end after deployment is done and you can view the app in the browser and copy the RSS link to your favorite RSS Reader. If your RSS Feed Reader supports push notifications you can get alerted when trending topics change along with a news article for that topic.
+On the **Trending News Panel**, click the RSS Feed button to launch a new tab in your browser. Cut and paste the tab URL into your favorite RSS Reader. If your RSS Feed Reader supports push notifications you can get alerted when trending topics change along with a news article for that topic.
 
 <p align="center">
   <img width="400" src="doc/source/images/rss-2.png">
@@ -217,16 +216,16 @@ on each deployment:
 
 * Node.js package version
 * Node.js repository URL
-* Application Name (application_name)
-* Application GUID (application_id)
-* Application instance index number (instance_index)
-* Space ID (space_id)
-* Application Version (application_version)
-* Application URIs (application_uris)
+* Application Name (`application_name`)
+* Application GUID (`application_id`)
+* Application instance index number (`instance_index`)
+* Space ID (`space_id`)
+* Application Version (`application_version`)
+* Application URIs (`application_uris`)
 * Labels of bound services
 * Number of instances for each bound service and associated plan information
 
-This data is collected from the setup.py file in the sample application and the ``VCAP_APPLICATION``
+This data is collected from the `package.json` file in the sample application and the ``VCAP_APPLICATION``
 and ``VCAP_SERVICES`` environment variables in IBM Bluemix and other Cloud Foundry platforms. This
 data is used by IBM to track metrics around deployments of sample applications to IBM Bluemix to
 measure the usefulness of our examples, so that we can continuously improve the content we offer

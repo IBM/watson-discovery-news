@@ -47,7 +47,7 @@ const slackBotToken = process.env.SLACK_BOT_TOKEN;
 const Botkit = require('botkit');
 const controller = Botkit.slackbot();
 
-if (slackBotToken) {
+if (!slackBotToken) {
   // eslint-disable-next-line no-console
   console.log('Warning: SLACK_BOT_TOKEN not specified so functionality will be disabled"');
 }  
