@@ -42,29 +42,15 @@ This bot demonstrates many of the core features of Botkit:
 require('isomorphic-fetch');
 const queryString = require('query-string');
 const port = process.env.PORT || process.env.VCAP_APP_PORT || 3000;
-const slackBotToken = process.env.SLACK_BOT_TOKEN || 
-                      process.env.VCAP_APP_SLACK_BOT_TOKEN;
-const slackBotHostRoute = process.env.VCAP_APP_SLACK_BOT_HOST_ROUTE;
-var host_url;
-
-// eslint-disable-next-line no-console
-console.log('VCAP_APP_SLACK_BOT_TOKEN: ' + process.env.VCAP_APP_SLACK_BOT_TOKEN);
-// eslint-disable-next-line no-console
-console.log('VCAP_APP_SLACK_BOT_HOST_ROUTE: ' + process.env.VCAP_APP_SLACK_BOT_HOST_ROUTE);
-
-if (slackBotToken) {
-  if (slackBotHostRoute) {
-    host_url = 'https://' + slackBotHostRoute;
-  } else {
-    host_url = 'http://localhost:' + port; 
-  }
-} else {
-  // eslint-disable-next-line no-console
-  console.log('Warning: SLACK_BOT_TOKEN not specified so functionality will be disabled"');
-}
+const slackBotToken = process.env.SLACK_BOT_TOKEN
 
 const Botkit = require('botkit');
 const controller = Botkit.slackbot();
+
+if (slackBotToken) {
+  // eslint-disable-next-line no-console
+  console.log('Warning: SLACK_BOT_TOKEN not specified so functionality will be disabled"');
+}  
 
 // eslint-disable-next-line no-unused-vars
 const bot = controller.spawn({
@@ -127,8 +113,9 @@ controller.hears(['whats in the news', 'news please'], 'direct_message,direct_me
 
             const qs = queryString.stringify({ query: convo.extractResponse('search-query') });
             // eslint-disable-next-line no-console
-            console.log('Slack Bot host route: ' + host_url);
-            fetch(host_url + `/search/api/search?${qs}`)
+            const host = 'http://localhost:' + port;
+            console.log('Slack Bot host route: ' + host);
+            fetch(host + `/search/api/search?${qs}`)
             .then(apiResponse => {
               if (apiResponse.ok) {
                 apiResponse.json()
