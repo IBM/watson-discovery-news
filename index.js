@@ -8,6 +8,6 @@ server.then(app => {
   app.listen(port, () => {
     require('./server/slack-bot');
     // eslint-disable-next-line no-console
-    console.log('Server running on port: %d', port);
+    console.log('Watson Discovery News Server running on port: %d', port);
   });
 });

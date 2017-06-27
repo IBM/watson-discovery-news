@@ -28,6 +28,16 @@ const WatsonNewsServer = new Promise((resolve, reject) => {
     });
 });
 
+function getUrl(hostname) {
+  var url;
+  if (hostname === 'localhost') {
+    url = 'http://localhost:' + port;
+  } else {
+    url = 'https://' + hostname;
+  }
+  return url;
+}
+
 function createServer() {
   const server = require('./express');
 
@@ -53,8 +63,8 @@ function createServer() {
 
   server.get('/trending/feed/*', (req, res, next) => {
     const category = req.params[0];
-
-    fetch(`http://localhost:${port}/trending/api/trending/${category ? category : ''}`)
+    
+    fetch(getUrl(req.hostname) + `/trending/api/trending/${category ? category : ''}`)
     .then(response => {
       if (response.ok) {
         return response.json();
@@ -129,7 +139,7 @@ function createServer() {
     const searchQuery = req.params.searchQuery.replace(/\+/g, ' ');
 
     const qs = queryString.stringify({ query: searchQuery });
-    fetch(`http://localhost:${port}/search/api/search?${qs}`)
+    fetch(getUrl(req.hostname) + `/search/api/search?${qs}`)
       .then(response => {
         if (response.ok) {
           return response.json();
