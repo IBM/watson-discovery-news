@@ -15,4 +15,3 @@ applications:
   - discovery-news-service
 env:
   SLACK_BOT_TOKEN: placeholder
-  SLACK_BOT_HOST_ROUTE: placeholder
