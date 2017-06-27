@@ -112,8 +112,8 @@ controller.hears(['whats in the news', 'news please'], 'direct_message,direct_me
             bot.reply(message, 'OK searching...');
 
             const qs = queryString.stringify({ query: convo.extractResponse('search-query') });
-            // eslint-disable-next-line no-console
             const host = 'http://localhost:' + port;
+            // eslint-disable-next-line no-console
             console.log('Slack Bot host route: ' + host);
             fetch(host + `/search/api/search?${qs}`)
             .then(apiResponse => {
