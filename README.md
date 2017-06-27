@@ -195,7 +195,6 @@ DISCOVERY_PASSWORD=<add_discovery_password>
 
 # Slack
 SLACK_BOT_TOKEN=<add_slack_bot_token>
-# Note that SLACK_BOT_HOST_ROUTE is not required when running locally.
 ```
 
 # License
