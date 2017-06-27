@@ -41,13 +41,25 @@ This bot demonstrates many of the core features of Botkit:
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
 require('isomorphic-fetch');
 const queryString = require('query-string');
+const port = process.env.PORT || process.env.VCAP_APP_PORT || 3000;
 const slackBotToken = process.env.SLACK_BOT_TOKEN || 
                       process.env.VCAP_APP_SLACK_BOT_TOKEN;
+const slackBotHostRoute = process.env.VCAP_APP_SLACK_BOT_HOST_ROUTE;
+var host_url;
 
-if (!slackBotToken) {
+if (slackBotToken) {
+  if (slackBotHostRoute) {
+    host_url = 'https://' + slackBotHostRoute;
+  } else {
+    host_url = 'http://localhost:' + port; 
+  }
+  // eslint-disable-next-line no-console
+  console.log('Slack Bot host route: ' + host_url);
+} else {
   // eslint-disable-next-line no-console
   console.log('Warning: SLACK_BOT_TOKEN not specified so functionality will be disabled"');
 }
+
 
 const Botkit = require('botkit');
 
@@ -113,7 +125,7 @@ controller.hears(['whats in the news', 'news please'], 'direct_message,direct_me
             bot.reply(message, 'OK searching...');
 
             const qs = queryString.stringify({ query: convo.extractResponse('search-query') });
-            fetch(`https://watson-discovery-news.mybluemix.net/search/api/search?${qs}`)
+            fetch(host_url + `/search/api/search?${qs}`)
             .then(apiResponse => {
               if (apiResponse.ok) {
                 apiResponse.json()

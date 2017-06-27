@@ -18,11 +18,15 @@ Optionally included in this journey are examples of how to:
 
 * Build a **SlackBot** to access the Search feature from Slack. 
 
-ARCHITURE PICTURE HERE
-
-* Flow
-
 ![](doc/source/images/architecture.png)
+
+## Flow
+1. The user interacts with the Watson Discovery News Server via the app UI.
+2. User input is processed and routed to the Watson Discovery News Server.
+3. The Watson Discovery News Server sends user requests to the Watson Discovery Service. 
+4. The Watson Discovery Service queries the Watson News Collection.
+5. The Watson Discovery Service seeds news articles to the RSS Reader.
+6. The Watson Discovery Service responds to Slack search requests.
 
 ## With Watson
 
@@ -128,8 +132,9 @@ In the Bluemix dashboard find the App that was created. Click on ``Runtime`` on 
 Update the following environment variable:
 
   * Set ``SLACK_BOT_TOKEN`` to the token you saved in Step 4
+  * Set ``SLACK_BOT_HOST_ROUTE`` to the route listed at the top of the page. This value will start with **"watson-discovery-news-"**
 
-Save the new value and restart the application, watch the logs for errors.
+Save the new values and restart the application, watch the logs for errors.
 
 ### If you decided to run the app locally...
 
@@ -175,14 +180,6 @@ Go to the URL that is printed at the end after deployment is done and you can vi
 
 # Troubleshooting
 
-* Help! I'm seeing errors in my log
-
-This is expected during the first run. The app tries to start before the Discovery
-service is fully created. Allow a minute or two to pass, the following message
-should appear:
-
-``Watson XXXXXXXXXXX is connected and running!``
-
 * Setting environment variables for a local run
 
 > NOTE: This only needs to be set if the application is running locally.
@@ -198,6 +195,7 @@ DISCOVERY_PASSWORD=<add_discovery_password>
 
 # Slack
 SLACK_BOT_TOKEN=<add_slack_bot_token>
+# Note that SLACK_BOT_HOST_ROUTE is not required when running locally.
 ```
 
 # License
