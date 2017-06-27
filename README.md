@@ -197,6 +197,14 @@ DISCOVERY_PASSWORD=<add_discovery_password>
 SLACK_BOT_TOKEN=<add_slack_bot_token>
 ```
 
+* Ensure port is not already in use
+
+If the port is unavailable, you will see the following error:
+
+```
+Error: listen EADDRINUSE :::{port}
+```
+
 # License
 
 [Apache 2.0](LICENSE)

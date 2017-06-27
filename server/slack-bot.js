@@ -47,22 +47,23 @@ const slackBotToken = process.env.SLACK_BOT_TOKEN ||
 const slackBotHostRoute = process.env.VCAP_APP_SLACK_BOT_HOST_ROUTE;
 var host_url;
 
+// eslint-disable-next-line no-console
+console.log('VCAP_APP_SLACK_BOT_TOKEN: ' + process.env.VCAP_APP_SLACK_BOT_TOKEN);
+// eslint-disable-next-line no-console
+console.log('VCAP_APP_SLACK_BOT_HOST_ROUTE: ' + process.env.VCAP_APP_SLACK_BOT_HOST_ROUTE);
+
 if (slackBotToken) {
   if (slackBotHostRoute) {
     host_url = 'https://' + slackBotHostRoute;
   } else {
     host_url = 'http://localhost:' + port; 
   }
-  // eslint-disable-next-line no-console
-  console.log('Slack Bot host route: ' + host_url);
 } else {
   // eslint-disable-next-line no-console
   console.log('Warning: SLACK_BOT_TOKEN not specified so functionality will be disabled"');
 }
 
-
 const Botkit = require('botkit');
-
 const controller = Botkit.slackbot();
 
 // eslint-disable-next-line no-unused-vars
@@ -125,6 +126,8 @@ controller.hears(['whats in the news', 'news please'], 'direct_message,direct_me
             bot.reply(message, 'OK searching...');
 
             const qs = queryString.stringify({ query: convo.extractResponse('search-query') });
+            // eslint-disable-next-line no-console
+            console.log('Slack Bot host route: ' + host_url);
             fetch(host_url + `/search/api/search?${qs}`)
             .then(apiResponse => {
               if (apiResponse.ok) {
