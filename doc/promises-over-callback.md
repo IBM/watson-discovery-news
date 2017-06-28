@@ -110,7 +110,7 @@ discovery.getEnvironments({})
 
 ## Less nesting and straightforward data flow
 
-As seen in the `promisified` code, we have only one level of nesting versus six levels of nesting. Another benefit is seperation of the success and error workflows, making our code easy to follow and debug.
+As seen in the `promisified` code, we have only one level of nesting versus six levels of nesting. Another benefit is separation of the success and error workflows, making our code easy to follow and debug.
 
 Another benefit of using promises is that if you return a promise inside of a `then` block, it waits for that promise to resolve before invoking the next `then` block with the response containing the resolved value of the promise that was returned:
 
