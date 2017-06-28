@@ -1,12 +1,12 @@
 # Promises over Callbacks
 
-Promises are a great feature in Javascript that allows you to avoid [callback hell](http://callbackhell.com) especially when you need to wait on response from multiple API request which are asynchronous. The ability to chain Promises and wait for one async request to finish before performing another async request or waiting for multiple async requests to finish before moving forward can easily be solved in an elegant way using Promises.
+Promises are a great feature in Javascript that allows you to avoid [callback hell](http://callbackhell.com), especially when you need to wait on a response from multiple API requests which are asynchronous. The ability to chain Promises and wait for one async request to finish before performing another async request, or waiting for multiple async requests to finish before moving forward can easily be solved in an elegant way using Promises.
 
 ## The Problem
 
-In the developer journey of making a [Discovery News Search Slack Bot App](https://github.com/ankurp/watson-discovery-news-search) using the [Discovery node SDK](https://github.com/watson-developer-cloud/node-sdk),  I noticed the APIs relied heavily on the callbacks instead of promises, where the callback gets passed `error` as the first argument and `response` as the second. We then need to check if `error` is not `undefined` or `null` and before we can use the `response`. 
+In the developer journey of making a [Discovery News Search Slack Bot App](https://github.com/IBM/watson-discovery-news) using the [Discovery node SDK](https://github.com/watson-developer-cloud/node-sdk), I noticed the APIs relied heavily on the callbacks instead of promises, where the callback gets passed `error` as the first argument and `response` as the second. We then need to check if `error` is not `undefined` or `null` before we can use the `response`. 
 
-This pattern can results in a lot of nested callbacks and huge callback function body since we need to handle both success and error states in this callback function making the code harder to read and follow.
+This pattern can result in a lot of nested callbacks and a huge callback function body since we need to handle both success and error states, all making the code harder to read and follow.
 
 ```js
 const DiscoveryV1 = require('watson-developer-cloud/discovery/v1');
@@ -56,7 +56,7 @@ discovery.getEnvironments({}, (error, response) => {
 
 ## Promises and bluebird to the Rescue
 
-To fix this antipattern, we can use Javascript Promises along with a library called [bluebird](http://bluebirdjs.com/) which provides higher level abstraction around promises. The library is great in that it provides us with ability to wait on multiple promises before firing a callback or helps us wrap callback based API's that get passed error and success response as arguments into Promises that we can chain instead. Below is the same code as above but it wraps some of the functions in the Discovery API to return promises instead using the `promisify` factory method.
+To fix this anti-pattern, we can use Javascript Promises along with a library called [bluebird](http://bluebirdjs.com/) which provides a higher level of abstraction around promises. The library is great in that it provides us with ability to wait on multiple promises before firing a callback, or helps us wrap callback based API's that get passed error and success response as arguments into Promises that can be chain instead. Below is the same code as above but it wraps some of the functions in the Discovery API to return promises using the `promisify` factory method.
 
 ```js
 const DiscoveryV1 = require('watson-developer-cloud/discovery/v1');
@@ -110,9 +110,9 @@ discovery.getEnvironments({})
 
 ## Less nesting and straightforward data flow
 
-As seen in the `promisified` code, we have only one level of nesting versus six levels of nesting. Another benefit is seperation of the success worflow from the error one making our code easy to follow and debug.
+As seen in the `promisified` code, we have only one level of nesting versus six levels of nesting. Another benefit is seperation of the success and error workflows, making our code easy to follow and debug.
 
-Another benefit of using promises is that if you return a promise inside of a `then` block, then it waits for that promise to resolve before invoking the next `then` block with the response containing the resolved value of the promise that was returned:
+Another benefit of using promises is that if you return a promise inside of a `then` block, it waits for that promise to resolve before invoking the next `then` block with the response containing the resolved value of the promise that was returned:
 
 ```js
 .then(response => {
@@ -134,6 +134,6 @@ Another benefit of using promises is that if you return a promise inside of a `t
 
 ## Conclusion
 
-Use promises over callback and if the API you are using does not support it use a library like `bluebird` which can help you wrap the API to return a promise instead.
+Use promises over callbacks, and if the API you are using does not support it, use a library like `bluebird` which can help you wrap the API to return a promise instead.
 
-I hope this helps simpily your use of the Discovery API and shows you an example of where Javascript Promises can be used to simiply the workflow in your code.
+I hope this helps simplify your use of the Discovery API and shows you an example of where Javascript Promises can be used to simplify the workflow in your code.
