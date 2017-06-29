@@ -10,7 +10,7 @@ This journey will demonstrate two use cases for accessing Watson Discovery News:
 
 * **Trending Topics in the News** - Identify popular topics over the past 24 hours. Topics can be general, or for a specific industry or category.
 
-* **Search** - Query for the most relevant new articles about a specific topic or subject. Resullts will include enrichment data, such as article summary text and sentiment analysis.
+* **Search** - Query for the most relevant new articles about a specific topic or subject. Results will include enrichment data, such as article summary text and sentiment analysis.
 
 Optionally included in this journey are examples of how to:
 
@@ -72,7 +72,7 @@ Use the ``Deploy to Bluemix`` button **OR** create the services and run locally.
 > NOTE: These steps are only needed when running locally instead of using the ``Deploy to Bluemix`` button.
 
 1. [Clone the repo](#1-clone-the-repo)
-2. [Create Bluemix services](#2-create-bluemix-services)
+2. [Create Bluemix services](#2-create-watson-services-with-ibm-bluemix)
 3. [Configure Watson Discovery](#3-configure-watson-discovery)
 4. [Configure Slack](#4-configure-slack)
 5. [Run the application](#5-run-the-application)

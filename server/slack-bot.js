@@ -26,7 +26,7 @@ This bot demonstrates many of the core features of Botkit:
 * Use the conversation system to ask questions
 * Use the built in storage system to store and retrieve information
   for a search queries.
-* Search for news using the Watson Discover API by hitting the api
+* Search for news using the Watson Discovery API by hitting the api
   endpoint of the server.
 
 # RUN THE BOT:
@@ -128,10 +128,10 @@ controller.hears(['whats in the news', 'news please'], 'direct_message,direct_me
             bot.reply(message, 'OK searching...');
 
             const qs = queryString.stringify({ query: convo.extractResponse('search-query') });
-            const host = 'http://localhost:' + port;
+            const host = `http://localhost:${port}`;
             // eslint-disable-next-line no-console
-            console.log('Slack Bot host route: ' + host);
-            fetch(host + `/search/api/search?${qs}`)
+            console.log(`Slack Bot host route: ${host}`);
+            fetch(`${host}/search/api/search?${qs}`)
             .then(apiResponse => {
               if (apiResponse.ok) {
                 apiResponse.json()
