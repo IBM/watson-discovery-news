@@ -2,15 +2,15 @@
   "name": "watson-discovery-news",
   "version": "1.0.0",
   "private": true,
-  "main": "index.js",
+  "main": "app.js",
   "license": "Apache-2.0",
   "repository": {
     "type": "git",
     "url": "https://github.com/IBM/watson-discovery-news.git"
   },
   "scripts": {
-    "start": "node index.js",
-    "start:watch": "nodemon index.js",
+    "start": "node app.js",
+    "start:watch": "nodemon app.js",
     "bootstrap": "cp env.sample .env",
     "test": "jest",
     "lint": "eslint .",
