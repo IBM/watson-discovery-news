@@ -1155,9 +1155,18 @@ main {
     font-size: 1em;
   }
 }
-.results {
+
+main > .results {
   padding-top: 3rem;
   padding-bottom: 6rem;
+  display: flex;
+  align-content: flex-end;
+  flex-wrap: wrap;
+}
+
+main > .results > ._container._container_large {
+  flex: 1;
+  margin: 0 auto;
 }
 
 .results .base--h2 {
