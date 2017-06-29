@@ -235,4 +235,4 @@ service will be tracked.
 ## Disabling Deployment Tracking
 
 To disable tracking, simply remove ``cf_deployment_tracker.track()`` from the
-``index.js`` file in the top level directory.
+``app.js`` file in the top level directory.
