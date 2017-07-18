@@ -34,7 +34,7 @@ Want to take your Watson app to the next level? Looking to leverage Watson Brand
 
 # Included components
 
-* [Watson Discovery](https://www.ibm.com/watson/developercloud/discovery.html): A cognitive search and content analytics engine for applications to identify patterns, trens, and actionable insights.
+* [Watson Discovery](https://www.ibm.com/watson/developercloud/discovery.html): A cognitive search and content analytics engine for applications to identify patterns, trends, and actionable insights.
 
 # Featured technologies
 
