@@ -25,7 +25,7 @@ Optionally included in this journey are examples of how to:
 2. User input is processed and routed to the Watson Discovery News Server.
 3. The Watson Discovery News Server sends user requests to the Watson Discovery Service. 
 4. The Watson Discovery Service queries the Watson News Collection.
-5. The Watson Discovery Service seeds news articles to the RSS Reader.
+5. The Watson Discovery Service sends news articles to the RSS Reader.
 6. The Watson Discovery Service responds to Slack search requests.
 
 ## With Watson
