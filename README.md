@@ -4,7 +4,7 @@
 # Query Watson Discovery News using the Watson Discovery Service
 In this developer journey, we will build a Node.js web application that will use the Watson Discovery Service to access Watson Discovery News. 
 
-Watson Discovery News is a defaullt data collection that is associated with the Watson Discovery Service. It is a dataset of primarily English language news sources that is updated continuously, with approximately 300,000 new articles and blogs added daily.
+Watson Discovery News is a default data collection that is associated with the Watson Discovery Service. It is a dataset of primarily English language news sources that is updated continuously, with approximately 300,000 new articles and blogs added daily.
 
 This journey will demonstrate two use cases for accessing Watson Discovery News:
 
