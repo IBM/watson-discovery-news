@@ -37,7 +37,7 @@ describe('Query builder returns params for discovery service', () => {
 
   test('when opts are passed', () => {
     expect(queryBuilder.trending({
-      filter: 'taxonomy.label:"test"'
+      filter: 'enriched_text.categories.label:"test"'
     })).toEqual({
       environment_id: 'environment',
       collection_id: 'collection',
