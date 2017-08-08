@@ -85,7 +85,7 @@ class Main extends React.Component {
   render() {
     const { loading, data, error } = this.state;
     const { category } = this.props;
-    const filter = category ? `taxonomy.label:"${category}"` : '';
+    const filter = category ? `enriched_text.categories.label:"${category}"` : '';
 
     return (
       <div className="results">

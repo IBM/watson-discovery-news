@@ -22,7 +22,7 @@ import { Bar, Icon } from 'watson-react-components';
 const Story = props => (
   <div className="story">
       <div className="story--date">
-        {moment(props.date * 1000).format('M/D/YYYY hh:MMa')}
+        {moment(props.date).format('M/D/YYYY hh:MMa')}
       </div>
     <a
       className="story--title base--a results--a"
@@ -37,7 +37,7 @@ const Story = props => (
       <span className="base--p story--source">
         {props.host ? props.host : 'Placeholder Source'}
       </span>
-      <div className="story--score base--p">Confidence Score: <Bar rangeStart={0} rangeEnd={2}  score={props.score} /></div>
+      <div className="story--score base--p">Confidence Score: <Bar rangeStart={0} rangeEnd={5}  score={props.score} /></div>
       <div className="story--sentiment base--p">Sentiment: {props.sentiment}</div>
     </div>
   </div>
@@ -49,7 +49,7 @@ Story.propTypes = {
   host: PropTypes.string,
   sentiment: PropTypes.node,
   score: PropTypes.number.isRequired,
-  date: PropTypes.number.isRequired
+  date: PropTypes.string.isRequired
 };
 
 const TopStories = props => (
@@ -63,12 +63,12 @@ const TopStories = props => (
         {props.stories.map(item =>
           <Story
             key={item.id}
-            title={item.enrichedTitle ? item.enrichedTitle.text : (item.title || 'Untitled')}
+            title={item.title ? item.title : 'Untitled'}
             url={item.url}
             host={item.host}
             score={item.score}
             sentiment={getSentiment(item)}
-            date={item.blekko.chrondate}
+            date={item.crawl_date}
           />)
         }
       </div>
@@ -81,7 +81,7 @@ TopStories.propTypes = {
 };
 
 const getSentiment = item => {
-  switch (item.docSentiment && item.docSentiment.type) {
+  switch (item.enriched_text.sentiment && item.enriched_text.sentiment.document && item.enriched_text.sentiment.document.label) {
   case 'negative': return <Icon type="thumbs-down" size="small" />;
   case 'positive': return <Icon type="thumbs-up" size="small" />;
   default: return '';

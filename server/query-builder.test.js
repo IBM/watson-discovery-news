@@ -27,25 +27,25 @@ describe('Query builder returns params for discovery service', () => {
     expect(queryBuilder.trending()).toEqual({
       environment_id: 'environment',
       collection_id: 'collection',
-      return: 'enrichedTitle.entities.text',
+      return: 'enriched_title.entities.text',
       aggregation: [
-        'term(enrichedTitle.entities.text,count:20).top_hits(1)'
+        'term(enriched_title.entities.text,count:20).top_hits(1)'
       ],
-      filter: `blekko.chrondate>${moment().subtract(24,'h').unix()},blekko.hostrank>300`
+      filter: `crawl_date>${moment().subtract(24,'h').toISOString().slice(0, -5)}`
     });
   });
 
   test('when opts are passed', () => {
     expect(queryBuilder.trending({
-      filter: 'taxonomy.label:"test"'
+      filter: 'enriched_text.categories.label:"test"'
     })).toEqual({
       environment_id: 'environment',
       collection_id: 'collection',
-      return: 'enrichedTitle.entities.text',
+      return: 'enriched_title.entities.text',
       aggregation: [
-        'term(enrichedTitle.entities.text,count:20).top_hits(1)'
+        'term(enriched_title.entities.text,count:20).top_hits(1)'
       ],
-      filter: `taxonomy.label:"test",blekko.chrondate>${moment().subtract(24,'h').unix()},blekko.hostrank>300`
+      filter: `enriched_text.categories.label:"test",crawl_date>${moment().subtract(24,'h').toISOString().slice(0, -5)}`
     });
   });
 });

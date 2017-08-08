@@ -2,7 +2,7 @@
 declared-services:
   discovery-news-service:
     label: discovery
-    plan: free
+    plan: lite
 applications:
 - path: .
   name: watson-discovery-news

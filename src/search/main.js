@@ -148,7 +148,7 @@ Main.propTypes = {
   error: PropTypes.object
 };
 
-const getTitleForItem = item => item.enrichedTitle ? item.enrichedTitle.text : (item.title || 'Untitled');
+const getTitleForItem = item => item.title ? item.title : 'Untitled';
 
 const parseData = data => ({
   rawResponse: Object.assign({}, data),
