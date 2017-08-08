@@ -17,10 +17,10 @@
 const moment = require('moment');
 const aggregations = {
   search: [
-    'term(docSentiment.type)'
+    'term(enriched_text.sentiment.document.label)'
   ],
   trending: [
-    'term(enrichedTitle.entities.text,count:20).top_hits(1)'
+    'term(enriched_title.entities.text,count:20).top_hits(1)'
   ]
 };
 
@@ -38,8 +38,7 @@ module.exports = {
       collection_id: this.collection_id,
       count: 10,
       sort: '-_score',
-      filter: 'blekko.hostrank>500',
-      return: 'enrichedTitle.text,text,title,url,host,blekko.chrondate,blekko.hostrank,score,id,entities.text,docSentiment.type',
+      return: 'title,text,url,host,crawl_date,score,id,enriched_text.entities.text,enriched_text.sentiment.document.label',
       aggregation: aggregations.search
     }, queryOpts);
 
@@ -47,12 +46,12 @@ module.exports = {
   },
   trending(queryOpts = {}) {
     const { filter } = queryOpts;
-    const timeAndSourceFilter = `blekko.chrondate>${moment().subtract(24,'h').unix()},blekko.hostrank>300`;
+    const timeAndSourceFilter = `crawl_date>${moment().subtract(24,'h').toISOString()}`;
 
     const params = Object.assign({
       environment_id: this.environment_id,
       collection_id: this.collection_id,
-      return: 'enrichedTitle.entities.text',
+      return: 'enriched_title.entities.text',
       aggregation: aggregations.trending
     }, queryOpts, {
       filter: filter ? `${filter},${timeAndSourceFilter}` : timeAndSourceFilter

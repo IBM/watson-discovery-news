@@ -26,7 +26,7 @@ let ratio;
 let computeSize;
 
 const getSentimentColor = item => {
-  switch (topicStory(item).docSentiment.type) {
+  switch (topicStory(item).enriched_text.sentiment.document.label) {
   case 'negative': return Colors.red_50;
   case 'positive': return Colors.green_50;
   default: return Colors.gray_50;

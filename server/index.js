@@ -23,16 +23,13 @@ const utils = require('../src/shared/utils');
 const { parseData, topicStory } = utils;
 
 const WatsonNewsServer = new Promise((resolve, reject) => {
+  // getInvironments as sanity check to ensure creds are valid
   discovery.getEnvironments({})
     .then(response => {
-      const environmentId = response.environments
-                                    .find(environment => environment.read_only == true)
-                                    .environment_id;
+      // environment and collection ids are always the same for Watson News
+      const environmentId = discovery.environmentId;
+      const collectionId = discovery.collectionId;
       queryBuilder.setEnvironmentId(environmentId);
-      return discovery.getCollections({ environment_id: environmentId });
-    })
-    .then(response => {
-      const collectionId = response.collections[0].collection_id;
       queryBuilder.setCollectionId(collectionId);
       resolve(createServer());
     })
@@ -50,7 +47,7 @@ function createServer() {
     const category = req.params[0];
 
     discovery.query(queryBuilder.trending({
-      filter: category ? `taxonomy.label:"${category}"` : ''
+      filter: category ? `enriched_text.categories.label:"${category}"` : ''
     }))
     .then(response => res.json(response))
     .catch(error => {
@@ -87,8 +84,8 @@ function createServer() {
       topics.forEach(item => {
         const story = topicStory(item);
         let categories = [];
-        if (story.enrichedTitle.taxonomy) {
-          categories = story.enrichedTitle.taxonomy
+        if (story.enriched_title.categories) {
+          categories = story.enriched_title.categories
             .reduce((result, categories) =>
               result.concat(categories.label.split('/').slice(1)), []);
         }
@@ -96,7 +93,7 @@ function createServer() {
           guid: story.id,
           title: item.key,
           url: story.url,
-          description: story.enrichedTitle.text,
+          description: story.title,
           author: story.author,
           categories
         });
