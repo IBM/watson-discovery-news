@@ -22,6 +22,7 @@ const RSS = require('rss');
 const utils = require('../src/shared/utils');
 const { parseData, topicStory } = utils;
 
+/*eslint no-unused-vars: ["error", {"argsIgnorePattern": "response"}]*/
 const WatsonNewsServer = new Promise((resolve, reject) => {
   // getInvironments as sanity check to ensure creds are valid
   discovery.getEnvironments({})
