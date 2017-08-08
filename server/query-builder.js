@@ -46,7 +46,7 @@ module.exports = {
   },
   trending(queryOpts = {}) {
     const { filter } = queryOpts;
-    const timeAndSourceFilter = `crawl_date>${moment().subtract(24,'h').toISOString()}`;
+    const timeAndSourceFilter = `crawl_date>${moment().subtract(24,'h').toISOString().slice(0, -5)}`;
 
     const params = Object.assign({
       environment_id: this.environment_id,

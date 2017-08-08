@@ -31,7 +31,7 @@ describe('Query builder returns params for discovery service', () => {
       aggregation: [
         'term(enriched_title.entities.text,count:20).top_hits(1)'
       ],
-      filter: `crawl_date>${moment().subtract(24,'h').toISOString().slice(0, -4)}`
+      filter: `crawl_date>${moment().subtract(24,'h').toISOString().slice(0, -5)}`
     });
   });
 
@@ -45,7 +45,7 @@ describe('Query builder returns params for discovery service', () => {
       aggregation: [
         'term(enriched_title.entities.text,count:20).top_hits(1)'
       ],
-      filter: `enriched_text.categories.label:"test",crawl_date>${moment().subtract(24,'h').toISOString().slice(0, -4)}`
+      filter: `enriched_text.categories.label:"test",crawl_date>${moment().subtract(24,'h').toISOString().slice(0, -5)}`
     });
   });
 });
