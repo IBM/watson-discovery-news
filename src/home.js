@@ -34,9 +34,6 @@ class Application extends React.Component {
       <div>Select from one of the following examples:</div>
         <ul>
           <li>
-            <a href="./trending">Find Trending Topics in Watson News</a>
-          </li>
-          <li>
             <a href="./search">Search Watson News for Specific Topics</a>
           </li>
         </ul>  

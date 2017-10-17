@@ -43,20 +43,5 @@ module.exports = {
     }, queryOpts);
 
     return params;
-  },
-  trending(queryOpts = {}) {
-    const { filter } = queryOpts;
-    const timeAndSourceFilter = `crawl_date>${moment().subtract(24,'h').toISOString().slice(0, -5)}`;
-
-    const params = Object.assign({
-      environment_id: this.environment_id,
-      collection_id: this.collection_id,
-      return: 'enriched_title.entities.text',
-      aggregation: aggregations.trending
-    }, queryOpts, {
-      filter: filter ? `${filter},${timeAndSourceFilter}` : timeAndSourceFilter
-    });
-
-    return params;
   }
 };
