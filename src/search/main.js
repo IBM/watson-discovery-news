@@ -23,7 +23,7 @@ import TopStories from './TopStories';
 import Briefing from './Briefing';
 import Sentiment from './Sentiment';
 import Search from './Search';
-import Query from '../shared/Query';
+import Query from './Query';
 import queryBuilder from '../../server/query-builder';
 
 class Main extends React.Component {

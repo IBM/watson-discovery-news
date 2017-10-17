@@ -18,8 +18,7 @@ require('isomorphic-fetch');
 const queryString = require('query-string');
 const queryBuilder = require('./query-builder');
 const discovery = require('./watson-discovery-service');
-const RSS = require('rss');
-const utils = require('../src/shared/utils');
+const utils = require('../src/search/utils');
 const { parseData, topicStory } = utils;
 
 /*eslint no-unused-vars: ["error", {"argsIgnorePattern": "response"}]*/
@@ -81,25 +80,11 @@ function createServer() {
       });
   });
 
-  server.get('/search/*', function(req, res) {
+ server.get('/*', function(req, res) {
     const category = req.params[0];
     const props = category ? { category } : {};
 
     res.render('search/index', props);
-  });
-
-  server.get('/search', function(req, res) {
-    const category = req.params[0];
-    const props = category ? { category } : {};
-
-    res.render('search/index', props);
-  });
-
-  server.get('/*', function(req, res) {
-    const category = req.params[0];
-    const props = category ? { category } : {};
-
-    res.render('home', props);
   });
 
   return server;
