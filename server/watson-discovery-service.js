@@ -21,8 +21,8 @@ const discovery = new DiscoveryV1({
   version_date: '2017-08-01'
 });
 
-discovery.environmentId = 'system';
-discovery.collectionId = 'news';
+discovery.environmentId = 'e52e21d1-0295-4c62-991c-1f0686b65fc9';
+discovery.collectionId = '05f0711c-db65-4344-994b-ec2c9353dd5a';
 
 discovery.getEnvironments = Promise.promisify(discovery.getEnvironments);
 discovery.query = Promise.promisify(discovery.query);

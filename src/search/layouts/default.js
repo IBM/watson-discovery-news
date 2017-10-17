@@ -23,15 +23,8 @@ class DefaultLayout extends React.Component {
     return (
       <div>
         <div>
-          This is a web app to help you find News related to a specific topic using Watson Discovery Service.
+          This is a web app to demonstrates how to query your own Watson Discovery Collection.
         </div>
-        <div>Try out some of the following queries:</div>
-        <ul>
-          <li>Merger and Acquisition in Artificial Intelligence industry</li>
-          <li>Tech IPOs</li>
-          <li>Acquisition in Insurance Industry</li>
-          <li>Healthcare startups</li>
-        </ul>  
       </div>
     );
   }
@@ -42,33 +35,16 @@ class DefaultLayout extends React.Component {
     return (
       <html>
         <head>
-          <title>News using Watson Discovery Service</title>
+          <title>Watson Discovery UI</title>
           <meta charSet="utf-8" />
           <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
           <meta name="viewport" content="width=device-width, initial-scale=1" />
           <meta name="og:title" content="Watson Discovery News Search" />
-          <meta name="og:description" content={this.props.description || 'Search News using Watson Discovery Service'} />
+          <meta name="og:description" content={this.props.description || 'Search using Watson Discovery Service'} />
           <link rel="stylesheet" type="text/css" href="/css/watson-react-components.min.css" />
           <link rel="stylesheet" type="text/css" href="/css/application.css"/>
         </head>
         <body>
-          {!hideHeader && <div>
-            <Header
-              mainBreadcrumbs="Home"
-              mainBreadcrumbsUrl="/"
-              subBreadcrumbs="News Search"
-              subBreadcrumbsUrl="/search"
-            />
-            <Jumbotron
-              serviceName="News using Watson Discovery Service"
-              repository="https://github.com/IBM/watson-discovery-news"
-              documentation="http://www.ibm.com/watson/developercloud/doc/discovery/index.html"
-              apiReference="http://www.ibm.com/watson/developercloud/discovery/api"
-              startInBluemix="https://console.ng.bluemix.net/registration/?target=/catalog/services/discovery/"
-              version="GA"
-              description={this.getDescription()}
-            />
-          </div>}
           <main>{this.props.children}</main>
           <script
             type="text/javascript"
