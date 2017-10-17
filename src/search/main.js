@@ -20,10 +20,7 @@ import PropTypes from 'prop-types';
 import { Icon } from 'watson-react-components';
 import queryString from 'query-string';
 import TopStories from './TopStories';
-import Briefing from './Briefing';
-import Sentiment from './Sentiment';
 import Search from './Search';
-import Query from './Query';
 import queryBuilder from '../../server/query-builder';
 
 class Main extends React.Component {
@@ -33,16 +30,11 @@ class Main extends React.Component {
     const { data, searchQuery, error } = this.props;
 
     this.state = {
-      selectedTab: 'news',
       error: error,
       data: data && parseData(data),
       loading: false,
       searchQuery: searchQuery || ''
     };
-  }
-
-  onTabChange(selectedTab) {
-    this.setState({ selectedTab });
   }
 
   fetchData(query) {
@@ -87,31 +79,16 @@ class Main extends React.Component {
       return null;
     }
 
-    switch (this.state.selectedTab) {
-    case 'news':      return <TopStories stories={data.results} />;
-    case 'briefing':  return <Briefing items={data.briefingItems} />;
-    case 'sentiment': return <Sentiment data={data.sentiment} />;
-    case 'query':     return <Query
-                              title="Query to and Response from the Discovery Service"
-                              query={queryBuilder.search({
-                                natural_language_query: this.state.searchQuery
-                              })}
-                              response={data.rawResponse}
-                            />;
-    default:          return null;
-    }
+    return <TopStories stories={data.results} />;
   }
 
   render() {
-    const { selectedTab, loading, data, error, searchQuery } = this.state;
+    const { loading, data, error, searchQuery } = this.state;
 
     return (
       <div>
         <Search
-          onTabChange={this.onTabChange.bind(this)}
           onSearchQueryChange={this.fetchData.bind(this)}
-          selectedTab={selectedTab}
-          showTabs={!loading && Boolean(data)}
           searchQuery={searchQuery}
         />
         {loading ? (
