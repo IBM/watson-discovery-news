@@ -56,7 +56,7 @@ const TopStories = props => (
   <div>
     <div className="top-stories widget">
       <div className="widget--header">
-        <h2 className="base--h2 widget--header-title">Top News</h2>
+        <h2 className="base--h2 widget--header-title">Top Hits</h2>
         <div className="widget--header-spacer" />
       </div>
       <div className="top-stories--list">

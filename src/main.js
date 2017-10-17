@@ -21,7 +21,7 @@ import { Icon } from 'watson-react-components';
 import queryString from 'query-string';
 import TopStories from './TopStories';
 import Search from './Search';
-import queryBuilder from '../../server/query-builder';
+import queryBuilder from '../server/query-builder';
 
 class Main extends React.Component {
 
@@ -46,10 +46,10 @@ class Main extends React.Component {
     });
 
     scrollToMain();
-    history.pushState({}, {}, `/search/${searchQuery.replace(/ /g, '+')}`);
+    history.pushState({}, {}, `/${searchQuery.replace(/ /g, '+')}`);
 
     const qs = queryString.stringify({ query: searchQuery });
-    fetch(`/search/api/search?${qs}`)
+    fetch(`/api/search?${qs}`)
     .then(response => {
       if (response.ok) {
         return response.json();

@@ -18,7 +18,7 @@ require('isomorphic-fetch');
 const queryString = require('query-string');
 const queryBuilder = require('./query-builder');
 const discovery = require('./watson-discovery-service');
-const utils = require('../src/search/utils');
+const utils = require('../src/utils');
 const { parseData, topicStory } = utils;
 
 /*eslint no-unused-vars: ["error", {"argsIgnorePattern": "response"}]*/
@@ -43,7 +43,7 @@ const WatsonNewsServer = new Promise((resolve, reject) => {
 function createServer() {
   const server = require('./express');
 
-  server.get('/search/api/search', (req, res) => {
+  server.get('/api/search', (req, res) => {
     const { query } = req.query;
 
     discovery.query(queryBuilder.search({ natural_language_query: query }))
@@ -57,12 +57,12 @@ function createServer() {
       });
   });
 
-  server.get('/search/:searchQuery', function(req, res){
+  server.get('/:searchQuery', function(req, res){
     const searchQuery = req.params.searchQuery.replace(/\+/g, ' ');
     const qs = queryString.stringify({ query: searchQuery });
     const fullUrl = req.protocol + '://' + req.get('host');
 
-    fetch(fullUrl + `/search/api/search?${qs}`)
+    fetch(fullUrl + `/api/search?${qs}`)
       .then(response => {
         if (response.ok) {
           return response.json();
@@ -71,10 +71,10 @@ function createServer() {
         }
       })
       .then(json => {
-        res.render('search/index', { data: json, searchQuery, error: null });
+        res.render('index', { data: json, searchQuery, error: null });
       })
       .catch(response => {
-        res.status(response.status).render('search/index', {
+        res.status(response.status).render('index', {
           error: (response.status === 429) ? 'Number of free queries per month exceeded' : 'Error fetching data'
         });
       });
@@ -84,7 +84,7 @@ function createServer() {
     const category = req.params[0];
     const props = category ? { category } : {};
 
-    res.render('search/index', props);
+    res.render('index', props);
   });
 
   return server;

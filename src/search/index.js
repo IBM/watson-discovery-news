@@ -14,31 +14,65 @@
  * the License.
  */
 
-const React = require('react');
-const PropTypes = require('prop-types');
-const DefaultLayout = require('./layouts/default');
-const Main = require('./main');
-const objectWithoutProperties = require('./utils').objectWithoutProperties;
+import React from 'react';
+import PropTypes from 'prop-types';
+import { TextInput, Icon } from 'watson-react-components';
 
-class Application extends React.Component {
+export default class Search extends React.Component {
+  constructor(...props) {
+    super(...props);
+    this.state = {
+      searchQuery: this.props.searchQuery || ''
+    };
+  }
+
+  handleInputChange(event) {
+    this.setState({
+      searchQuery: event.target.value
+    });
+  }
+
+  handleSearchPress() {
+    this.props.onSearchQueryChange({
+      searchQuery: this.state.searchQuery
+    });
+  }
+
+  handleKeyPress(event) {
+    const searchValue = event.target.value;
+    if (event.key === 'Enter' && searchValue.match(/[^\s]+/)) {
+      this.props.onSearchQueryChange({
+        searchQuery: searchValue
+      });
+    }
+  }
+
   render() {
-    const props = objectWithoutProperties(this.props, ['settings', '_locals', 'cache']);
-
     return (
-      <DefaultLayout
-        title={props.title}
-        initialData={JSON.stringify(props)}
-        hideHeader={Boolean(props.searchQuery)}
-      >
-        <Main {...props} />
-      </DefaultLayout>
+      <section className="_full-width-row query query_collapsed">
+        <div className="_container _container_large">
+          <div className="query--flex-container">
+            <div className="query--text-input-container">
+              <div className="query--search-container">
+                <TextInput
+                  placeholder={'Enter search string'}
+                  onKeyPress={this.handleKeyPress.bind(this)}
+                  onInput={this.handleInputChange.bind(this)}
+                  defaultValue={this.state.searchQuery}
+                />
+                <div onClick={this.handleSearchPress.bind(this)} className="query--icon-container">
+                  <Icon type="search" size="regular" fill="#ffffff" />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
     );
   }
 }
 
-Application.propTypes = {
-  data: PropTypes.object,
+Search.propTypes = {
+  onSearchQueryChange: PropTypes.func.isRequired,
   searchQuery: PropTypes.string
 };
-
-module.exports = Application;

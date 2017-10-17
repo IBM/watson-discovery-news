@@ -30,7 +30,7 @@ app.use('/images', express.static(path.resolve(__dirname, '..', 'public/images')
 app.use(express.static(path.join(__dirname, '..', 'node_modules/watson-react-components/dist')));
 
 const isDev = (app.get('env') === 'development');
-const searchBrowserifyier = expressBrowserify(path.resolve(__dirname, '..', 'public/js/search/bundle.js'), {
+const searchBrowserifyier = expressBrowserify(path.resolve(__dirname, '..', 'public/js/bundle.js'), {
   watch: isDev,
   debug: isDev,
   extension: ['js'],
