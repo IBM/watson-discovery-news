@@ -20,9 +20,10 @@ import moment from 'moment';
 import { Icon, Card, Container, List, Header } from 'semantic-ui-react';
 
 const Match = props => (
-  <Card>
+  <Card centered={true} fluid={true}>
     <Card.Content header={props.title} />
     <Card.Content description={props.text}/>
+    <Card.Content meta={props.score}/>
   </Card>
 );
 
@@ -45,7 +46,7 @@ const Matches = props => (
           <Match
             key={item.id}
             title={item.text ? getTitle(item) : 'No Title'}
-            text={item.text ? (item.text + '/n' + item.score) : "No Description"}
+            text={item.text ? item.text : "No Description"}
             url={item.url}
             host={item.host}
             score={item.score}
