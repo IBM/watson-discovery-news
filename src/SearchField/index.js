@@ -14,11 +14,11 @@
  * the License.
  */
 
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { TextInput, Icon } from 'watson-react-components';
+import { Container, Icon, Input, Segment } from 'semantic-ui-react';
 
-export default class Search extends React.Component {
+export default class SearchField extends React.Component {
   constructor(...props) {
     super(...props);
     this.state = {
@@ -49,30 +49,27 @@ export default class Search extends React.Component {
 
   render() {
     return (
-      <section className="_full-width-row query query_collapsed">
-        <div className="_container _container_large">
-          <div className="query--flex-container">
-            <div className="query--text-input-container">
-              <div className="query--search-container">
-                <TextInput
-                  placeholder={'Enter search string'}
-                  onKeyPress={this.handleKeyPress.bind(this)}
-                  onInput={this.handleInputChange.bind(this)}
-                  defaultValue={this.state.searchQuery}
-                />
-                <div onClick={this.handleSearchPress.bind(this)} className="query--icon-container">
-                  <Icon type="search" size="regular" fill="#ffffff" />
-                </div>
-              </div>
+      <div>
+        <Segment size='large' padded='very'> 
+          <Container textAlign='center'>
+            <Input
+              icon={<Icon name='search' inverted circular link />}
+              placeholder={'Enter search string'}
+              onKeyPress={this.handleKeyPress.bind(this)}
+              onInput={this.handleInputChange.bind(this)}
+              defaultValue={this.state.searchQuery}
+            />
+            <div onClick={this.handleSearchPress.bind(this)} className="query--icon-container">
+              <Icon type="search" size="regular" fill="#ffffff" />
             </div>
-          </div>
-        </div>
-      </section>
+          </Container>
+        </Segment>
+      </div>
     );
   }
 }
 
-Search.propTypes = {
+SearchField.propTypes = {
   onSearchQueryChange: PropTypes.func.isRequired,
   searchQuery: PropTypes.string
 };

@@ -27,7 +27,7 @@ app.engine('js', require('express-react-views').createEngine());
 // Middlewares
 app.use('/css', express.static(path.resolve(__dirname, '..', 'public/css')));
 app.use('/images', express.static(path.resolve(__dirname, '..', 'public/images')));
-app.use(express.static(path.join(__dirname, '..', 'node_modules/watson-react-components/dist')));
+app.use(express.static(path.join(__dirname, '..', 'node_modules/semantic-ui/dist')));
 
 const isDev = (app.get('env') === 'development');
 const searchBrowserifyier = expressBrowserify(path.resolve(__dirname, '..', 'public/js/bundle.js'), {

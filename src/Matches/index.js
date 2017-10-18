@@ -17,33 +17,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import moment from 'moment';
-import { Bar, Icon } from 'watson-react-components';
+import { Icon, Card, Container, List, Header } from 'semantic-ui-react';
 
-const Story = props => (
-  <div className="story">
-      <div className="story--date">
-        {moment(props.date).format('M/D/YYYY hh:MMa')}
-      </div>
-    <a
-      className="story--title base--a results--a"
-      href={props.url}
-      target="_blank"
-      title={props.title}
-      rel="noopener noreferrer"
-    >
-      {props.title}
-    </a>
-    <div className="story--source-and-score">
-      <span className="base--p story--source">
-        {props.host ? props.host : 'Placeholder Source'}
-      </span>
-      <div className="story--score base--p">Confidence Score: <Bar rangeStart={0} rangeEnd={5}  score={props.score} /></div>
-      <div className="story--sentiment base--p">Sentiment: {props.sentiment}</div>
-    </div>
-  </div>
+const Match = props => (
+  <Card>
+    <Card.Content header={props.title} />
+    <Card.Content description='some desc'/>
+  </Card>
 );
 
-Story.propTypes = {
+Match.propTypes = {
   title: PropTypes.string.isRequired,
   url: PropTypes.string.isRequired,
   host: PropTypes.string,
@@ -52,16 +35,13 @@ Story.propTypes = {
   date: PropTypes.string.isRequired
 };
 
-const TopStories = props => (
+const Matches = props => (
   <div>
-    <div className="top-stories widget">
-      <div className="widget--header">
-        <h2 className="base--h2 widget--header-title">Top Hits</h2>
-        <div className="widget--header-spacer" />
-      </div>
-      <div className="top-stories--list">
-        {props.stories.map(item =>
-          <Story
+    <Header as='h2' textAlign='center'>Matches</Header>
+    <Container textAlign='center'>
+      <div className="matches--list">
+        {props.matches.map(item =>
+          <Match
             key={item.id}
             title={item.title ? item.title : 'Untitled'}
             url={item.url}
@@ -72,20 +52,22 @@ const TopStories = props => (
           />)
         }
       </div>
-    </div>
+    </Container>
   </div>
 );
 
-TopStories.propTypes = {
-  stories: PropTypes.arrayOf(PropTypes.object).isRequired
+Matches.propTypes = {
+  matches: PropTypes.arrayOf(PropTypes.object).isRequired
 };
 
 const getSentiment = item => {
   switch (item.enriched_text.sentiment && item.enriched_text.sentiment.document && item.enriched_text.sentiment.document.label) {
-  case 'negative': return <Icon type="thumbs-down" size="small" />;
-  case 'positive': return <Icon type="thumbs-up" size="small" />;
+  // case 'negative': return <Icon type="thumbs-down" size="small" />;
+  // case 'positive': return <Icon type="thumbs-up" size="small" />;
+  case 'negative': return <Icon name='dislike outline' size='small' inverted />;
+  case 'positive': return <Icon name='like outline' inverted />;
   default: return '';
   }
 };
 
-module.exports = TopStories;
+module.exports = Matches;

@@ -17,11 +17,11 @@
 import 'isomorphic-fetch';
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Icon } from 'watson-react-components';
 import queryString from 'query-string';
-import TopStories from './TopStories';
-import Search from './Search';
+import Matches from './Matches';
+import SearchField from './SearchField';
 import queryBuilder from '../server/query-builder';
+import { Dimmer, Loader } from 'semantic-ui-react';
 
 class Main extends React.Component {
 
@@ -79,7 +79,7 @@ class Main extends React.Component {
       return null;
     }
 
-    return <TopStories stories={data.results} />;
+    return <Matches matches={data.results} />;
   }
 
   render() {
@@ -87,14 +87,16 @@ class Main extends React.Component {
 
     return (
       <div>
-        <Search
+        <SearchField
           onSearchQueryChange={this.fetchData.bind(this)}
           searchQuery={searchQuery}
         />
         {loading ? (
           <div className="results">
             <div className="loader--container">
-              <Icon type="loader" size="large" />
+              <Dimmer active>
+                <Loader>Loading</Loader>
+              </Dimmer>
             </div>
           </div>
         ) : data ? (

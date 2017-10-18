@@ -16,7 +16,6 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Header, Jumbotron } from 'watson-react-components';
 
 class DefaultLayout extends React.Component {
   getDescription() {
@@ -39,10 +38,10 @@ class DefaultLayout extends React.Component {
           <meta charSet="utf-8" />
           <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
           <meta name="viewport" content="width=device-width, initial-scale=1" />
-          <meta name="og:title" content="Watson Discovery News Search" />
+          <meta name="og:title" content="Watson Discovery Search UI" />
           <meta name="og:description" content={this.props.description || 'Search using Watson Discovery Service'} />
-          <link rel="stylesheet" type="text/css" href="/css/watson-react-components.min.css" />
-          <link rel="stylesheet" type="text/css" href="/css/application.css"/>
+          <link rel="stylesheet" type="text/css" href="/css/style.css"/>
+          <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.12/semantic.min.css"/>
         </head>
         <body>
           <main>{this.props.children}</main>
