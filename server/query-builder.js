@@ -15,17 +15,8 @@
  */
 
 const moment = require('moment');
-const aggregations = {
-  search: [
-    'term(enriched_text.sentiment.document.label)'
-  ],
-  trending: [
-    'term(enriched_title.entities.text,count:20).top_hits(1)'
-  ]
-};
 
 module.exports = {
-  aggregations,
   setEnvironmentId(environmentId) {
     this.environment_id = environmentId;
   },
@@ -39,7 +30,7 @@ module.exports = {
       count: 10,
       sort: '-_score',
       return: 'title,text,url,host,crawl_date,score,id,enriched_text.entities.text,enriched_text.sentiment.document.label',
-      aggregation: aggregations.search
+      aggregation: 'term(enriched_text.sentiment.document.label)'
     }, queryOpts);
 
     return params;

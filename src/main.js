@@ -21,7 +21,7 @@ import queryString from 'query-string';
 import Matches from './Matches';
 import SearchField from './SearchField';
 import queryBuilder from '../server/query-builder';
-import { Dimmer, Loader } from 'semantic-ui-react';
+import { Grid, Dimmer, Loader } from 'semantic-ui-react';
 
 class Main extends React.Component {
 
@@ -86,37 +86,45 @@ class Main extends React.Component {
     const { loading, data, error, searchQuery } = this.state;
 
     return (
-      <div>
-        <SearchField
-          onSearchQueryChange={this.fetchData.bind(this)}
-          searchQuery={searchQuery}
-        />
-        {loading ? (
-          <div className="results">
-            <div className="loader--container">
-              <Dimmer active>
-                <Loader>Loading</Loader>
-              </Dimmer>
-            </div>
-          </div>
-        ) : data ? (
-          <div className="results">
-            <div className="_container _container_large">
-              <div className="row">
-                {this.getContent()}
+      <Grid celled>
+        <Grid.Row>
+          <Grid.Column width={20} textAlign='center'>
+            <SearchField
+              onSearchQueryChange={this.fetchData.bind(this)}
+              searchQuery={searchQuery}
+            />
+          </Grid.Column>
+        </Grid.Row>
+        <Grid.Row>
+          <Grid.Column width={20} textAlign='center'>
+            {loading ? (
+              <div className="results">
+                <div className="loader--container">
+                  <Dimmer active>
+                    <Loader>Loading</Loader>
+                  </Dimmer>
+                </div>
               </div>
-            </div>
-          </div>
-        ) : error ? (
-          <div className="results">
-            <div className="_container _container_large">
-              <div className="row">
-                {JSON.stringify(error)}
+            ) : data ? (
+              <div className="results">
+                <div className="_container _container_large">
+                  <div className="row">
+                    {this.getContent()}
+                  </div>
+                </div>
               </div>
-            </div>
-          </div>
-        ) : null}
-      </div>
+            ) : error ? (
+              <div className="results">
+                <div className="_container _container_large">
+                  <div className="row">
+                    {JSON.stringify(error)}
+                  </div>
+                </div>
+              </div>
+            ) : null}
+          </Grid.Column>
+        </Grid.Row>
+      </Grid>
     );
   }
 }

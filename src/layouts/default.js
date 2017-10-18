@@ -40,7 +40,7 @@ class DefaultLayout extends React.Component {
           <meta name="viewport" content="width=device-width, initial-scale=1" />
           <meta name="og:title" content="Watson Discovery Search UI" />
           <meta name="og:description" content={this.props.description || 'Search using Watson Discovery Service'} />
-          <link rel="stylesheet" type="text/css" href="/css/style.css"/>
+          <link rel="stylesheet" type="text/css" href="/css/application.css"/>
           <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.12/semantic.min.css"/>
         </head>
         <body>

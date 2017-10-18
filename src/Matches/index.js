@@ -22,12 +22,13 @@ import { Icon, Card, Container, List, Header } from 'semantic-ui-react';
 const Match = props => (
   <Card>
     <Card.Content header={props.title} />
-    <Card.Content description='some desc'/>
+    <Card.Content description={props.text}/>
   </Card>
 );
 
 Match.propTypes = {
   title: PropTypes.string.isRequired,
+  text: PropTypes.string.isRequired,
   url: PropTypes.string.isRequired,
   host: PropTypes.string,
   sentiment: PropTypes.node,
@@ -43,7 +44,8 @@ const Matches = props => (
         {props.matches.map(item =>
           <Match
             key={item.id}
-            title={item.title ? item.title : 'Untitled'}
+            title={item.text ? getTitle(item) : 'No Title'}
+            text={item.text ? (item.text + '/n' + item.score) : "No Description"}
             url={item.url}
             host={item.host}
             score={item.score}
@@ -58,6 +60,13 @@ const Matches = props => (
 
 Matches.propTypes = {
   matches: PropTypes.arrayOf(PropTypes.object).isRequired
+};
+
+const getTitle = item => {
+  var str = item.text;
+  var title = str.split(':')[1];
+  title = title.replace(' Category', '');
+  return title;
 };
 
 const getSentiment = item => {

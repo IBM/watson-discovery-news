@@ -50,20 +50,16 @@ export default class SearchField extends React.Component {
   render() {
     return (
       <div>
-        <Segment size='large' padded='very'> 
-          <Container textAlign='center'>
-            <Input
-              icon={<Icon name='search' inverted circular link />}
-              placeholder={'Enter search string'}
-              onKeyPress={this.handleKeyPress.bind(this)}
-              onInput={this.handleInputChange.bind(this)}
-              defaultValue={this.state.searchQuery}
-            />
-            <div onClick={this.handleSearchPress.bind(this)} className="query--icon-container">
-              <Icon type="search" size="regular" fill="#ffffff" />
-            </div>
-          </Container>
-        </Segment>
+        <Input
+          icon={<Icon name='search' inverted circular link />}
+          placeholder={'Enter search string'}
+          onKeyPress={this.handleKeyPress.bind(this)}
+          onInput={this.handleInputChange.bind(this)}
+          defaultValue={this.state.searchQuery}
+        />
+        <div onClick={this.handleSearchPress.bind(this)} className="query--icon-container">
+          <Icon type="search" size="regular" fill="#ffffff" />
+        </div>
       </div>
     );
   }
