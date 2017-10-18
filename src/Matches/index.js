@@ -17,10 +17,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import moment from 'moment';
-import { Icon, Card, Container, List, Header } from 'semantic-ui-react';
+import { Icon, Card, Container, List, Header, Image } from 'semantic-ui-react';
 
 const Match = props => (
   <Card centered={true} fluid={true}>
+    <Image src={props.html} size='small' centered={true}/>
     <Card.Content header={props.title} />
     <Card.Content description={props.text}/>
     <Card.Content meta={props.score}/>
@@ -31,10 +32,10 @@ Match.propTypes = {
   title: PropTypes.string.isRequired,
   text: PropTypes.string.isRequired,
   url: PropTypes.string.isRequired,
+  html: PropTypes.string.isRequired,
   host: PropTypes.string,
   sentiment: PropTypes.node,
-  score: PropTypes.number.isRequired,
-  date: PropTypes.string.isRequired
+  score: PropTypes.number.isRequired
 };
 
 const Matches = props => (
@@ -48,11 +49,11 @@ const Matches = props => (
             title={item.text ? getTitle(item) : 'No Title'}
             text={item.text ? item.text : "No Description"}
             url={item.url}
+            html={getImageUrl(item)}
             host={item.host}
             score={item.score}
             sentiment={getSentiment(item)}
-            date={item.crawl_date}
-          />)
+           />)
         }
       </div>
     </Container>
@@ -68,6 +69,16 @@ const getTitle = item => {
   var title = str.split(':')[1];
   title = title.replace(' Category', '');
   return title;
+};
+
+const getImageUrl = item => {
+  var htmlStr = item.html;
+  var imgTag = '<a class="jqzoom" href="';
+  var startIdx = htmlStr.indexOf(imgTag);
+  startIdx = startIdx + imgTag.length;
+  var endIdx = htmlStr.indexOf('"', startIdx);
+  var img = htmlStr.substring(startIdx,endIdx);
+  return img;
 };
 
 const getSentiment = item => {

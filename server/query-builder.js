@@ -29,7 +29,7 @@ module.exports = {
       collection_id: this.collection_id,
       count: 10,
       sort: '-_score',
-      return: 'title,text,url,host,crawl_date,score,id,enriched_text.entities.text,enriched_text.sentiment.document.label',
+      return: 'title,text,url,host,html,crawl_date,score,id,enriched_text.entities.text,enriched_text.sentiment.document.label',
       aggregation: 'term(enriched_text.sentiment.document.label)'
     }, queryOpts);
 
