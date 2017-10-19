@@ -17,14 +17,11 @@
 import 'isomorphic-fetch';
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Icon } from 'watson-react-components';
 import queryString from 'query-string';
-import TopStories from './TopStories';
-import Briefing from './Briefing';
-import Sentiment from './Sentiment';
-import Search from './Search';
-import Query from '../shared/Query';
-import queryBuilder from '../../server/query-builder';
+import Matches from './Matches';
+import SearchField from './SearchField';
+import queryBuilder from '../server/query-builder';
+import { Grid, Dimmer, Loader } from 'semantic-ui-react';
 
 class Main extends React.Component {
 
@@ -33,16 +30,11 @@ class Main extends React.Component {
     const { data, searchQuery, error } = this.props;
 
     this.state = {
-      selectedTab: 'news',
       error: error,
       data: data && parseData(data),
       loading: false,
       searchQuery: searchQuery || ''
     };
-  }
-
-  onTabChange(selectedTab) {
-    this.setState({ selectedTab });
   }
 
   fetchData(query) {
@@ -54,10 +46,10 @@ class Main extends React.Component {
     });
 
     scrollToMain();
-    history.pushState({}, {}, `/search/${searchQuery.replace(/ /g, '+')}`);
+    history.pushState({}, {}, `/${searchQuery.replace(/ /g, '+')}`);
 
     const qs = queryString.stringify({ query: searchQuery });
-    fetch(`/search/api/search?${qs}`)
+    fetch(`/api/search?${qs}`)
     .then(response => {
       if (response.ok) {
         return response.json();
@@ -87,57 +79,52 @@ class Main extends React.Component {
       return null;
     }
 
-    switch (this.state.selectedTab) {
-    case 'news':      return <TopStories stories={data.results} />;
-    case 'briefing':  return <Briefing items={data.briefingItems} />;
-    case 'sentiment': return <Sentiment data={data.sentiment} />;
-    case 'query':     return <Query
-                              title="Query to and Response from the Discovery Service"
-                              query={queryBuilder.search({
-                                natural_language_query: this.state.searchQuery
-                              })}
-                              response={data.rawResponse}
-                            />;
-    default:          return null;
-    }
+    return <Matches matches={data.results} />;
   }
 
   render() {
-    const { selectedTab, loading, data, error, searchQuery } = this.state;
+    const { loading, data, error, searchQuery } = this.state;
 
     return (
-      <div>
-        <Search
-          onTabChange={this.onTabChange.bind(this)}
-          onSearchQueryChange={this.fetchData.bind(this)}
-          selectedTab={selectedTab}
-          showTabs={!loading && Boolean(data)}
-          searchQuery={searchQuery}
-        />
-        {loading ? (
-          <div className="results">
-            <div className="loader--container">
-              <Icon type="loader" size="large" />
-            </div>
-          </div>
-        ) : data ? (
-          <div className="results">
-            <div className="_container _container_large">
-              <div className="row">
-                {this.getContent()}
+      <Grid celled className='search-grid'>
+        <Grid.Row>
+          <Grid.Column width={16} textAlign='center'>
+            <SearchField
+              onSearchQueryChange={this.fetchData.bind(this)}
+              searchQuery={searchQuery}
+            />
+          </Grid.Column>
+        </Grid.Row>
+        <Grid.Row>
+          <Grid.Column width={16} textAlign='center'>
+            {loading ? (
+              <div className="results">
+                <div className="loader--container">
+                  <Dimmer active>
+                    <Loader>Loading</Loader>
+                  </Dimmer>
+                </div>
               </div>
-            </div>
-          </div>
-        ) : error ? (
-          <div className="results">
-            <div className="_container _container_large">
-              <div className="row">
-                {JSON.stringify(error)}
+            ) : data ? (
+              <div className="results">
+                <div className="_container _container_large">
+                  <div className="row">
+                    {this.getContent()}
+                  </div>
+                </div>
               </div>
-            </div>
-          </div>
-        ) : null}
-      </div>
+            ) : error ? (
+              <div className="results">
+                <div className="_container _container_large">
+                  <div className="row">
+                    {JSON.stringify(error)}
+                  </div>
+                </div>
+              </div>
+            ) : null}
+          </Grid.Column>
+        </Grid.Row>
+      </Grid>
     );
   }
 }

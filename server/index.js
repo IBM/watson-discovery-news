@@ -18,8 +18,7 @@ require('isomorphic-fetch');
 const queryString = require('query-string');
 const queryBuilder = require('./query-builder');
 const discovery = require('./watson-discovery-service');
-const RSS = require('rss');
-const utils = require('../src/shared/utils');
+const utils = require('../src/utils');
 const { parseData, topicStory } = utils;
 
 /*eslint no-unused-vars: ["error", {"argsIgnorePattern": "response"}]*/
@@ -44,88 +43,7 @@ const WatsonNewsServer = new Promise((resolve, reject) => {
 function createServer() {
   const server = require('./express');
 
-  server.get('/trending/api/trending/*', (req, res, next) => {
-    const category = req.params[0];
-
-    discovery.query(queryBuilder.trending({
-      filter: category ? `enriched_text.categories.label:"${category}"` : ''
-    }))
-    .then(response => res.json(response))
-    .catch(error => {
-      // eslint-disable-next-line no-console
-      console.error(error);
-
-      switch (error.message) {
-      case 'Number of free queries per month exceeded':
-        return res.status(429).json(error);
-      default:
-        next(error);
-      }
-    });
-  });
-
-  server.get('/trending/feed/*', (req, res, next) => {
-    const category = req.params[0];
-    const fullUrl = req.protocol + '://' + req.get('host');
-
-    fetch(fullUrl + `/trending/api/trending/${category ? category : ''}`)
-    .then(response => {
-      if (response.ok) {
-        return response.json();
-      }
-      throw response;
-    })
-    .then(json => {
-      const { topics } = parseData(json);
-      const feed = new RSS({
-        title: `Trending Topics in News${category ? ' for ' + category.toUpperCase() : ''}`,
-        description: 'RSS feed for Trending Topics found using Watson Discovery Service'
-      });
-
-      topics.forEach(item => {
-        const story = topicStory(item);
-        let categories = [];
-        if (story.enriched_title.categories) {
-          categories = story.enriched_title.categories
-            .reduce((result, categories) =>
-              result.concat(categories.label.split('/').slice(1)), []);
-        }
-        feed.item({
-          guid: story.id,
-          title: item.key,
-          url: story.url,
-          description: story.title,
-          author: story.author,
-          categories
-        });
-      });
-
-      res.set('Content-Type', 'text/xml').send(feed.xml());
-    })
-    .catch(response => {
-      if (response && response.status === 429) {
-        res.status(429).json({ error: 'Number of free queries per month exceeded' });
-      } else {
-        next(response);
-      }
-    });
-  });
-
-  server.get('/trending/*', function(req, res) {
-    const category = req.params[0];
-    const props = category ? { category } : {};
-
-    res.render('trending/index', props);
-  });
-
-  server.get('/trending', function(req, res) {
-    const category = req.params[0];
-    const props = category ? { category } : {};
-
-    res.render('trending/index', props);
-  });
-
-  server.get('/search/api/search', (req, res) => {
+  server.get('/api/search', (req, res) => {
     const { query } = req.query;
 
     discovery.query(queryBuilder.search({ natural_language_query: query }))
@@ -139,12 +57,12 @@ function createServer() {
       });
   });
 
-  server.get('/search/:searchQuery', function(req, res){
+  server.get('/:searchQuery', function(req, res){
     const searchQuery = req.params.searchQuery.replace(/\+/g, ' ');
     const qs = queryString.stringify({ query: searchQuery });
     const fullUrl = req.protocol + '://' + req.get('host');
 
-    fetch(fullUrl + `/search/api/search?${qs}`)
+    fetch(fullUrl + `/api/search?${qs}`)
       .then(response => {
         if (response.ok) {
           return response.json();
@@ -153,34 +71,20 @@ function createServer() {
         }
       })
       .then(json => {
-        res.render('search/index', { data: json, searchQuery, error: null });
+        res.render('index', { data: json, searchQuery, error: null });
       })
       .catch(response => {
-        res.status(response.status).render('search/index', {
+        res.status(response.status).render('index', {
           error: (response.status === 429) ? 'Number of free queries per month exceeded' : 'Error fetching data'
         });
       });
   });
 
-  server.get('/search/*', function(req, res) {
+ server.get('/*', function(req, res) {
     const category = req.params[0];
     const props = category ? { category } : {};
 
-    res.render('search/index', props);
-  });
-
-  server.get('/search', function(req, res) {
-    const category = req.params[0];
-    const props = category ? { category } : {};
-
-    res.render('search/index', props);
-  });
-
-  server.get('/*', function(req, res) {
-    const category = req.params[0];
-    const props = category ? { category } : {};
-
-    res.render('home', props);
+    res.render('index', props);
   });
 
   return server;

@@ -21,8 +21,8 @@ const discovery = new DiscoveryV1({
   version_date: '2017-08-01'
 });
 
-discovery.environmentId = 'system';
-discovery.collectionId = 'news';
+discovery.environmentId = process.env.DISCOVERY_ENVIRONMENT_ID;
+discovery.collectionId = process.env.DISCOVERY_COLLECTION_ID;
 
 discovery.getEnvironments = Promise.promisify(discovery.getEnvironments);
 discovery.query = Promise.promisify(discovery.query);

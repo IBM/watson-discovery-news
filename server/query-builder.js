@@ -15,17 +15,8 @@
  */
 
 const moment = require('moment');
-const aggregations = {
-  search: [
-    'term(enriched_text.sentiment.document.label)'
-  ],
-  trending: [
-    'term(enriched_title.entities.text,count:20).top_hits(1)'
-  ]
-};
 
 module.exports = {
-  aggregations,
   setEnvironmentId(environmentId) {
     this.environment_id = environmentId;
   },
@@ -38,24 +29,9 @@ module.exports = {
       collection_id: this.collection_id,
       count: 10,
       sort: '-_score',
-      return: 'title,text,url,host,crawl_date,score,id,enriched_text.entities.text,enriched_text.sentiment.document.label',
-      aggregation: aggregations.search
+      return: 'title,text,url,host,html,crawl_date,score,id,enriched_text.entities.text,enriched_text.sentiment.document.label',
+      aggregation: 'term(enriched_text.sentiment.document.label)'
     }, queryOpts);
-
-    return params;
-  },
-  trending(queryOpts = {}) {
-    const { filter } = queryOpts;
-    const timeAndSourceFilter = `crawl_date>${moment().subtract(24,'h').toISOString().slice(0, -5)}`;
-
-    const params = Object.assign({
-      environment_id: this.environment_id,
-      collection_id: this.collection_id,
-      return: 'enriched_title.entities.text',
-      aggregation: aggregations.trending
-    }, queryOpts, {
-      filter: filter ? `${filter},${timeAndSourceFilter}` : timeAndSourceFilter
-    });
 
     return params;
   }
