@@ -51,7 +51,8 @@ export default class SearchField extends React.Component {
     return (
       <div>
         <Input
-          icon={<Icon name='search' inverted circular link />}
+          className='searchinput'
+          icon={{ name: 'search', circular: true, link: true}}
           placeholder={'Enter search string'}
           onKeyPress={this.handleKeyPress.bind(this)}
           onInput={this.handleInputChange.bind(this)}

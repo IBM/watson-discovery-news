@@ -86,9 +86,9 @@ class Main extends React.Component {
     const { loading, data, error, searchQuery } = this.state;
 
     return (
-      <Grid celled>
+      <Grid celled className='search-grid'>
         <Grid.Row>
-          <Grid.Column width={20} textAlign='center'>
+          <Grid.Column width={16} textAlign='center'>
             <SearchField
               onSearchQueryChange={this.fetchData.bind(this)}
               searchQuery={searchQuery}
@@ -96,7 +96,7 @@ class Main extends React.Component {
           </Grid.Column>
         </Grid.Row>
         <Grid.Row>
-          <Grid.Column width={20} textAlign='center'>
+          <Grid.Column width={16} textAlign='center'>
             {loading ? (
               <div className="results">
                 <div className="loader--container">

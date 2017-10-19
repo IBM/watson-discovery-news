@@ -31,9 +31,7 @@ const Match = props => (
 Match.propTypes = {
   title: PropTypes.string.isRequired,
   text: PropTypes.string.isRequired,
-  url: PropTypes.string.isRequired,
   html: PropTypes.string.isRequired,
-  host: PropTypes.string,
   sentiment: PropTypes.node,
   score: PropTypes.number.isRequired
 };
@@ -48,9 +46,7 @@ const Matches = props => (
             key={item.id}
             title={item.text ? getTitle(item) : 'No Title'}
             text={item.text ? item.text : "No Description"}
-            url={item.url}
             html={getImageUrl(item)}
-            host={item.host}
             score={item.score}
             sentiment={getSentiment(item)}
            />)
