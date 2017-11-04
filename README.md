@@ -1,5 +1,5 @@
 [![Build Status](https://travis-ci.org/IBM/watson-discovery-news.svg?branch=master)](https://travis-ci.org/IBM/watson-discovery-news)
-![Bluemix Deployments](https://deployment-tracker.mybluemix.net/stats/c58bea8bac2a6faa8d98e3d6c6cb9320/badge.svg)
+![Bluemix Deployments](https://metrics-tracker.mybluemix.net/stats/538ed648bda50b9f22d64a8be817840f/badge.svg)
 
 # Query Watson Discovery News using the Watson Discovery Service
 In this developer journey, we will build a Node.js web application that will use the Watson Discovery Service to access Watson Discovery News. 
@@ -55,7 +55,7 @@ Want to take your Watson app to the next level? Looking to leverage Watson Brand
 Use the ``Deploy to Bluemix`` button **OR** create the services and run locally.
 
 ## Deploy to Bluemix
-[![Deploy to Bluemix](https://deployment-tracker.mybluemix.net/stats/c58bea8bac2a6faa8d98e3d6c6cb9320/button.svg)](https://bluemix.net/deploy?repository=https://github.com/IBM/watson-discovery-news.git)
+[![Deploy to Bluemix](https://metrics-tracker.mybluemix.net/stats/538ed648bda50b9f22d64a8be817840f/button.svg)](https://bluemix.net/deploy?repository=https://github.com/IBM/watson-discovery-news.git)
 
 1. Press the above ``Deploy to Bluemix`` button and then click on ``Deploy``.
 
@@ -210,9 +210,7 @@ Error: listen EADDRINUSE :::{port}
 
 # Privacy Notice
 
-If using the Deploy to Bluemix button some metrics are tracked, the following
-information is sent to a [Deployment Tracker](https://github.com/IBM-Bluemix/cf-deployment-tracker-service) service
-on each deployment:
+If using the Deploy to Bluemix button some metrics are tracked, the following information is sent to a [Deployment Tracker](https://github.com/IBM-Bluemix/cf-deployment-tracker-service) service and a [Metrics collector](https://github.com/IBM/metrics-collector-service) service on each deployment:
 
 * Node.js package version
 * Node.js repository URL
@@ -222,10 +220,11 @@ on each deployment:
 * Space ID (`space_id`)
 * Application Version (`application_version`)
 * Application URIs (`application_uris`)
+* Cloud Foundry API (`cf_api`)
 * Labels of bound services
 * Number of instances for each bound service and associated plan information
 
-This data is collected from the `package.json` file in the sample application and the ``VCAP_APPLICATION``
+This data is collected from the `package.json` and `repository.yaml` files in the sample application and the ``VCAP_APPLICATION``
 and ``VCAP_SERVICES`` environment variables in IBM Bluemix and other Cloud Foundry platforms. This
 data is used by IBM to track metrics around deployments of sample applications to IBM Bluemix to
 measure the usefulness of our examples, so that we can continuously improve the content we offer
@@ -234,5 +233,4 @@ service will be tracked.
 
 ## Disabling Deployment Tracking
 
-To disable tracking, simply remove ``cf_deployment_tracker.track()`` from the
-``app.js`` file in the top level directory.
+To disable tracking, simply remove ``cf_deployment_tracker.track()`` and ``require('metrics-tracker-client').track();`` from the ``app.js`` file in the top level directory.
