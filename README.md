@@ -1,18 +1,19 @@
 [![Build Status](https://travis-ci.org/IBM/watson-discovery-news.svg?branch=master)](https://travis-ci.org/IBM/watson-discovery-news)
-![Bluemix Deployments](https://deployment-tracker.mybluemix.net/stats/c58bea8bac2a6faa8d98e3d6c6cb9320/badge.svg)
+![IBM Cloud Deployments](https://deployment-tracker.mybluemix.net/stats/c58bea8bac2a6faa8d98e3d6c6cb9320/badge.svg)
 
 # Query Watson Discovery News using the Watson Discovery Service
-In this developer journey, we will build a Node.js web application that will use the Watson Discovery Service to access Watson Discovery News. 
+
+In this Code Pattern, we will build a Node.js web application that will use the Watson Discovery Service to access Watson Discovery News. 
 
 Watson Discovery News is a default data collection that is associated with the Watson Discovery Service. It is a dataset of primarily English language news sources that is updated continuously, with approximately 300,000 new articles and blogs added daily.
 
-This journey will demonstrate two use cases for accessing Watson Discovery News:
+This Code Pattern will demonstrate two use cases for accessing Watson Discovery News:
 
 * **Trending Topics in the News** - Identify popular topics over the past 24 hours. Topics can be general, or for a specific industry or category.
 
 * **Search** - Query for the most relevant new articles about a specific topic or subject. Results will include enrichment data, such as article summary text and sentiment analysis.
 
-Optionally included in this journey are examples of how to:
+Optionally included will be examples of how to:
 
 * Build a **RSS News Feed** generator to push Trending Topic news to your favorite RSS reader.
 
@@ -27,10 +28,6 @@ Optionally included in this journey are examples of how to:
 4. The Watson Discovery Service queries the Watson News Collection.
 5. The Watson Discovery Service sends news articles to the RSS Reader.
 6. The Watson Discovery Service responds to Slack search requests.
-
-## With Watson
-
-Want to take your Watson app to the next level? Looking to leverage Watson Brand assets? Join the [With Watson](https://www.ibm.com/watson/with-watson) program which provides exclusive brand, marketing, and tech resources to amplify and accelerate your Watson embedded commercial solution.
 
 # Included components
 
@@ -52,12 +49,12 @@ Want to take your Watson app to the next level? Looking to leverage Watson Brand
 
 # Steps
 
-Use the ``Deploy to Bluemix`` button **OR** create the services and run locally.
+Use the ``Deploy to IBM Cloud`` button **OR** create the services and run locally.
 
-## Deploy to Bluemix
-[![Deploy to Bluemix](https://deployment-tracker.mybluemix.net/stats/c58bea8bac2a6faa8d98e3d6c6cb9320/button.svg)](https://bluemix.net/deploy?repository=https://github.com/IBM/watson-discovery-news.git)
+## Deploy to IBM Cloud
+[![Deploy to IBM Cloud](https://deployment-tracker.mybluemix.net/stats/c58bea8bac2a6faa8d98e3d6c6cb9320/button.svg)](https://bluemix.net/deploy?repository=https://github.com/IBM/watson-discovery-news.git)
 
-1. Press the above ``Deploy to Bluemix`` button and then click on ``Deploy``.
+1. Press the above ``Deploy to IBM Cloud`` button and then click on ``Deploy``.
 
 2. In Toolchains, click on Delivery Pipeline to watch while the app is deployed. Once deployed, the app can be viewed by clicking 'View app'.
 
@@ -65,14 +62,14 @@ Use the ``Deploy to Bluemix`` button **OR** create the services and run locally.
   <img width="600" src="doc/source/images/toolchain-pipeline.png">
 </p>
 
-3. To see the app and services created and configured for this journey, use the Bluemix dashboard. The app is named `watson-discovery-news` with a unique suffix. The following services are created:
+3. To see the app and services created and configured for this Code Pattern, use the IBM Cloud dashboard. The app is named `watson-discovery-news` with a unique suffix. The following services are created:
     * discovery-news-service
 
 ## Run locally
-> NOTE: These steps are only needed when running locally instead of using the ``Deploy to Bluemix`` button.
+> NOTE: These steps are only needed when running locally instead of using the ``Deploy to IBM Cloud`` button.
 
 1. [Clone the repo](#1-clone-the-repo)
-2. [Create Bluemix services](#2-create-watson-services-with-ibm-bluemix)
+2. [Create Watson Services with IBM Cloud](#2-create-watson-services-with-ibm-cloud)
 3. [Configure Watson Discovery](#3-configure-watson-discovery)
 4. [Configure Slack](#4-configure-slack)
 5. [Run the application](#5-run-the-application)
@@ -84,7 +81,7 @@ Clone the `watson-discovery-news` locally. In a terminal, run:
 $ git clone https://github.com/ibm/watson-discovery-news
 ```
 
-## 2. Create Watson Services with IBM Bluemix
+## 2. Create Watson Services with IBM Cloud
 
 Create the following service:
 
@@ -120,12 +117,11 @@ Once created, save the **API Token** that is generated.
 
 ## 5. Run the application
 
-### If you used the Deploy to Bluemix button...
+### If you used the Deploy to IBM Cloud button...
 
-If you used ``Deploy to Bluemix``, most of the setup is automatic, but not
-quite all of it. We have to update a few environment variables.
+If you used ``Deploy to IBM Cloud``, most of the setup is automatic, but not quite all of it. We have to update a few environment variables.
 
-In the Bluemix dashboard find the App that was created. Click on ``Runtime`` on the menu and navigate to the ``Environment variables`` tab.
+In the IBM Cloud dashboard find the App that was created. Click on ``Runtime`` on the menu and navigate to the ``Environment variables`` tab.
 
 ![](doc/source/images/env_vars.png)
 
@@ -183,8 +179,7 @@ On the **Trending News Panel**, click the RSS Feed button to launch a new tab in
 
 > NOTE: This only needs to be set if the application is running locally.
 
-The credentials for Bluemix services (Discovery), can
-be found in the ``Services`` menu in Bluemix, and selecting the ``Service Credentials``
+The credentials for the IBM Cloud services (Discovery), can be found in the ``Services`` menu in IBM Cloud, and selecting the ``Service Credentials``
 option.
 
 ```
@@ -204,14 +199,9 @@ If the port is unavailable, you will see the following error:
 Error: listen EADDRINUSE :::{port}
 ```
 
-# License
-
-[Apache 2.0](LICENSE)
-
 # Privacy Notice
 
-If using the Deploy to Bluemix button some metrics are tracked, the following
-information is sent to a [Deployment Tracker](https://github.com/IBM-Bluemix/cf-deployment-tracker-service) service
+If using the Deploy to IBM Cloud button some metrics are tracked, the following information is sent to a [Deployment Tracker](https://github.com/IBM-Bluemix/cf-deployment-tracker-service) service
 on each deployment:
 
 * Node.js package version
@@ -225,14 +215,26 @@ on each deployment:
 * Labels of bound services
 * Number of instances for each bound service and associated plan information
 
-This data is collected from the `package.json` file in the sample application and the ``VCAP_APPLICATION``
-and ``VCAP_SERVICES`` environment variables in IBM Bluemix and other Cloud Foundry platforms. This
-data is used by IBM to track metrics around deployments of sample applications to IBM Bluemix to
-measure the usefulness of our examples, so that we can continuously improve the content we offer
-to you. Only deployments of sample applications that include code to ping the Deployment Tracker
-service will be tracked.
+This data is collected from the `package.json` file in the sample application and the ``VCAP_APPLICATION`` and ``VCAP_SERVICES`` environment variables in IBM Cloud and other Cloud Foundry platforms. This data is used by IBM to track metrics around deployments of sample applications to IBM Cloud to measure the usefulness of our examples, so that we can continuously improve the content we offer to you. Only deployments of sample applications that include code to ping the Deployment Tracker service will be tracked.
 
 ## Disabling Deployment Tracking
 
-To disable tracking, simply remove ``cf_deployment_tracker.track()`` from the
-``app.js`` file in the top level directory.
+To disable tracking, simply remove ``cf_deployment_tracker.track()`` from the ``app.js`` file in the top level directory.
+
+# Links
+* [Demo on Youtube](https://youtu.be/EZGgvci9nC0)
+* [Watson Node.js SDK](https://github.com/watson-developer-cloud/node-sdk)
+* [Cognitive discovery architecture](https://www.ibm.com/cloud/garage/content/architecture/cognitiveDiscoveryDomain)
+* [Overview of the Watson Discovery service](https://www.ibm.com/watson/services/discovery/)
+* [Three ways IBM has evolved Alchemy Data News into Watson Discovery News and made it even better](https://www.ibm.com/blogs/watson/2017/04/3-ways-ibm-evolved-alchemy-data-news-watson-discovery-news-made-even-better/)
+* [IBM launches Watson Discovery Service for big data analytics at scale](https://www.techrepublic.com/article/ibm-launches-watson-discovery-service-for-big-data-analytics-at-scale/)
+* [SlideShare: Building with Watson – Network Visualizations using Watson Discovery](https://www.slideshare.net/IBMWatson/building-with-watson-network-visualizations-using-watson-discovery)
+
+
+# Learn more
+
+* **With Watson**: Want to take your Watson app to the next level? Looking to utilize Watson Brand assets? [Join the With Watson program](https://www.ibm.com/watson/with-watson/) to leverage exclusive brand, marketing, and tech resources to amplify and accelerate your Watson embedded commercial solution.
+
+# License
+
+[Apache 2.0](LICENSE)
