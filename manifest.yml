@@ -5,12 +5,13 @@ declared-services:
     plan: lite
 applications:
 - path: .
-  name: watson-discovery-news
+  name: watsondiscoverynews
   buildpack: sdk-for-nodejs
-  memory: 256M
+  memory: 512M
   instances: 1
-  disk_quota: 256M
-  random-route: false
+  disk_quota: 512M
+  random-route: true
+  timeout: 180
   services:
   - discovery-news-service
 env:
