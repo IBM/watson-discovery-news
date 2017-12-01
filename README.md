@@ -3,7 +3,7 @@
 
 # Query Watson Discovery News using the Watson Discovery Service
 
-In this Code Pattern, we will build a Node.js web application that will use the Watson Discovery Service to access Watson Discovery News. 
+In this Code Pattern, we will build a Node.js web application that will use the Watson Discovery Service to access Watson Discovery News.
 
 Watson Discovery News is a default data collection that is associated with the Watson Discovery Service. It is a dataset of primarily English language news sources that is updated continuously, with approximately 300,000 new articles and blogs added daily.
 
@@ -17,14 +17,14 @@ Optionally included will be examples of how to:
 
 * Build a **RSS News Feed** generator to push Trending Topic news to your favorite RSS reader.
 
-* Build a **SlackBot** to access the Search feature from Slack. 
+* Build a **SlackBot** to access the Search feature from Slack.
 
 ![](doc/source/images/architecture.png)
 
 ## Flow
 1. The user interacts with the Watson Discovery News Server via the app UI.
 2. User input is processed and routed to the Watson Discovery News Server.
-3. The Watson Discovery News Server sends user requests to the Watson Discovery Service. 
+3. The Watson Discovery News Server sends user requests to the Watson Discovery Service.
 4. The Watson Discovery Service queries the Watson News Collection.
 5. The Watson Discovery Service sends news articles to the RSS Reader.
 6. The Watson Discovery Service responds to Slack search requests.

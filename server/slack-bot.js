@@ -49,7 +49,7 @@ This bot demonstrates many of the core features of Botkit:
 
   Say: "merger and acquisition of artificial intelligence companies"
 
-  Confirm and the bot will show you links to top three news articles 
+  Confirm and the bot will show you links to top three news articles
   from Watson Discovery News Service
 
   Make sure to invite your bot into other channels using /invite @<my bot>!
@@ -66,7 +66,7 @@ const controller = Botkit.slackbot();
 if (!slackBotToken) {
   // eslint-disable-next-line no-console
   console.log('Warning: SLACK_BOT_TOKEN not specified so functionality will be disabled"');
-}  
+}
 
 // eslint-disable-next-line no-unused-vars
 const bot = controller.spawn({

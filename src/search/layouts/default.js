@@ -31,7 +31,7 @@ class DefaultLayout extends React.Component {
           <li>Tech IPOs</li>
           <li>Acquisition in Insurance Industry</li>
           <li>Healthcare startups</li>
-        </ul>  
+        </ul>
       </div>
     );
   }

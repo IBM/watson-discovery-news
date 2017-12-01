@@ -33,7 +33,7 @@ Finally, to make the Discovery Service return the most recent topics, you can ap
 }
 ```
 
-Now that we have the data we can generate the RSS news feed using a node module called [rss](https://www.npmjs.com/package/rss). It is simple to use and supports a lot of options to construct a comprehensive RSS feed with custom elements if needed. For our news feed we will be sticking to the standard tags. 
+Now that we have the data we can generate the RSS news feed using a node module called [rss](https://www.npmjs.com/package/rss). It is simple to use and supports a lot of options to construct a comprehensive RSS feed with custom elements if needed. For our news feed we will be sticking to the standard tags.
 
 To construct the feed all we need to do is initialize it
 
