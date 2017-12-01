@@ -80,7 +80,7 @@ export default class Search extends React.Component {
               </div>
             </div>
             <div className="query--text-input-container">
-              {showTabs ? 
+              {showTabs ?
                 <ButtonsGroup
                   type="radio"
                   name="radio-buttons"

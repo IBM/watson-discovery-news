@@ -4,7 +4,7 @@ Promises are a great feature in Javascript that allows you to avoid [callback he
 
 ## The Problem
 
-In the developer journey of making a [Discovery News Search Slack Bot App](https://github.com/IBM/watson-discovery-news) using the [Discovery node SDK](https://github.com/watson-developer-cloud/node-sdk), I noticed the APIs relied heavily on the callbacks instead of promises, where the callback gets passed `error` as the first argument and `response` as the second. We then need to check if `error` is not `undefined` or `null` before we can use the `response`. 
+In the developer journey of making a [Discovery News Search Slack Bot App](https://github.com/IBM/watson-discovery-news) using the [Discovery node SDK](https://github.com/watson-developer-cloud/node-sdk), I noticed the APIs relied heavily on the callbacks instead of promises, where the callback gets passed `error` as the first argument and `response` as the second. We then need to check if `error` is not `undefined` or `null` before we can use the `response`.
 
 This pattern can result in a lot of nested callbacks and a huge callback function body since we need to handle both success and error states, all making the code harder to read and follow.
 
@@ -23,7 +23,7 @@ discovery.getEnvironments({}, (error, response) => {
   if (error) {
     console.error(error);
   } else {
-    
+
     // Find the environemnt id for News collection
     const news_environment_id = response.environments
       .find(env => env.read_only == true).environment_id;

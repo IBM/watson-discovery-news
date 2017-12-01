@@ -125,7 +125,7 @@ class Main extends React.Component {
               <h2>Trending Topics in Other Categories</h2>
               <div>You can also view trending topics for certain categories below and subscribe to its RSS feed:</div>
               <ul>
-                {categories.map(category => 
+                {categories.map(category =>
                   <li key={category}>
                     <a href={`/trending${category}`} target="_blank" rel="noopener noreferrer">{category.toUpperCase().substring(1)}</a>
                   </li>)}
