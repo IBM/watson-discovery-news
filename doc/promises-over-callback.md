@@ -11,7 +11,7 @@ This pattern can result in a lot of nested callbacks and a huge callback functio
 ```js
 const DiscoveryV1 = require('watson-developer-cloud/discovery/v1');
 
-// Initialize the Discovery service with credentials from Bluemix
+// Initialize the Discovery service with credentials from IBM Cloud
 const discovery = new DiscoveryV1({
   username: '<username>',
   password: '<password>',

@@ -64,7 +64,7 @@ class DefaultLayout extends React.Component {
               repository="https://github.com/IBM/watson-discovery-news"
               documentation="http://www.ibm.com/watson/developercloud/doc/discovery/index.html"
               apiReference="http://www.ibm.com/watson/developercloud/discovery/api"
-              startInBluemix="https://console.ng.bluemix.net/registration/?target=/catalog/services/discovery/"
+              startInIBM Cloud="https://console.ng.bluemix.net/registration/?target=/catalog/services/discovery/"
               version="GA"
               description={this.getDescription()}
             />
