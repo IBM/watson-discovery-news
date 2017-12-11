@@ -37,7 +37,7 @@ module.exports = {
       environment_id: this.environment_id,
       collection_id: this.collection_id,
       count: 10,
-      sort: '-_score',
+      sort: '-score',
       return: 'title,text,url,host,crawl_date,score,id,enriched_text.entities.text,enriched_text.sentiment.document.label',
       aggregation: aggregations.search
     }, queryOpts);
