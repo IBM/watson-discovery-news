@@ -1,0 +1,7 @@
+id: watson-discovery-news
++event_id: web
++event_organizer: dev-journeys
++runtimes:
++  - Cloud Foundry
++services:
++  - Discovery
