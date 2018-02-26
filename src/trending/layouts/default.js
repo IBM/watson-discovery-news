@@ -45,7 +45,7 @@ class DefaultLayout extends React.Component {
             repository="https://github.com/IBM/watson-discovery-news"
             documentation="http://www.ibm.com/watson/developercloud/doc/discovery/index.html"
             apiReference="http://www.ibm.com/watson/developercloud/discovery/api"
-            startInBluemix="https://console.ng.bluemix.net/registration/?target=/catalog/services/discovery/"
+            startInIBM Cloud="https://console.ng.bluemix.net/registration/?target=/catalog/services/discovery/"
             version="GA"
             description={`This is a web app to help you find Trending Topics in the News
               using Watson Discovery Service. You can subscribe to these trending

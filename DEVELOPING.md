@@ -6,7 +6,7 @@ Below is a general overview of the most important directories and files in the p
 .
 ├── env.sample # Sample environment variable files that needs to be copied to .env file
 ├── app.js # Entry point of the application
-├── manifest.yml # Configuration used to deploy app to Bluemix
+├── manifest.yml # Configuration used to deploy app to IBM Cloud
 ├── package.json# Config file containing dependencies and scripts and babel config
 ├── public # Public folder contains CSS and JS served on the webpage
 │   ├── css
