@@ -1,5 +1,5 @@
 {
-  "name": "Create a cognitive news search app",
+  "name": "Cognitive news search app",
   "description": "Build a cognitive news search and trends web app using Node.js and the Watson Discovery service.",
   "thumbnailURL": "blueprint/thumbnail.svg",
   "appIconURL": "blueprint/appicon.svg",
