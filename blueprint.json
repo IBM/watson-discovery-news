@@ -8,21 +8,32 @@
   "tags": [
     "devex"
   ],
+  "generatorOptions": {
+    "generator-git-starterkit-credentials-builder": {
+      "scope": "@arf",
+      "version": "0.x.x"
+    },
+    "generator-ibm-cloud-enablement": {
+      "options": {
+        "port": "3000"
+      },
+      "version": "0.8.x"
+    },
+    "generator-ibm-service-enablement": {
+      "version": "0.6.4"
+    },
+    "generator-starterkit-content-downloader": {
+      "scope": "@arf",
+      "version": "0.x.x"
+    }
+  },
   "generators": {
     "node": [
       "generator-starterkit-content-downloader",
-      "generator-ibm-cloud-enablement"
+      "generator-ibm-cloud-enablement",
+      "generator-ibm-service-enablement",
+      "generator-git-starterkit-credentials-builder"
     ]
-  },
-  "generatorOptions": {
-    "generator-starterkit-content-downloader": {
-      "registry": "https://npm-registry.whitewater.ibm.com",
-      "scope": "@arf",
-      "version": "0.0.x"
-    },
-    "generator-ibm-cloud-enablement": {
-      "version": "0.0.x"
-    }
   },
   "requiredCapabilities": [
     "discovery"
