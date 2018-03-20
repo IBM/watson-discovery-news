@@ -6,8 +6,7 @@
   "previewURLs": [],
   "type": "WEB",
   "tags": [
-    "node",
-    "watson"
+    "devex"
   ],
   "generators": {
     "node": [
