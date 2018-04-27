@@ -29,7 +29,6 @@
     "express": "^4.15.3",
     "express-browserify": "^1.0.2",
     "express-react-views": "^0.10.2",
-    "metrics-tracker-client": "*",
     "moment": "^2.18.1",
     "prop-types": "^15.5.10",
     "query-string": "^4.3.4",
