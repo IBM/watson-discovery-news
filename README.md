@@ -182,9 +182,16 @@ The credentials for the IBM Cloud services (Discovery), can be found in the ``Se
 option.
 
 ```
-# Watson Discovery
-DISCOVERY_USERNAME=<add_discovery_username>
-DISCOVERY_PASSWORD=<add_discovery_password>
+# Watson Services
+# IMPORTANT: If your service is provisioned with IAM authentication, comment out the
+# username/password credentials and use the IAM credentials key/value pair
+
+# Watson Discovery authentication using username/password authentication
+DISCOVERY_USERNAME = <put discovery username here>
+DISCOVERY_PASSWORD = <put discovery password here>
+# Watson Discovery authentication using IAM
+#DISCOVERY_IAM_APIKEY=<put assistant IAM apikey here>
+#DISCOVERY_URL=<put assistant url here>
 
 # Slack
 SLACK_BOT_TOKEN=<add_slack_bot_token>

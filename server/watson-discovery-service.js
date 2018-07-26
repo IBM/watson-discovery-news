@@ -18,7 +18,7 @@ const Promise = require('bluebird');
 const DiscoveryV1 = require('watson-developer-cloud/discovery/v1');
 
 var discovery;
-const version_date = '2017-08-01';
+const version_date = '2018-03-05';
 if (process.env.service_watson_discovery !== undefined) {
   var service_watson_discovery = JSON.parse(process.env.service_watson_discovery);
   discovery = new DiscoveryV1({
@@ -36,7 +36,7 @@ if (process.env.service_watson_discovery !== undefined) {
 discovery.environmentId = 'system';
 discovery.collectionId = 'news';
 
-discovery.getEnvironments = Promise.promisify(discovery.getEnvironments);
+discovery.listEnvironments = Promise.promisify(discovery.listEnvironments);
 discovery.query = Promise.promisify(discovery.query);
 
 module.exports = discovery;
