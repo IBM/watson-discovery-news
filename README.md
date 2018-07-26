@@ -190,8 +190,8 @@ option.
 DISCOVERY_USERNAME = <put discovery username here>
 DISCOVERY_PASSWORD = <put discovery password here>
 # Watson Discovery authentication using IAM
-#DISCOVERY_IAM_APIKEY=<put assistant IAM apikey here>
-#DISCOVERY_URL=<put assistant url here>
+#DISCOVERY_IAM_APIKEY=<put discovery IAM apikey here>
+#DISCOVERY_URL=<put discovery url here>
 
 # Slack
 SLACK_BOT_TOKEN=<add_slack_bot_token>
