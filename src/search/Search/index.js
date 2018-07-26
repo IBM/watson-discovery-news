@@ -28,7 +28,7 @@ export default class Search extends React.Component {
     };
   }
 
-  componentWillReceiveProps(props) {
+  UNSAFE_componentWillReceiveProps(props) {
     this.setState({
       tabButtons: getTabButtons(props.selectedTab)
     });
