@@ -24,7 +24,7 @@ const { parseData, topicStory } = utils;
 
 /*eslint no-unused-vars: ["error", {"argsIgnorePattern": "response"}]*/
 const WatsonNewsServer = new Promise((resolve, reject) => {
-  // listInvironments as sanity check to ensure creds are valid
+  // listEnvironments as sanity check to ensure creds are valid
   discovery.listEnvironments({})
     .then(response => {
       // environment and collection ids are always the same for Watson News
