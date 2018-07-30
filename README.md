@@ -182,8 +182,8 @@ The credentials for the IBM Cloud services (Discovery), can be found in the ``Se
 option.
 
 ```
-# Replace the credentials here with your own.
-# Rename this file to .env before starting the app.
+# Copy this file to .env and replace the credentials with
+# your own before starting the app.
 
 # Watson Discovery
 DISCOVERY_URL=<add_discovery_url>
