@@ -182,19 +182,24 @@ The credentials for the IBM Cloud services (Discovery), can be found in the ``Se
 option.
 
 ```
-# Watson Services
-# IMPORTANT: If your service is provisioned with IAM authentication, comment out the
-# username/password credentials and use the IAM credentials key/value pair
+# Replace the credentials here with your own.
+# Rename this file to .env before starting the app.
 
-# Watson Discovery authentication using username/password authentication
-DISCOVERY_USERNAME = <put discovery username here>
-DISCOVERY_PASSWORD = <put discovery password here>
-# Watson Discovery authentication using IAM
-#DISCOVERY_IAM_APIKEY=<put discovery IAM apikey here>
-#DISCOVERY_URL=<put discovery url here>
+# Watson Discovery
+DISCOVERY_URL=<add_discovery_url>
+## Un-comment and use either username+password or IAM apikey.
+# DISCOVERY_USERNAME=<add_discovery_username>
+# DISCOVERY_PASSWORD=<add_discovery_password>
+# DISCOVERY_IAM_APIKEY=<add_discovery_iam_apikey>
+
+# Run locally on a non-default port (default is 3000)
+# PORT=3000
 
 # Slack
-SLACK_BOT_TOKEN=<add_slack_bot_token>
+SLACK_BOT_TOKEN=<slack_bot_token>
+
+# Run locally on a non-default port (default is 3000)
+# PORT=3000
 ```
 
 * Ensure port is not already in use
