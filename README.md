@@ -193,6 +193,7 @@ On the **Trending News Panel**, click the RSS Feed button to launch a new tab in
 
 <p align="center">
   <img src="doc/source/images/rss-2.png">
+  <br>
   <img src="doc/source/images/rss-1.png">
 </p>
 
