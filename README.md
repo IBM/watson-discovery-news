@@ -75,7 +75,7 @@ Now jump to [Step 4. Configure Slack](#4-configure-slack) to continue.
 2. [Create Watson Services with IBM Cloud](#2-create-watson-services-with-ibm-cloud)
 3. [Configure Watson Discovery](#3-configure-watson-discovery)
 4. [Configure Slack](#4-configure-slack)
-5. [Run the application](#5-run-the-application)
+5. [Configure the application to use the Slack bot](#5-configure-the-application-to-use-the-slack-bot)
 
 ## 1. Clone the repo
 
