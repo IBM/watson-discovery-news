@@ -18,7 +18,7 @@ Optionally included will be examples of how to:
 
 * Build a **SlackBot** to access the search feature from Slack.
 
-![](doc/source/images/architecture.png)
+![architecture](doc/source/images/architecture.png)
 
 ## Flow
 1. The user interacts with the Watson Discovery News Server via the app UI.
@@ -57,7 +57,7 @@ Use the ``Deploy to IBM Cloud`` button **OR** create the services and run locall
 
 2. In Toolchains, click on Delivery Pipeline to watch while the app is deployed. Once deployed, the app can be viewed by clicking 'View app'.
 
-![](doc/source/images/toolchain-pipeline.png)
+![toolchain-pipeline](doc/source/images/toolchain-pipeline.png)
 
 3. To see the app and services created and configured for this code pattern, use the IBM Cloud dashboard. The app is named `watson-discovery-news` with a unique suffix. The following services are created:
     * discovery-news-service
@@ -89,21 +89,21 @@ Create the following service:
 
 Fill in name you want to give to your service and click *Create*.
 
-![](doc/source/images/discovery-1.png)
+![discovery](doc/source/images/discovery-1.png)
 
 After the service is created, click on *Service credentials* and then click on *View Credentials*. Save these credentials as they will be needed when configuring the app.
 
-![](doc/source/images/discovery-2.png)
+![discovery-credentials](doc/source/images/discovery-2.png)
 
 ## 4. Configure Slack
 
 To integrate a new Slack Bot into your existing Slack team, navigate to https://my.slack.com/services/new/bot. Enter a username for the bot and click **Add bot integration**.
 
-![](doc/source/images/slack-1.png)
+![slack-config](doc/source/images/slack-1.png)
 
 Once created, save the **API Token** that is generated.
 
-![](doc/source/images/slack-2.png)
+![more-slack-config](doc/source/images/slack-2.png)
 
 ## 5. Run the application
 
@@ -113,7 +113,7 @@ If you used ``Deploy to IBM Cloud``, most of the setup is automatic, but not qui
 
 In the IBM Cloud dashboard find the App that was created. Click on ``Runtime`` on the menu and navigate to the ``Environment variables`` tab.
 
-![](doc/source/images/env_vars.png)
+![environment-variables](doc/source/images/env_vars.png)
 
 Update the following environment variable:
 
@@ -149,7 +149,7 @@ yarn start
 
 # Sample output
 
-### Trending Topics RSS Feed  ![](doc/source/images/rss_feed.png)
+### Trending Topics RSS Feed  ![rss](doc/source/images/rss_feed.png)
 
 On the **Trending News Panel**, click the RSS Feed button to launch a new tab in your browser. Cut and paste the tab URL into your favorite RSS Reader. If your RSS Feed Reader supports push notifications you can get alerted when trending topics change along with a news article for that topic.
 
@@ -163,7 +163,7 @@ On the **Trending News Panel**, click the RSS Feed button to launch a new tab in
 
 ### Search from Slack
 
-![](doc/source/images/slack-3.png)
+![slack](doc/source/images/slack-3.png)
 
 # Troubleshooting
 
