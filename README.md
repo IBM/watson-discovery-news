@@ -34,13 +34,13 @@ Optionally included will be examples of how to:
 
 # Featured technologies
 
-* [Node.js](https://nodejs.org/en/) - An asynchronous event driven JavaScript runtime, designed to build scalable applications
-* [React](https://facebook.github.io/react/) - Javascript library for building User Interfaces
-* [Express](https://expressjs.com) - A popular and minimalistic web framework for creating API and Web server
-* [Yarn](https://yarnpkg.com) - Fast, reliable and secure dependency manager for node.js
-* [RSS](https://en.wikipedia.org/wiki/RSS) - RSS (Rich Site Summary) is a format for delivering regularly changing web content in our case it will be trending topics
-* [Slack](https://slack.com) - Slack is a cloud-based set of team collaboration tools and services with chat bot integration
-* [Botkit](https://www.botkit.ai) - Framework for creating and managing chat bots
+* [Node.js](https://nodejs.org/en/): An asynchronous event driven JavaScript runtime, designed to build scalable applications
+* [React](https://facebook.github.io/react/): Javascript library for building User Interfaces
+* [Express](https://expressjs.com): A popular and minimalistic web framework for creating API and Web server
+* [Yarn](https://yarnpkg.com): Fast, reliable and secure dependency manager for node.js
+* [RSS](https://en.wikipedia.org/wiki/RSS): RSS (Rich Site Summary) is a format for delivering regularly changing web content in our case it will be trending topics
+* [Slack](https://slack.com): Slack is a cloud-based set of team collaboration tools and services with chat bot integration
+* [Botkit](https://www.botkit.ai): Framework for creating and managing chat bots
 
 # Watch the Video
 
@@ -51,25 +51,31 @@ Optionally included will be examples of how to:
 Use the ``Deploy to IBM Cloud`` button **OR** create the services and run locally.
 
 ## Deploy to IBM Cloud
+
 [![Deploy to IBM Cloud](https://bluemix.net/deploy/button.png)](https://bluemix.net/deploy?repository=https://github.com/IBM/watson-discovery-news.git)
 
-1. Press the above ``Deploy to IBM Cloud`` button and then click on ``Deploy``.
+1. Press the ``Deploy to IBM Cloud`` button above and then click on ``Deploy`` option. Remember to create an IBM Cloud API key if required.
 
-2. In Toolchains, click on Delivery Pipeline to watch while the app is deployed. Once deployed, the app can be viewed by clicking 'View app'.
+![deploy](doc/source/images/deploy.png)
+
+2. From the Toolchains view, click on the Delivery Pipeline to watch while the app is deployed. Here you'll be able to see logs about the deployment.
 
 ![toolchain-pipeline](doc/source/images/toolchain-pipeline.png)
 
-3. To see the app and services created and configured for this code pattern, use the IBM Cloud dashboard. The app is named `watson-discovery-news` with a unique suffix. The following services are created:
+3. To see the app and services that were created use the [IBM Cloud dashboard](https://cloud.ibm.com). The app is named `watson-discovery-news` with a unique suffix. The following services are created:
     * discovery-news-service
 
+Now jump to [Step 4. Configure Slack](#4-configure-slack) to continue.
+
 ## Run locally
+
 > NOTE: These steps are only needed when running locally instead of using the ``Deploy to IBM Cloud`` button.
 
 1. [Clone the repo](#1-clone-the-repo)
 2. [Create Watson Services with IBM Cloud](#2-create-watson-services-with-ibm-cloud)
 3. [Configure Watson Discovery](#3-configure-watson-discovery)
 4. [Configure Slack](#4-configure-slack)
-5. [Run the application](#5-run-the-application)
+5. [Configure the application to use the Slack bot](#5-configure-the-application-to-use-the-slack-bot)
 
 ## 1. Clone the repo
 
@@ -87,31 +93,41 @@ Create the following service:
 
 ## 3. Configure Watson Discovery
 
-Fill in name you want to give to your service and click *Create*.
+Optionally, fill in a name you want to give to your service and click *Create*.
 
 ![discovery](doc/source/images/discovery-1.png)
 
-After the service is created, click on *Service credentials* and then click on *View Credentials*. Save these credentials as they will be needed when configuring the app.
+After the service is created the credentials are available on the *Manage* tab. For more advanced credential management, click on the *Service credentials* tab. These credentials will be needed when configuring the app.
 
 ![discovery-credentials](doc/source/images/discovery-2.png)
 
 ## 4. Configure Slack
 
-To integrate a new Slack Bot into your existing Slack team, navigate to https://my.slack.com/services/new/bot. Enter a username for the bot and click **Add bot integration**.
+To integrate a new Slack Bot into your existing Slack team, navigate to `https://<my.slack.com>/apps/manage/custom-integrations`, where `<my.slack.com>` is the Slack workspace you want to customize.
 
-![slack-config](doc/source/images/slack-1.png)
+From the **Cutsom Integrations** page, select the **Bots** option.
+
+![slack-integrations](doc/source/images/slack-0.png)
+
+To add a new bot, select the **Add Configuration** button.
+
+![slack-integrations](doc/source/images/slack-00.png)
+
+Enter a username for the bot and click **Add bot integration**.
+
+![slack-bot-name](doc/source/images/slack-1.png)
 
 Once created, save the **API Token** that is generated.
 
 ![more-slack-config](doc/source/images/slack-2.png)
 
-## 5. Run the application
+## 5. Configure the application to use the Slack bot
 
 ### If you used the Deploy to IBM Cloud button...
 
-If you used ``Deploy to IBM Cloud``, most of the setup is automatic, but not quite all of it. We have to update a few environment variables.
+If you used the ``Deploy to IBM Cloud`` option, most of the setup is automatic, but not quite all of it. We have to update a few environment variables.
 
-In the IBM Cloud dashboard find the App that was created. Click on ``Runtime`` on the menu and navigate to the ``Environment variables`` tab.
+From the IBM Cloud dashboard find the app that was created. Click on the ``Runtime`` tab on the menu and navigate to the ``Environment variables`` tab.
 
 ![environment-variables](doc/source/images/env_vars.png)
 
@@ -120,6 +136,8 @@ Update the following environment variable:
   * Set ``SLACK_BOT_TOKEN`` to the token you saved previously
 
 Save the new value and restart the application, watch the logs for errors.
+
+> **Tip**: :bulb: Try restaging your application if you see an error.
 
 ### If you decided to run the app locally...
 
@@ -147,7 +165,27 @@ yarn start
 
 6. Open a browser and go to `http://localhost:{PORT}`, where PORT is the value specified in `.env` (default is 3000)
 
-# Sample output
+# Running the application
+
+### Search from Slack
+
+The slack bot will respond to certain key words, below is a sample dialog. Remember to `@` the bot each time, or start a private chat. Make sure to invite your bot into other channels using `/invite @<my bot>`.
+
+```
+user: @newsbot hi
+newsbot: Hello.
+
+user: @newsbot news please
+newsbot: Hi there! What news are you interested in?
+
+user: @newsbot toronto raptors
+newsbot: You want me to search for news articles about `toronto raptors`?
+
+user: @newsbot yes
+newsbot: OK searching...
+```
+
+![slack](doc/source/images/slack-3.png)
 
 ### Trending Topics RSS Feed  ![rss](doc/source/images/rss_feed.png)
 
@@ -155,15 +193,12 @@ On the **Trending News Panel**, click the RSS Feed button to launch a new tab in
 
 <p align="center">
   <img src="doc/source/images/rss-2.png">
+  <br>
   <img src="doc/source/images/rss-1.png">
 </p>
 
 
->Since RSS feed is a standard way to consume constantly changing data such as news, we can use the RSS feeds we generated to also post news articles to your organizations [slack channel](https://get.slack.help/hc/en-us/articles/218688467-Add-RSS-feeds-to-Slack) to track trends in your industry, or consume the feed to generate a daily digest of news and email in the morning. Other uses may include automatically posting tweets to a Twitter account on news articles on trending topics using a service called [IFTTT](https://ifttt.com/connect/feed/twitter).
-
-### Search from Slack
-
-![slack](doc/source/images/slack-3.png)
+> Since RSS feed is a standard way to consume constantly changing data such as news, we can use the RSS feeds we generated to also post news articles to your organizations [slack channel](https://get.slack.help/hc/en-us/articles/218688467-Add-RSS-feeds-to-Slack) to track trends in your industry, or consume the feed to generate a daily digest of news and email in the morning. Other uses may include automatically posting tweets to a Twitter account on news articles on trending topics using a service called [IFTTT](https://ifttt.com/connect/feed/twitter).
 
 # Troubleshooting
 
