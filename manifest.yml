@@ -13,4 +13,5 @@ applications:
   services:
   - discovery-news-service
 env:
+  OPTIMIZE_MEMORY: true
   SLACK_BOT_TOKEN: placeholder
