@@ -19,19 +19,9 @@ const DiscoveryV1 = require('watson-developer-cloud/discovery/v1');
 
 var discovery;
 const version_date = '2018-03-05';
-if (process.env.service_watson_discovery !== undefined) {
-  var service_watson_discovery = JSON.parse(process.env.service_watson_discovery);
-  discovery = new DiscoveryV1({
-    url: service_watson_discovery['url'],
-    username: service_watson_discovery['username'],
-    password: service_watson_discovery['password'],
-    version_date: version_date
-  });
-} else {
-  discovery = new DiscoveryV1({
-    version_date: version_date
-  });
-}
+discovery = new DiscoveryV1({
+  version_date: version_date
+});
 
 discovery.environmentId = 'system';
 discovery.collectionId = 'news';

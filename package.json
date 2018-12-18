@@ -41,7 +41,7 @@
     "shrinkwrap": "^0.4.0",
     "uglifyify": "^3.0.4",
     "vcap_services": "^0.2.0",
-    "watson-developer-cloud": "^3.5.3",
+    "watson-developer-cloud": "3.5.3",
     "watson-react-components": "^0.6.17"
   },
   "babel": {
