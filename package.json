@@ -62,5 +62,9 @@
   },
   "resolutions": {
     "hoek": "4.2.1"
+  },
+  "jest": {
+    "verbose": true,
+    "testURL": "http://localhost/"
   }
 }
