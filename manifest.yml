@@ -7,12 +7,11 @@ applications:
 - path: .
   name: watsondiscoverynews
   buildpack: sdk-for-nodejs
-  memory: 512M
+  memory: 256M
   instances: 1
-  disk_quota: 512M
-  random-route: true
-  timeout: 180
+  random-route: false
   services:
   - discovery-news-service
 env:
+  OPTIMIZE_MEMORY: true
   SLACK_BOT_TOKEN: placeholder
