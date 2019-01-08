@@ -52,7 +52,7 @@ Use the ``Deploy to IBM Cloud`` button **OR** create the services and run locall
 
 ## Deploy to IBM Cloud
 
-[![Deploy to IBM Cloud](https://bluemix.net/deploy/button.png)](https://bluemix.net/deploy?repository=https://github.com/IBM/watson-discovery-news.git)
+[![Deploy to IBM Cloud](https://cloud.ibm.com/deploy/button.png)](https://cloud.ibm.com/devops/setup/deploy?repository=https://github.com/IBM/watson-discovery-news.git)
 
 1. Press the ``Deploy to IBM Cloud`` button above and then click on ``Deploy`` option. Remember to create an IBM Cloud API key if required.
 
