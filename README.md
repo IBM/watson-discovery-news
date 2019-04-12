@@ -21,12 +21,13 @@ Optionally included will be examples of how to:
 ![architecture](doc/source/images/architecture.png)
 
 ## Flow
+
 1. The user interacts with the Watson Discovery News Server via the app UI.
-2. User input is processed and routed to the Watson Discovery News Server.
-3. The Watson Discovery News Server sends user requests to the Watson Discovery Service.
-4. The Watson Discovery Service queries the Watson News Collection.
-5. The Watson Discovery Service sends news articles to the RSS Reader.
-6. The Watson Discovery Service responds to Slack search requests.
+1. User input is processed and routed to the Watson Discovery News Server.
+1. The Watson Discovery News Server sends user requests to the Watson Discovery Service.
+1. The Watson Discovery Service queries the Watson News Collection.
+1. The Watson Discovery Service sends news articles to the RSS Reader.
+1. The Watson Discovery Service responds to Slack search requests.
 
 # Included components
 
@@ -52,7 +53,7 @@ Use the ``Deploy to IBM Cloud`` button **OR** create the services and run locall
 
 ## Deploy to IBM Cloud
 
-[![Deploy to IBM Cloud](https://cloud.ibm.com/devops/setup/deploy/button.png)](https://cloud.ibm.com/devops/setup/deploy?repository=https://github.com/IBM/watson-discovery-news.git)
+[![Deploy to IBM Cloud](https://cloud.ibm.com/devops/setup/deploy/button.png)](https://cloud.ibm.com/devops/setup/deploy?repository=https://github.com/IBM/watson-discovery-news)
 
 1. Press the ``Deploy to IBM Cloud`` button above and then click on ``Deploy`` option. Remember to create an IBM Cloud API key if required.
 
@@ -72,10 +73,10 @@ Now jump to [Step 4. Configure Slack](#4-configure-slack) to continue.
 > NOTE: These steps are only needed when running locally instead of using the ``Deploy to IBM Cloud`` button.
 
 1. [Clone the repo](#1-clone-the-repo)
-2. [Create Watson Services with IBM Cloud](#2-create-watson-services-with-ibm-cloud)
-3. [Configure Watson Discovery](#3-configure-watson-discovery)
-4. [Configure Slack](#4-configure-slack)
-5. [Configure the application to use the Slack bot](#5-configure-the-application-to-use-the-slack-bot)
+1. [Create Watson Services with IBM Cloud](#2-create-watson-services-with-ibm-cloud)
+1. [Configure Watson Discovery](#3-configure-watson-discovery)
+1. [Configure Slack](#4-configure-slack)
+1. [Configure the application to use the Slack bot](#5-configure-the-application-to-use-the-slack-bot)
 
 ## 1. Clone the repo
 
@@ -133,7 +134,7 @@ From the IBM Cloud dashboard find the app that was created. Click on the ``Runti
 
 Update the following environment variable:
 
-  * Set ``SLACK_BOT_TOKEN`` to the token you saved previously
+* Set ``SLACK_BOT_TOKEN`` to the token you saved previously
 
 Save the new value and restart the application, watch the logs for errors.
 
@@ -167,11 +168,11 @@ yarn start
 
 # Running the application
 
-### Search from Slack
+## Search from Slack
 
 The slack bot will respond to certain key words, below is a sample dialog. Remember to `@` the bot each time, or start a private chat. Make sure to invite your bot into other channels using `/invite @<my bot>`.
 
-```
+```bash
 user: @newsbot hi
 newsbot: Hello.
 
@@ -187,7 +188,7 @@ newsbot: OK searching...
 
 ![slack](doc/source/images/slack-3.png)
 
-### Trending Topics RSS Feed  ![rss](doc/source/images/rss_feed.png)
+## Trending Topics RSS Feed  ![rss](doc/source/images/rss_feed.png)
 
 On the **Trending News Panel**, click the RSS Feed button to launch a new tab in your browser. Cut and paste the tab URL into your favorite RSS Reader. If your RSS Feed Reader supports push notifications you can get alerted when trending topics change along with a news article for that topic.
 
@@ -234,11 +235,12 @@ SLACK_BOT_TOKEN=<slack_bot_token>
 
 If the port is unavailable, you will see the following error:
 
-```
+```bash
 Error: listen EADDRINUSE :::{port}
 ```
 
 # Links
+
 * [Demo on Youtube](https://youtu.be/EZGgvci9nC0): Watch the video.
 * [Watson Node.js SDK](https://github.com/watson-developer-cloud/node-sdk): Download the Watson Node SDK.
 * [Cognitive discovery architecture](https://www.ibm.com/cloud/garage/architectures/cognitiveDiscoveryDomain): Learn how this code pattern fits into the Cognitive discovery Reference Architecture.

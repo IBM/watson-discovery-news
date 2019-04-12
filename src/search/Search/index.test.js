@@ -15,9 +15,11 @@
  */
 
 import React from 'react';
-import { mount } from 'enzyme';
+import { configure, mount } from 'enzyme';
 import Search from './';
+import Adapter from 'enzyme-adapter-react-16';
 
+configure({ adapter: new Adapter() });
 let defaultProps;
 
 beforeEach(() => {

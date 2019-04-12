@@ -50,18 +50,18 @@ function createServer() {
     discovery.query(queryBuilder.trending({
       filter: category ? `enriched_text.categories.label:"${category}"` : ''
     }))
-    .then(response => res.json(response))
-    .catch(error => {
-      // eslint-disable-next-line no-console
-      console.error(error);
+      .then(response => res.json(response))
+      .catch(error => {
+        // eslint-disable-next-line no-console
+        console.error(error);
 
-      switch (error.message) {
-      case 'Number of free queries per month exceeded':
-        return res.status(429).json(error);
-      default:
-        next(error);
-      }
-    });
+        switch (error.message) {
+        case 'Number of free queries per month exceeded':
+          return res.status(429).json(error);
+        default:
+          next(error);
+        }
+      });
   });
 
   server.get('/trending/feed/*', (req, res, next) => {
@@ -69,46 +69,46 @@ function createServer() {
     const fullUrl = req.protocol + '://' + req.get('host');
 
     fetch(fullUrl + `/trending/api/trending/${category ? category : ''}`)
-    .then(response => {
-      if (response.ok) {
-        return response.json();
-      }
-      throw response;
-    })
-    .then(json => {
-      const { topics } = parseData(json);
-      const feed = new RSS({
-        title: `Trending Topics in News${category ? ' for ' + category.toUpperCase() : ''}`,
-        description: 'RSS feed for Trending Topics found using Watson Discovery Service'
-      });
-
-      topics.forEach(item => {
-        const story = topicStory(item);
-        let categories = [];
-        if (story.enriched_title.categories) {
-          categories = story.enriched_title.categories
-            .reduce((result, categories) =>
-              result.concat(categories.label.split('/').slice(1)), []);
+      .then(response => {
+        if (response.ok) {
+          return response.json();
         }
-        feed.item({
-          guid: story.id,
-          title: item.key,
-          url: story.url,
-          description: story.title,
-          author: story.author,
-          categories
+        throw response;
+      })
+      .then(json => {
+        const { topics } = parseData(json);
+        const feed = new RSS({
+          title: `Trending Topics in News${category ? ' for ' + category.toUpperCase() : ''}`,
+          description: 'RSS feed for Trending Topics found using Watson Discovery Service'
         });
-      });
 
-      res.set('Content-Type', 'text/xml').send(feed.xml());
-    })
-    .catch(response => {
-      if (response && response.status === 429) {
-        res.status(429).json({ error: 'Number of free queries per month exceeded' });
-      } else {
-        next(response);
-      }
-    });
+        topics.forEach(item => {
+          const story = topicStory(item);
+          let categories = [];
+          if (story.enriched_title.categories) {
+            categories = story.enriched_title.categories
+              .reduce((result, categories) =>
+                result.concat(categories.label.split('/').slice(1)), []);
+          }
+          feed.item({
+            guid: story.id,
+            title: item.key,
+            url: story.url,
+            description: story.title,
+            author: story.author,
+            categories
+          });
+        });
+
+        res.set('Content-Type', 'text/xml').send(feed.xml());
+      })
+      .catch(response => {
+        if (response && response.status === 429) {
+          res.status(429).json({ error: 'Number of free queries per month exceeded' });
+        } else {
+          next(response);
+        }
+      });
   });
 
   server.get('/trending/*', function(req, res) {

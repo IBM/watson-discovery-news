@@ -15,16 +15,16 @@
  */
 
 const Promise = require('bluebird');
-const DiscoveryV1 = require('watson-developer-cloud/discovery/v1');
+const DiscoveryV1 = require('ibm-watson/discovery/v1');
 
 var discovery;
-const version_date = '2018-03-05';
+const version_date = '2019-02-01';
 discovery = new DiscoveryV1({
-  version_date: version_date
+  version: version_date
 });
 
 discovery.environmentId = 'system';
-discovery.collectionId = 'news';
+discovery.collectionId = 'news-en';
 
 discovery.listEnvironments = Promise.promisify(discovery.listEnvironments);
 discovery.query = Promise.promisify(discovery.query);

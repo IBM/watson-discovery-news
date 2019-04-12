@@ -15,7 +15,7 @@ const Query = props => (
         </div>
         <Code language="json">
           {typeof props.query === 'object' ?
-          JSON.stringify(props.query, null, 2) : props.query}
+            JSON.stringify(props.query, null, 2) : props.query}
         </Code>
       </Pane>
       {props.response ?
@@ -25,7 +25,7 @@ const Query = props => (
           </div>
           <Code language="json">
             {typeof props.response === 'object' ?
-            JSON.stringify(props.response, null, 2) : props.response}
+              JSON.stringify(props.response, null, 2) : props.response}
           </Code>
         </Pane> :
         <Pane label="" />
