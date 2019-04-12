@@ -31,7 +31,9 @@ class Application extends React.Component {
           <br />
           <br />
         </div>
-      <div>Select from one of the following examples:</div>
+        
+        <div>Select from one of the following examples:</div>
+        
         <ul>
           <li>
             <a href="./trending">Find Trending Topics in Watson News</a>
@@ -64,8 +66,8 @@ class Application extends React.Component {
           <Jumbotron
             serviceName="IBM Watson Discovery Service"
             repository="https://github.com/IBM/watson-discovery-news"
-            documentation="http://www.ibm.com/watson/developercloud/doc/discovery/index.html"
-            apiReference="http://www.ibm.com/watson/developercloud/discovery/api"
+            documentation="https://cloud.ibm.com/docs/services/discovery?topic=discovery-about#about"
+            apiReference="https://cloud.ibm.com/apidocs/discovery"
             startInBluemix="https://cloud.ibm.com/registration/?target=/catalog/services/discovery/"
             version="GA"
             description={this.getDescription()}

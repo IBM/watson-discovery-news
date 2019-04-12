@@ -21,9 +21,9 @@ import { Bar, Icon } from 'watson-react-components';
 
 const Story = props => (
   <div className="story">
-      <div className="story--date">
-        {moment(props.date).format('M/D/YYYY hh:MMa')}
-      </div>
+    <div className="story--date">
+      {moment(props.date).format('M/D/YYYY hh:MMa')}
+    </div>
     <a
       className="story--title base--a results--a"
       href={props.url}
@@ -37,7 +37,11 @@ const Story = props => (
       <span className="base--p story--source">
         {props.host ? props.host : 'Placeholder Source'}
       </span>
-      <div className="story--score base--p">Confidence Score: <Bar rangeStart={0} rangeEnd={5}  score={props.score} /></div>
+      {/* It would be better to use actual "confidence" score from query results, but it is not available for Watson News.
+        * So we will just use "score", which is an unbounded number that should be used a relative indicator.
+        * Good scores tend to be in 20 range. Have not seen a score about 30.
+       */}
+      <div className="story--score base--p">Confidence Score: <Bar rangeStart={0} rangeEnd={50}  score={props.score} /></div>
       <div className="story--sentiment base--p">Sentiment: {props.sentiment}</div>
     </div>
   </div>
@@ -66,7 +70,7 @@ const TopStories = props => (
             title={item.title ? item.title : 'Untitled'}
             url={item.url}
             host={item.host}
-            score={item.score}
+            score={item.result_metadata.score}
             sentiment={getSentiment(item)}
             date={item.crawl_date}
           />)

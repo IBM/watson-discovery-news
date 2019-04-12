@@ -28,9 +28,7 @@ describe('Query builder returns params for discovery service', () => {
       environment_id: 'environment',
       collection_id: 'collection',
       return: 'enriched_title.entities.text',
-      aggregation: [
-        'term(enriched_title.entities.text,count:20).top_hits(1)'
-      ],
+      aggregation: 'term(enriched_title.entities.text,count:20).top_hits(1)',
       filter: `crawl_date>${moment().subtract(24,'h').toISOString().slice(0, -5)}`
     });
   });
@@ -42,9 +40,7 @@ describe('Query builder returns params for discovery service', () => {
       environment_id: 'environment',
       collection_id: 'collection',
       return: 'enriched_title.entities.text',
-      aggregation: [
-        'term(enriched_title.entities.text,count:20).top_hits(1)'
-      ],
+      aggregation: 'term(enriched_title.entities.text,count:20).top_hits(1)',
       filter: `enriched_text.categories.label:"test",crawl_date>${moment().subtract(24,'h').toISOString().slice(0, -5)}`
     });
   });

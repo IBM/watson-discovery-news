@@ -26,7 +26,7 @@ const Briefing = props => (
       </div>
       <div className="top-stories--list">
         {props.items.map(summary => (
-          <div key={summary.title}>
+          <div key={summary.key}>
             <h4>{summary.title}</h4>
             <p>{summary.text}</p>
             <hr />
@@ -38,7 +38,7 @@ const Briefing = props => (
 );
 
 Briefing.propTypes = {
-  items: PropTypes.object.isRequired
+  items: PropTypes.array.isRequired
 };
 
 module.exports = Briefing;

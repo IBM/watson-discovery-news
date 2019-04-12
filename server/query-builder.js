@@ -14,14 +14,11 @@
  * the License.
  */
 
+const util = require('util');
 const moment = require('moment');
 const aggregations = {
-  search: [
-    'term(enriched_text.sentiment.document.label)'
-  ],
-  trending: [
-    'term(enriched_title.entities.text,count:20).top_hits(1)'
-  ]
+  search: 'term(enriched_text.sentiment.document.label)',
+  trending: 'term(enriched_title.entities.text,count:20).top_hits(1)'
 };
 
 module.exports = {
@@ -37,10 +34,13 @@ module.exports = {
       environment_id: this.environment_id,
       collection_id: this.collection_id,
       count: 10,
-      sort: '-score',
-      return: 'title,text,url,host,crawl_date,score,id,enriched_text.entities.text,enriched_text.sentiment.document.label',
+      // sort: 'result_metadata.score',
+      return: 'title,text,url,host,crawl_date,result_metadata.score,id,enriched_text.entities.text,enriched_text.sentiment.document.label',
       aggregation: aggregations.search
     }, queryOpts);
+
+    console.log('Discovery Search Query Params: ');
+    console.log(util.inspect(params, false, null));
 
     return params;
   },
@@ -57,6 +57,8 @@ module.exports = {
       filter: filter ? `${filter},${timeAndSourceFilter}` : timeAndSourceFilter
     });
 
+    console.log('Discovery Trending Query Params: ');
+    console.log(util.inspect(params, false, null));
     return params;
   }
 };

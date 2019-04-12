@@ -51,35 +51,35 @@ class Main extends React.Component {
       method: 'GET',
       headers: { 'Content-Type': 'application/json' }
     })
-    .then(response => {
-      if (response.ok) {
-        return response.json();
-      }
-      throw response;
-    })
-    .then(json => {
-      this.setState({
-        data: parseData(json),
-        loading: false,
-        error: null
-      });
-    })
-    .catch(response => {
-      let error;
-      if (response && response.status === 429) {
-        error = 'Number of free queries per month exceeded';
-      } else {
-        error = 'Error fetching data from the server';
-      }
+      .then(response => {
+        if (response.ok) {
+          return response.json();
+        }
+        throw response;
+      })
+      .then(json => {
+        this.setState({
+          data: parseData(json),
+          loading: false,
+          error: null
+        });
+      })
+      .catch(response => {
+        let error;
+        if (response && response.status === 429) {
+          error = 'Number of free queries per month exceeded';
+        } else {
+          error = 'Error fetching data from the server';
+        }
 
-      // eslint-disable-next-line no-console
-      console.error(response);
-      this.setState({
-        data: null,
-        error,
-        loading: false
+        // eslint-disable-next-line no-console
+        console.error(response);
+        this.setState({
+          data: null,
+          error,
+          loading: false
+        });
       });
-    });
   }
 
   render() {

@@ -132,26 +132,26 @@ controller.hears(['whats in the news', 'news please'], 'direct_message,direct_me
             // eslint-disable-next-line no-console
             console.log(`Slack Bot host route: ${host}`);
             fetch(`${host}/search/api/search?${qs}`)
-            .then(apiResponse => {
-              if (apiResponse.ok) {
-                apiResponse.json()
-                  .then(json => {
-                    bot.reply(message, 'Here are some news articles...');
-                    for (let i = 0; i < 3; i++) {
-                      setTimeout(() => {
-                        bot.reply(message, `<${json.results[i].url}>`);
-                      }, i * 1000);
-                    }
-                  });
-              } else {
-                throw new Error(apiResponse.json());
-              }
-            })
-            .catch(err => {
-              // eslint-disable-next-line no-console
-              console.error('error', err);
-              bot.reply(message, 'Error fetching news');
-            });
+              .then(apiResponse => {
+                if (apiResponse.ok) {
+                  apiResponse.json()
+                    .then(json => {
+                      bot.reply(message, 'Here are some news articles...');
+                      for (let i = 0; i < 3; i++) {
+                        setTimeout(() => {
+                          bot.reply(message, `<${json.results[i].url}>`);
+                        }, i * 1000);
+                      }
+                    });
+                } else {
+                  throw new Error(apiResponse.json());
+                }
+              })
+              .catch(err => {
+                // eslint-disable-next-line no-console
+                console.error('error', err);
+                bot.reply(message, 'Error fetching news');
+              });
           } else {
             // this happens if the conversation ended prematurely for some reason
             bot.reply(message, 'OK, nevermind!');

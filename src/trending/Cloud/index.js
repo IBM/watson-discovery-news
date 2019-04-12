@@ -43,23 +43,23 @@ const Cloud = props => {
     <div className="top-topics--cloud">
       {
         props.data ?
-        props.data.map((item, index) =>
-          <a
-            key={`${index}-${item.key}`}
-            target="_blank"
-            rel="noopener noreferrer"
-            href={topicStory(item).url}
-            className="top-topics--word"
-            title={item.matching_results}
-            style={{
-              fontSize: `${computeSize(item.matching_results)}px`,
-              fontWeight: (computeSize(item.matching_results) < 13 ? 400 : null),
-              color: getSentimentColor(item)
-            }}
-          >
-            {item.key}
-          </a>) :
-        []
+          props.data.map((item, index) =>
+            <a
+              key={`${index}-${item.key}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              href={topicStory(item).url}
+              className="top-topics--word"
+              title={item.matching_results}
+              style={{
+                fontSize: `${computeSize(item.matching_results)}px`,
+                fontWeight: (computeSize(item.matching_results) < 13 ? 400 : null),
+                color: getSentimentColor(item)
+              }}
+            >
+              {item.key}
+            </a>) :
+          []
       }
     </div>
   );

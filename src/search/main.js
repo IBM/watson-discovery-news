@@ -58,26 +58,26 @@ class Main extends React.Component {
 
     const qs = queryString.stringify({ query: searchQuery });
     fetch(`/search/api/search?${qs}`)
-    .then(response => {
-      if (response.ok) {
-        return response.json();
-      } else {
-        throw response;
-      }
-    })
-    .then(json => {
-      this.setState({ data: parseData(json), loading: false, error: null });
-      scrollToMain();
-    })
-    .catch(response => {
-      this.setState({
-        error: (response.status === 429) ? 'Number of free queries per month exceeded' : 'Error fetching results',
-        loading: false,
-        data: null
+      .then(response => {
+        if (response.ok) {
+          return response.json();
+        } else {
+          throw response;
+        }
+      })
+      .then(json => {
+        this.setState({ data: parseData(json), loading: false, error: null });
+        scrollToMain();
+      })
+      .catch(response => {
+        this.setState({
+          error: (response.status === 429) ? 'Number of free queries per month exceeded' : 'Error fetching results',
+          loading: false,
+          data: null
+        });
+        // eslint-disable-next-line no-console
+        console.error(response);
       });
-      // eslint-disable-next-line no-console
-      console.error(response);
-    });
   }
 
   getContent() {
@@ -92,12 +92,12 @@ class Main extends React.Component {
     case 'briefing':  return <Briefing items={data.briefingItems} />;
     case 'sentiment': return <Sentiment data={data.sentiment} />;
     case 'query':     return <Query
-                              title="Query to and Response from the Discovery Service"
-                              query={queryBuilder.search({
-                                natural_language_query: this.state.searchQuery
-                              })}
-                              response={data.rawResponse}
-                            />;
+      title="Query to and Response from the Discovery Service"
+      query={queryBuilder.search({
+        natural_language_query: this.state.searchQuery
+      })}
+      response={data.rawResponse}
+    />;
     default:          return null;
     }
   }
@@ -160,6 +160,7 @@ const parseData = data => ({
   briefingItems: data
     .results
     .map(item => ({
+      key: item.id,
       title: getTitleForItem(item),
       text: item.text
     }))
