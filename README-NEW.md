@@ -13,7 +13,7 @@ This code pattern demonstrates two use cases for accessing Watson Discovery News
 
 ## Build it
 
-To learn more and follow the steps to build the app, see the associated code pattern on [IBM Developer](https://developer.ibm.com/patterns/create-a-cognitive-news-search-app/).
+To learn more and follow the steps to build the app, see the associated code pattern on [IBM Developer](https://developer.ibm.com/patterns/create-a-cognitive-news-search-app/#instructions).
 
 ## Running the application
 
