@@ -9,29 +9,15 @@ Watson Discovery News is a default data collection that is associated with the W
 This code pattern demonstrates two use cases for accessing Watson Discovery News:
 
 * **Trending Topics in the News**: Identify popular topics over the past 24 hours. Topics can be general, or for a specific industry or category.
-
 * **Search**: Query for the most relevant new articles about a specific topic or subject. Results will include enrichment data, such as article summary text and sentiment analysis.
 
-Optionally included will be examples of how to:
+## Build it
 
-* Build a **RSS News Feed** generator to push trending news to your favorite RSS reader.
+To learn more and follow the steps to build the app, see the associated code pattern on [IBM Developer](https://developer.ibm.com/patterns/create-a-cognitive-news-search-app/).
 
-* Build a **SlackBot** to access the search feature from Slack.
+## Running the application
 
-## Build your own app
-
-To learn more and follow the steps to build the app, see the associated code pattern [page](https://developer.ibm.com/patterns/create-a-cognitive-news-search-app/).
-
-## Related links
-
-* [Demo on Youtube](https://youtu.be/EZGgvci9nC0): Watch the video.
-* [Watson Node.js SDK](https://github.com/watson-developer-cloud/node-sdk): Download the Watson Node SDK.
-* [Overview of the Watson Discovery service](https://www.ibm.com/watson/services/discovery/): Extract value from unstructured data by converting, normalizing, enriching it.
-
-## Learn more
-
-* **Artificial Intelligence Code Patterns**: Enjoyed this Code Pattern? Check out our other [AI Code Patterns](https://developer.ibm.com/technologies/artificial-intelligence/).
-* **AI and Data Code Pattern Playlist**: Bookmark our [playlist](https://www.youtube.com/playlist?list=PLzUbsvIyrNfknNewObx5N7uGZ5FKH0Fde) with all of our Code Pattern videos
+![slack](doc/source/images/slack-3.png)
 
 ## License
 
