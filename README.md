@@ -176,13 +176,13 @@ The query page:
 
 ## Deep Dive Videos
 
-Now that you've built and run the app, you can look at the following videos to get a close-up view of how it all works.
+Here is a series of short videos that go into more of the details about the features of this code pattern.
 
-| Video | Description |
-| ---   |   ---      |
-| <iframe width="500" height="400" src="https://www.youtube.com/embed/QFwbrTkigmI" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> | Navigating the app UI |
-| <iframe width="500" height="400" src="https://www.youtube.com/embed/UgAaod_Q2WU" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> | Walk-through of the code |
-| <iframe width="500" height="400" src="https://www.youtube.com/embed/-s6W3jHmizY" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> | Use the APIs to initialize and query Discovery |
+* Part 1 - Navigating the UI
+* Part 2 - Code walkthrough
+* Part 3 - Watson Discovery service APIs
+
+[![](https://img.youtube.com/vi/QFwbrTkigmI/0.jpg)](https://www.youtube.com/playlist?list=PLOCckZJT4e3OzgykV0mEpZE6zKHysgIr6)
 
 # Extra Credit
 
