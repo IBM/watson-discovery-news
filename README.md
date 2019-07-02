@@ -143,8 +143,8 @@ cp env.sample .env
 
 ```bash
 # Watson Discovery
-DISCOVERY_URL=&lt;add_discovery_url&gt;
-DISCOVERY_IAM_APIKEY=&lt;add_discovery_iam_apikey&gt;
+DISCOVERY_URL=<add_discovery_url>
+DISCOVERY_IAM_APIKEY=<add_discovery_iam_apikey>
 DISCOVERY_ENVIRONMENT_ID=system
 DISCOVERY_COLLECTION_ID=news-en
 ```
@@ -286,6 +286,6 @@ Suite of APIs makes it easier for companies to ingest and analyze their data, ev
 
 # License
 
-This code pattern is licensed under the Apache Software License, Version 2.  Separate third party code objects invoked within this code pattern are licensed by their respective providers pursuant to their own separate licenses. Contributions are subject to the [Developer Certificate of Origin, Version 1.1 (DCO)](https://developercertificate.org/) and the [Apache Software License, Version 2](https://www.apache.org/licenses/LICENSE-2.0.txt).
+This code pattern is licensed under the Apache License, Version 2. Separate third-party code objects invoked within this code pattern are licensed by their respective providers pursuant to their own separate licenses. Contributions are subject to the [Developer Certificate of Origin, Version 1.1](https://developercertificate.org/) and the [Apache License, Version 2](https://www.apache.org/licenses/LICENSE-2.0.txt).
 
-[Apache Software License (ASL) FAQ](https://www.apache.org/foundation/license-faq.html#WhatDoesItMEAN)
+[Apache License FAQ](https://www.apache.org/foundation/license-faq.html#WhatDoesItMEAN)
