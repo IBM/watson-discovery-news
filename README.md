@@ -182,7 +182,7 @@ Now that you've built and run the app, you can look at the following videos to g
 | ---   |   ---      |
 | <iframe width="500" height="400" src="https://www.youtube.com/embed/QFwbrTkigmI" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> | Navigating the app UI |
 | <iframe width="500" height="400" src="https://www.youtube.com/embed/UgAaod_Q2WU" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> | Walk-through of the code |
-| <iframe width="560" height="315" src="https://www.youtube.com/embed/-s6W3jHmizY" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> | Use the APIs to initialize and query Discovery |
+| <iframe width="500" height="400" src="https://www.youtube.com/embed/-s6W3jHmizY" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> | Use the APIs to initialize and query Discovery |
 
 # Extra Credit
 
