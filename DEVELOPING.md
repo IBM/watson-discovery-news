@@ -41,7 +41,6 @@ Below is a general overview of the most important directories and files in the p
 │       ├── index.js # HTML view that is rendered for /trending/
 │       ├── layouts # Layout for trending page
 │       │   └── default.js
-│       ├── main.js # Main component of Trending which is rendered as HTML server side and contains client side code
-│       └── taxonomy.js # File containing taxonomy that are listed in the /trending/ page
-└── yarn.lock # Yarn lockfile to lock down dependencies
+│       ├── main.js # Main component of Trending which is rendered as HTML server side and contains 
+└──     └── taxonomy.js # File containing taxonomy that are listed in the /trending/ page
 ```
