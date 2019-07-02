@@ -4,4 +4,4 @@ node_js: 8
 cache: 
   directories:
   - node_modules
-script: yarn test && yarn lint
+script: num run test && npm run lint
