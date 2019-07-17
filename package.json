@@ -9,7 +9,7 @@
     "url": "https://github.com/IBM/watson-discovery-news.git"
   },
   "scripts": {
-    "start": "node --max_old_space_size=256 app.js",
+    "start": "node --max_old_space_size=384 app.js",
     "start:watch": "nodemon app.js",
     "bootstrap": "cp env.sample .env",
     "test": "jest",
@@ -47,6 +47,9 @@
     "uglifyify": "^3.0.4",
     "vcap_services": "^0.2.0",
     "watson-react-components": "^0.6.19"
+  },
+  "engines": {
+    "node": "8.4.0"
   },
   "babel": {
     "presets": [
