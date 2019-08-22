@@ -22,4 +22,4 @@ This document shows how to run the `watson-discovery-news` application using Clo
 
     * discovery-news-service
 
-[![return](https://raw.githubusercontent.com/IBM/pattern-utils/master/deploy-buttons/return.png)](https://github.com/IBM/watson-discovery-news#sample-output)
+[![return](https://raw.githubusercontent.com/IBM/pattern-utils/master/deploy-buttons/return.png)](https://github.com/IBM/watson-discovery-news#deployment-options)
