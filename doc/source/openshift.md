@@ -75,4 +75,4 @@ Copy the `apikey` value from your Watson Discovery service credentials.
 
 * Under `Applications` -> `Routes` you will see your app. Click on the `Hostname` to see your Watson Discovery News app in action.
 
-[![return](https://raw.githubusercontent.com/IBM/pattern-utils/master/deploy-buttons/return.png)](https://github.com/IBM/watson-discovery-news#sample-output)
+[![return](https://raw.githubusercontent.com/IBM/pattern-utils/master/deploy-buttons/return.png)](https://github.com/IBM/watson-discovery-news#deployment-options)
