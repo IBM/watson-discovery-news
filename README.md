@@ -60,6 +60,21 @@ Click on one of the options below for instructions on deploying the app.
 | - | - | - |
 | [![public](https://raw.githubusercontent.com/IBM/pattern-utils/master/deploy-buttons/cf.png)](doc/source/cf.md) | [![openshift](https://raw.githubusercontent.com/IBM/pattern-utils/master/deploy-buttons/openshift.png)](doc/source/openshift.md) | [![local](https://raw.githubusercontent.com/IBM/pattern-utils/master/deploy-buttons/local.png)](doc/source/local.md) |
 
+## Troubleshooting
+
+* Error deploying to IBM Cloud using the [Deploy to Cloud Foundry](doc/source/cf.md) option
+
+If you see the following in the logs for a Deploy to IBM Cloud using Cloud Foundry in the `Stage History`, click the `Redeploy` button. This should get past the race condition during the deployment.
+
+```bash
+Binding service discovery-news-service to app sda-watson-discovery-news-9-4 in org scott.dangelo / space dev as scott.dangelo@ibm.com...
+FAILED
+Could not bind to service discovery-news-service
+Error: Server error, status code: 409, error code: 60016, message: An operation for service instance discovery-news-service is in progress.
+
+Finished: FAILED
+```
+
 ## Sample output
 
 The trending page:
