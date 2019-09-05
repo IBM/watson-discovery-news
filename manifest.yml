@@ -7,7 +7,7 @@ applications:
 - path: .
   name: watsondiscoverynews
   buildpack: sdk-for-nodejs
-  memory: 384M
+  memory: 512M
   instances: 1
   random-route: false
   services:
