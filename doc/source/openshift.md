@@ -8,18 +8,22 @@ You will need a running OpenShift cluster, or OKD cluster. You can provision [Op
 
 ## Steps
 
-* In your cluster, open your project or click on `+ Create Project` to create one.
+* In your OpenShift **Cluster Console**, open your project or click on **+ Create Project** to create one.
+* Click over the to **Application Console**, then select your project.
+
+![console-options](https://raw.githubusercontent.com/IBM/pattern-utils/master/openshift/openshift-console-options.png)
+
 * In the `Overview` tab, click on `Browse Catalog`
 
-![Browse Catalog](https://github.com/IBM/pattern-utils/blob/master/openshift/openshift-browse-catalog.png)
+![Browse Catalog](https://raw.githubusercontent.com/IBM/pattern-utils/master/openshift/openshift-browse-catalog.png)
 
 * Choose the `Node.js` app container and click `Next`.
 
-![Choose Node.js](https://github.com/IBM/pattern-utils/blob/master/openshift/openshift-choose-nodejs.png)
+![Choose Node.js](https://raw.githubusercontent.com/IBM/pattern-utils/master/openshift/openshift-choose-nodejs.png)
 
 * Give your app a name and add `https://github.com/IBM/watson-discovery-news` for the github repo, then click `Create`.
 
-![Add github repo](https://github.com/IBM/pattern-utils/blob/master/openshift/openshift-add-github-repo.png)
+![Add github repo](https://raw.githubusercontent.com/IBM/pattern-utils/master/openshift/openshift-add-github-repo.png)
 
 ### Create your Watson Discovery service
 
@@ -65,13 +69,13 @@ Copy the `apikey` value from your Watson Discovery service credentials.
 
 * Add a key for `DISCOVERY_IAM_APIKEY` and past in the `apikey` value as `value`:
 
-![add config map](https://github.com/IBM/pattern-utils/blob/master/openshift/openshift-generic-config-map.png)
+![add config map](https://raw.githubusercontent.com/IBM/pattern-utils/master/openshift/openshift-generic-config-map.png)
 
 * Click `Add item` and then add a key for `PORT` with the value `8080`.
 
-* Go to the `Applications` tab, choose `Deployments` and the `Environment` tab. Under `Environment From` `Config Map/Secret` choose the config map you just created [1]. Save the config [2]. The app will re-deploy automatically, or click `Deploy` to re-deploy manually [3]. To see the variables in the Config Map that will be exported in the app environment, click `View Details`.
+* Go to the **Applications** tab, choose **Deployments**, and select your application. From your application panel, select the **Environment** tab. Under **Environment From** / **Config Map/Secret**, choose the config map you just created [1]. Save the config [2]. The app will re-deploy automatically, or click **Deploy** to re-deploy manually [3]. To see the variables in the Config Map that will be exported in the app environment, click **View Details**.
 
-![add config map to app](https://github.com/IBM/pattern-utils/blob/master/openshift/openshift-add-config-map-to-app.png)
+![add config map to app](https://raw.githubusercontent.com/IBM/pattern-utils/master/openshift/openshift-add-config-map-to-app.png)
 
 * Under `Applications` -> `Routes` you will see your app. Click on the `Hostname` to see your Watson Discovery News app in action.
 
