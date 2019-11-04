@@ -38,7 +38,7 @@ You will need a running OpenShift cluster, or OKD cluster. You can provision [Op
 
   ![Choose Node.js](https://raw.githubusercontent.com/IBM/pattern-utils/master/openshift/openshift-choose-nodejs.png)
 
-* Give your app a name and add `https://github.com/IBM/watson-google-assistant` for the github repo, then click `Create`.
+* Give your app a name and add `https://github.com/IBM/watson-discovery-news` for the github repo, then click `Create`.
 
   ![Add github repo](https://raw.githubusercontent.com/IBM/pattern-utils/master/openshift/openshift-add-github-repo.png)
 
