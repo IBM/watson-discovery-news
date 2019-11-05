@@ -44,12 +44,12 @@
     "rss": "^1.2.2",
     "shell-quote": "^1.6.1",
     "shrinkwrap": "^0.4.0",
-    "uglifyify": "^3.0.4",
+    "uglifyify": "^5.0.2",
     "vcap_services": "^0.2.0",
     "watson-react-components": "^0.6.19"
   },
   "engines": {
-    "node": "8.4.0"
+    "node": ">=10.0.0"
   },
   "babel": {
     "presets": [
@@ -63,9 +63,9 @@
   "devDependencies": {
     "enzyme": "^3.9.0",
     "enzyme-adapter-react-16": "^1.12.1",
-    "eslint": "^4.13.1",
-    "eslint-plugin-import": "^2.12.0",
-    "eslint-plugin-react": "^7.8.2",
+    "eslint": "^6.6.0",
+    "eslint-plugin-import": "^2.18.2",
+    "eslint-plugin-react": "^7.16.0",
     "jest": "^24.7.1",
     "jest-cli": "^24.7.1"
   },

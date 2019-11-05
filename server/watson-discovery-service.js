@@ -18,7 +18,8 @@ const Promise = require('bluebird');
 const DiscoveryV1 = require('ibm-watson/discovery/v1');
 
 var discovery;
-const version_date = '2019-02-01';
+const version_date = '2019-11-01';
+
 discovery = new DiscoveryV1({
   version: version_date
 });
