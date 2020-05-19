@@ -77,16 +77,14 @@ Finished: FAILED
 
 ## Sample output
 
-The trending page:
+The UI:
 
-![demo](doc/source/images/sample-output-trending.png)
+![demo](UI output.jpg)
 
 <br>
 
 The query page:
-
-![demo](doc/source/images/sample-output-query.png)
-
+![demo](Slack output.jpg)
 <br>
 
 ## Deep Dive Videos
