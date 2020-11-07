@@ -44,25 +44,32 @@ You will need a running OpenShift cluster, or OKD cluster. You can provision [Op
 
 ## 3. Create the config map
 
-Click on the `Resources` tab and choose `Config Maps` and then click the `Create Config Map` button:
+  ![add config map](https://raw.githubusercontent.com/kdeif/watson-discovery-news/master/doc/source/images/edit-configmap.png)
 
-  ![add config map](https://raw.githubusercontent.com/IBM/pattern-utils/master/openshift/openshift-generic-config-map.png)
-
-Use the `Create Config Map` panel to add our application parameters.
+Create a new Config Map under Workloads then under Config Maps.
 
 * Provide a `Name` for the config map.
-* Add a key named `DISCOVERY_IAM_APIKEY` and paste in the API Key from step 1 under `Enter a value...`.
-* Click `Add Item` and add a key named `DISCOVERY_URL` and paste in the URL from step 1 under `Enter a value...`..
-* Click `Add Item` and add a key named `PORT`, enter 8080 under `Enter a value...`.
-* Hit the `Create` button.
-* Click on your new Config Map's name.
-* Click the `Add to Application` button.
-* Select your application from the pulldown.
+* Add a key named `DISCOVERY_IAM_APIKEY` and paste in the API Key from step 1.
+* Add a key named `DISCOVERY_URL` and paste in the URL from step 1.
+* Add a key named `PORT`, enter 8080.
 * Click `Save`.
 
 Go to the `Applications` tab, choose `Deployments` to view the status of your application.
 
-## 4. Run the application
+## 3. Reference the config map in the Deployment
+
+Click on the Edit Deployment button.
+![Go to Edit Deployment](https://raw.githubusercontent.com/kdeif/watson-discovery-news/master/doc/source/images/edit-deployment.png)
+
+Then Add the following to the deployment yaml:
+
+          envFrom: 
+            - configMapRef:
+              name: news-cm
+              
+![Edit Deployment yaml](https://raw.githubusercontent.com/kdeif/watson-discovery-news/master/doc/source/images/edit-deployment-yaml.png)
+
+## 5. Run the application
 
 Under `Applications` -> `Routes` you will see your app. Click on the `Hostname` to see your Watson Discovery News app in action.
 
