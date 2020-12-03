@@ -65,15 +65,14 @@ cp env.sample .env
 
   2. Locate the service credentials listed on the home page of your Discovery service.
 
-![get-creds](https://raw.githubusercontent.com/IBM/pattern-utils/master/watson-discovery/get-creds.png)
+![get-creds](images/disco-get-creds.png)
 
   3. Copy and paste the `apikey` and `URL` values from your Watson Discovery service credentials into the .env file:
 
 ```bash
 # Watson Discovery
-# Change the URL and uncomment if it is different from below:
-# DISCOVERY_URL=https://gateway.watsonplatform.net/discovery/api
-DISCOVERY_IAM_APIKEY=<add_discovery_iam_apikey>
+DISCOVERY_URL=<add_discovery_url>
+DISCOVERY_APIKEY=<add_discovery_iam_apikey>
 ```
 
 ### 5. Run the application

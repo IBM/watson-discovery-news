@@ -20,7 +20,6 @@ Below is a general overview of the most important directories and files in the p
 │   ├── express.js # File that configures express
 │   ├── index.js # Configures the endpoint for Discovery API and create express server
 │   ├── query-builder.js # Helper file which helps generate the query params passed to Discovery API
-│   ├── slack-bot.js # Entry point to start up slack bot
 │   └── watson-discovery-service.js # Helper file to promisify Waston SDK APIs
 ├── src # Views that get rendered by the server and the client bundle.js
 │   ├── home.js # Component that renders the home page

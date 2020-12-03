@@ -25,8 +25,8 @@ beforeEach(() => {
 describe('Query builder returns params for discovery service', () => {
   test('when opts are NOT passed', () => {
     expect(queryBuilder.trending()).toEqual({
-      environment_id: 'environment',
-      collection_id: 'collection',
+      environmentId: 'environment',
+      collectionId: 'collection',
       return: 'enriched_title.entities.text',
       aggregation: 'term(enriched_title.entities.text,count:20).top_hits(1)',
       filter: `crawl_date>${moment().subtract(24,'h').toISOString().slice(0, -5)}`
@@ -37,8 +37,8 @@ describe('Query builder returns params for discovery service', () => {
     expect(queryBuilder.trending({
       filter: 'enriched_text.categories.label:"test"'
     })).toEqual({
-      environment_id: 'environment',
-      collection_id: 'collection',
+      environmentId: 'environment',
+      collectionId: 'collection',
       return: 'enriched_title.entities.text',
       aggregation: 'term(enriched_title.entities.text,count:20).top_hits(1)',
       filter: `enriched_text.categories.label:"test",crawl_date>${moment().subtract(24,'h').toISOString().slice(0, -5)}`
