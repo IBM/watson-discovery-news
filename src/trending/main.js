@@ -52,7 +52,7 @@ class Main extends React.Component {
       headers: { 'Content-Type': 'application/json' }
     })
       .then(response => {
-        if (response.ok) {
+        if (response.status === 200) {
           return response.json();
         }
         throw response;
@@ -94,10 +94,7 @@ class Main extends React.Component {
             <div className="top-stories widget">
               <div className="widget--header">
                 <h1 className="base--h2 widget--header-title">
-                  Trending Topics in News {category && `for ${category.toUpperCase()}`}
-                  <a href={`/trending/feed/${category ? category : ''}`} className="rss-feed--icon">
-                    <img src="/images/feed-icon.png" />
-                  </a>
+                  Trending Topics in News
                 </h1>
                 <div className="widget--header-spacer" />
               </div>

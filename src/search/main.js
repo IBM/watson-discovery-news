@@ -59,14 +59,14 @@ class Main extends React.Component {
     const qs = queryString.stringify({ query: searchQuery });
     fetch(`/search/api/search?${qs}`)
       .then(response => {
-        if (response.ok) {
+        if (response.status === 200) {
           return response.json();
         } else {
           throw response;
         }
       })
       .then(json => {
-        this.setState({ data: parseData(json), loading: false, error: null });
+        this.setState({ data: parseData(json.result), loading: false, error: null });
         scrollToMain();
       })
       .catch(response => {
@@ -94,7 +94,7 @@ class Main extends React.Component {
     case 'query':     return <Query
       title="Query to and Response from the Discovery Service"
       query={queryBuilder.search({
-        natural_language_query: this.state.searchQuery
+        naturalLanguageQuery: this.state.searchQuery
       })}
       response={data.rawResponse}
     />;

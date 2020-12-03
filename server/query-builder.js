@@ -31,8 +31,8 @@ module.exports = {
   },
   search(queryOpts) {
     const params = Object.assign({
-      environment_id: this.environment_id,
-      collection_id: this.collection_id,
+      environmentId: this.environment_id,
+      collectionId: this.collection_id,
       count: 10,
       // sort: 'result_metadata.score',
       return: 'title,text,url,host,crawl_date,result_metadata.score,id,enriched_text.entities.text,enriched_text.sentiment.document.label',
@@ -49,8 +49,8 @@ module.exports = {
     const timeAndSourceFilter = `crawl_date>${moment().subtract(24,'h').toISOString().slice(0, -5)}`;
 
     const params = Object.assign({
-      environment_id: this.environment_id,
-      collection_id: this.collection_id,
+      environmentId: this.environment_id,
+      collectionId: this.collection_id,
       return: 'enriched_title.entities.text',
       aggregation: aggregations.trending
     }, queryOpts, {

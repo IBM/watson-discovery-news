@@ -50,7 +50,9 @@ function createServer() {
     discovery.query(queryBuilder.trending({
       filter: category ? `enriched_text.categories.label:"${category}"` : ''
     }))
-      .then(response => res.json(response))
+      .then(response => {
+        return res.json(response);
+      })
       .catch(error => {
         // eslint-disable-next-line no-console
         console.error(error);
@@ -128,7 +130,7 @@ function createServer() {
   server.get('/search/api/search', (req, res) => {
     const { query } = req.query;
 
-    discovery.query(queryBuilder.search({ natural_language_query: query }))
+    discovery.query(queryBuilder.search({ naturalLanguageQuery: query }))
       .then(response => res.json(response))
       .catch(error => {
         if (error.message === 'Number of free queries per month exceeded') {

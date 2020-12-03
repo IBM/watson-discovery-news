@@ -22,18 +22,14 @@ class Application extends React.Component {
     return (
       <div>
         <div>
-          This web app showcases multiple ways to utilize the Watson Discovery Service to
-          query data collections, such as Watson News.
+          This web app showcases multiple ways to utilize the Watson Discovery Service to query data collections, such as Watson News.
           <br />
           <br />
-          Watson News is a pre-enriched dataset that is updated continuosly with
-          over 300,000 news articles and blogs a day.
+          Watson News is a pre-enriched dataset that is updated continuosly with over 300,000 news articles and blogs a day.
           <br />
           <br />
         </div>
-        
         <div>Select from one of the following examples:</div>
-        
         <ul>
           <li>
             <a href="./trending">Find Trending Topics in Watson News</a>

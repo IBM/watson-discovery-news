@@ -15,7 +15,7 @@
  */
 
 const parseData = data => ({
-  topics: data.aggregations[0].results,
+  topics: data.result.aggregations[0].results,
   rawData: data
 });
 

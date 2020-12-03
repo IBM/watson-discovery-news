@@ -12,8 +12,6 @@ The web is home to massive amounts of data, with more being created every day. O
 
 Optionally, you can choose to:
 
-* Use a Slack interface to query the data
-* Push news alerts out to an RSS reader
 * Host the app on the IBM Cloud
 
 ## Description
@@ -21,8 +19,6 @@ Optionally, you can choose to:
 This code pattern shows you how to tap into massive data sets to mine insight. You'll build a news mining web application with the Watson Discovery service using the Watson Node.js SDK. The app demonstrates two use cases using Watson Discovery News:
 
 * **Search**: Query for the most relevant new articles about a specific topic or subject. Because the news collection is pre-enriched with natural language processing, you can query not just on keywords or categories but also on concepts, sentiment, and relations to get richer search responses.
-
-* **Trending topics in the news**: Identify popular topics over the past 24 hours. Topics can be general, or specific to an industry or category.
 
 ## Flow
 
@@ -32,8 +28,6 @@ This code pattern shows you how to tap into massive data sets to mine insight. Y
 1. User input is processed and routed to the Watson Discovery News Server.
 1. The Watson Discovery News Server sends user requests to the Watson Discovery Service.
 1. The Watson Discovery Service queries the Watson News Collection.
-1. The Watson Discovery Service sends news articles to the RSS Reader.
-1. The Watson Discovery Service responds to Slack search requests.
 
 # Included components
 
@@ -44,9 +38,6 @@ This code pattern shows you how to tap into massive data sets to mine insight. Y
 * [Node.js](https://nodejs.org/en/): An asynchronous event driven JavaScript runtime, designed to build scalable applications
 * [React](https://reactjs.org/): Javascript library for building User Interfaces
 * [Express](https://expressjs.com): A popular and minimalistic web framework for creating API and Web server
-* [RSS](https://en.wikipedia.org/wiki/RSS): RSS (Rich Site Summary) is a format for delivering regularly changing web content in our case it will be trending topics
-* [Slack](https://slack.com): Slack is a cloud-based set of team collaboration tools and services with chat bot integration
-* [Botkit](https://www.botkit.ai): Framework for creating and managing chat bots
 
 # Watch the Video
 
@@ -98,89 +89,6 @@ Here is a series of short videos that go into more of the details about the feat
 * Part 3 - Watson Discovery service APIs
 
 [![](https://img.youtube.com/vi/QFwbrTkigmI/0.jpg)](https://www.youtube.com/playlist?list=PLOCckZJT4e3OzgykV0mEpZE6zKHysgIr6)
-
-# Extra Credit
-
-Now that you have built the base application, here are some additional steps you can take to add a Slack interface, and/or provide a way to send new trending news topics to your favorite RSS feed.
-
-## 1. Configure Slack
-
-To integrate a new Slack Bot into your existing Slack team, navigate to `https://<my.slack.com>/apps/manage/custom-integrations`, where `<my.slack.com>` is the Slack workspace you want to customize.
-
-  1. From the **Cutsom Integrations** page, select the **Bots** option.
-
-![slack-integrations](doc/source/images/slack-0.png)
-
-  2, To add a new bot, select the **Add Configuration** button.
-
-![slack-integrations](doc/source/images/slack-00.png)
-
-  3. Enter a username for the bot and click **Add bot integration**.
-
-![slack-bot-name](doc/source/images/slack-1.png)
-
-  4. Once created, save the **API Token** that is generated.
-
-![more-slack-config](doc/source/images/slack-2.png)
-
-## 2. Configure the application to use the Slack bot
-
-### If you runnint the app locally...
-
-  1. Edit the .env file and enter the Slack Bot **API Token** saved in the previous step.
-
-```bash
-# Slack
-SLACK_BOT_TOKEN=<slack_bot_token>
-```
-
-  2. Restart the application.
-
-### If you used the Deploy to IBM Cloud button...
-
-If you used the **Deploy to IBM Cloud** option, most of the setup is automatic, but not quite all of it. We have to update a few environment variables.
-
-  1. From the IBM Cloud dashboard find the app that was created. Click on the **Runtime** tab and navigate to the **Environment variables** tab.
-
-  2. Add and set the Slack Bot **API Token** saved in the previous step.
-
-![environment-variables](doc/source/images/env_vars.png)
-
-  3. Save the new value and restart the application. Watch the logs for errors.
-
-> **Tip**: :bulb: Try restaging your application if you see an error.
-
-## Search from Slack
-
-The slack bot will respond to certain key words, below is a sample dialog. Remember to `@` the bot each time, or start a private chat. Make sure to invite your bot into other channels using `/invite @<my bot>`.
-
-```bash
-user: @newsbot hi
-newsbot: Hello.
-
-user: @newsbot news please
-newsbot: Hi there! What news are you interested in?
-
-user: @newsbot toronto raptors
-newsbot: You want me to search for news articles about `toronto raptors`?
-
-user: @newsbot yes
-newsbot: OK searching...
-```
-
-![slack](doc/source/images/slack-3.png)
-
-## Add a Trending Topics RSS Feed  ![rss](doc/source/images/rss_feed.png)
-
-On the **Trending News Panel**, click the RSS Feed button to launch a new tab in your browser. Cut and paste the tab URL into your favorite RSS Reader. If your RSS Feed Reader supports push notifications you can get alerted when trending topics change along with a news article for that topic.
-
-<p align="center">
-  <img src="doc/source/images/rss-2.png">
-  <br>
-  <img src="doc/source/images/rss-1.png">
-</p>
-
-> Since RSS feed is a standard way to consume constantly changing data such as news, we can use the RSS feeds we generated to also post news articles to your organizations [slack channel](https://get.slack.help/hc/en-us/articles/218688467-Add-RSS-feeds-to-Slack) to track trends in your industry, or consume the feed to generate a daily digest of news and email in the morning. Other uses may include automatically posting tweets to a Twitter account on news articles on trending topics using a service called [IFTTT](https://ifttt.com/connect/feed/twitter).
 
 # Links
 
