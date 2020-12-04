@@ -20,7 +20,7 @@ You will need a running OpenShift cluster, or OKD cluster. You can provision [Op
 * Click `Create`.
 * Copy/paste the `API Key` and `URL` or keep the browser tab open. You'll need these later.
 
-  ![get-creds](https://raw.githubusercontent.com/IBM/pattern-utils/master/watson-discovery/get-creds.png)
+  ![get-creds](images/disco-get-creds.png)
 
 ## 2. Create an OpenShift project
 
@@ -51,7 +51,7 @@ Click on the `Resources` tab and choose `Config Maps` and then click the `Create
 Use the `Create Config Map` panel to add our application parameters.
 
 * Provide a `Name` for the config map.
-* Add a key named `DISCOVERY_IAM_APIKEY` and paste in the API Key from step 1 under `Enter a value...`.
+* Add a key named `DISCOVERY_APIKEY` and paste in the API Key from step 1 under `Enter a value...`.
 * Click `Add Item` and add a key named `DISCOVERY_URL` and paste in the URL from step 1 under `Enter a value...`..
 * Click `Add Item` and add a key named `PORT`, enter 8080 under `Enter a value...`.
 * Hit the `Create` button.
