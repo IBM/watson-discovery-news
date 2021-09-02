@@ -1,3 +1,6 @@
+# This repo has been archived and is no longer being maintained. 
+
+
 [![Build Status](https://api.travis-ci.org/IBM/watson-discovery-news.svg?branch=master)](https://travis-ci.org/IBM/watson-discovery-news)
 
 # Query Watson Discovery News using the Watson Discovery Service
